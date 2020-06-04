@@ -1,4 +1,54 @@
+in dev con:
+
+@App.js
+-> loads user
+-> jumps to landing page
+
+@Landing.js
+-> check if user is authenticated 
+--> if yes - redirect to /dashboard.js
+--> if no - render landing page
+
+@dashboard.js
+-> load user's profile
+-> render user's profile
+
+
 @routes/api/carts.js
 line 25 --> from here code has to be worked on 
 --> question is: do I update user_id in cart object if user registers? I think put request. But how is the 
 route end point beeing hit
+
+answer:
+
+@App.js
+-> loads user
+-> jumps to landing page
+
+@Landing.js
+-> check if user is authenticated 
+--> if yes 
+- load users cart
+
+--> if no 
+- create new cart
+- render login link (directs to Login.js)
+- render register link (directs to Register.js)
+
+@Login.js
+-> on login --> load user's cart
+
+@Register.js
+-> on registration --> update existing cart with user_id
+
+
+@cart.js --> figure out how to create new cart with or without loged in user 
+--> problem: req.user.id works only if function has auth but auth throws an error if no token is send
+(meaning no user is logged in)
+
+
+
+
+
+
+

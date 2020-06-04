@@ -3,14 +3,17 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 
 const Cart = require("../../models/Cart");
+const User = require("../../models/User");
 
 // @route   POST api/carts
-// @desc    Create cart (on app load)
-// @access  Private
-router.post("/", async (req, res) => {
+// @desc    Create cart
+// @access  Public / Private
+router.post("/", auth, async (req, res) => {
   try {
-    cart = new Cart({
-      user: null,
+    // const user = await User.findById(req.user.id);
+
+    const cart = new Cart({
+      user: req.user.id,
     });
 
     await cart.save();
@@ -22,8 +25,31 @@ router.post("/", async (req, res) => {
   }
 });
 
+// @route   GET api/carts/:user_id
+// @desc    Get cart by user id
+// @access  Private
+router.get("/:user_id", async (req, res) => {
+  try {
+    const cart = await Cart.findOne({
+      user: req.params.user_id,
+    });
+
+    if (!cart) {
+      return res.status(400).json({ msg: "User doesn't have a cart" });
+    }
+
+    res.json(cart);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind == "ObjectId") {
+      return res.status(400).json({ msg: "User doesn't have a cart" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route   api/carts/
-// @desc    Update comment
+// @desc    Update cart
 // @access  Private
 router.put("/", auth, async (req, res) => {
   try {
@@ -54,29 +80,6 @@ router.put("/", auth, async (req, res) => {
     console.error(err);
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Post not found" });
-    }
-    res.status(500).send("Server Error");
-  }
-});
-
-// @route   GET api/carts/user/:user_id
-// @desc    Get cart by user id
-// @access  Private
-router.get("/user/:user_id", async (req, res) => {
-  try {
-    const cart = await Cart.findOne({
-      user: req.params.user_id,
-    });
-
-    if (!cart) {
-      return res.status(400).json({ msg: "User doesn't have a cart" });
-    }
-
-    res.json(cart);
-  } catch (err) {
-    console.error(err.message);
-    if (err.kind == "ObjectId") {
-      return res.status(400).json({ msg: "User doesn't have a cart" });
     }
     res.status(500).send("Server Error");
   }

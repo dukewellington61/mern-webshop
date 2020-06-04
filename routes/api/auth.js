@@ -9,16 +9,11 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 
 // @route   GET api/auth
-// @desc    Test route
-// @access  Public
+// @desc    Get loged in user
+// @access  Private
 router.get("/", auth, async (req, res) => {
-  // auth.js is a file in ./middleware --> if the token that is send with the request is correct this
-  // piece of middleware does next() so that execution of router.get("/", auth, async (req, res) => {...) is continued
-  // otherwhise an error is thrown
   try {
-    const user = await User.findById(req.user.id).select(
-      "-password"
-    ); /* req.user.id = id which has been retrieved from web token in middleware/auth.js line 17 (req.user = decoded.user) */
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
     console.error(err.message);
