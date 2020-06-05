@@ -6,9 +6,10 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User");
+const Cart = require("../../models/Cart");
 
 // @route   POST api/users
-// @desc    Register user and get token
+// @desc    Register user and update current shopping cart with user_id
 // @access  Public
 router.post(
   "/",
@@ -27,7 +28,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password, cart_id } = req.body;
 
     try {
       // See if the user exists
@@ -41,6 +42,7 @@ router.post(
           .json({ errors: [{ msg: "User already exists " }] });
       }
 
+      // Create new user
       user = new User({
         firstname,
         lastname,
@@ -54,6 +56,15 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
+
+      // Update current shopping cart with user id
+      cart = await Cart.findOneAndUpdate(
+        { _id: cart_id },
+        { user: user.id },
+        { new: true }
+      );
+
+      console.log(cart);
 
       // Return json web token
       const payload = {

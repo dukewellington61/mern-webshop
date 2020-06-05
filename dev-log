@@ -39,12 +39,90 @@ answer:
 -> on login --> load user's cart
 
 @Register.js
--> on registration --> update existing cart with user_id
+-> on registration 
+--> update existing cart with user_id:
+
+client side - registry form contains hidden field with current cart id which is beeing retrieved
+from redux state --> post request is beeing send and processed server side in routes/api/users.js
+in line :
+const { firstname, lastname, email, password, cart_id } = req.body;
+
+server side works
+
+-----------------------
+
+create line items
+
+@client/component/product_site.js
+-> user clicks add to cart button
+-> that triggers a function which fires a post request 
+-> take cart_id from state and send it to the back end via that post request (which has cart_id in it's body)
+-> line-item object is beeing created in DB
+
+line-item {
+    product_id,
+    cart_id,
+} 
+
+-> holds reference to correct cart by cart_id
+
+@client/component/cart.js
+-> renders line-items in a specific cart
+
+pulling cart + line item from the db:
+
+2 ways (I can think of):
+1st:
+-> loop through all the line item objects in db and find the ones with the correct cart_id
+-> loop through all the product objects in db and find those with matching id as referenced in 
+the line item objects
+
+db structure:
+
+collection carts:
+cart: {
+    _id: ...,
+    user: ...
+}
+
+collection line-items:
+line-item: {
+    _id: .....,
+    product_id: ...,
+    cart_id: ...,
+    quantity: 1
+}
+
+2nd:
+-> loop through all the cart objects in db and find the one with the correct id
+-> loop through all the product objects in db and find those with matching id as referenced in 
+the objects in the line_items array 
+
+db structure:
+
+cart: {
+    _id: ...,
+    user: ...,
+    line-items: [{
+        line_item_id : {
+            product_id: ...,
+            quantity: 1
+        },
+
+        line_item_id : {
+            product_id: ...,
+            quantity: 1
+        },
+
+        line_item_id : {
+            product_id: ...,
+            quantity: 1
+        },
+    }]    
+}
 
 
-@cart.js --> figure out how to create new cart with or without loged in user 
---> problem: req.user.id works only if function has auth but auth throws an error if no token is send
-(meaning no user is logged in)
+
 
 
 
