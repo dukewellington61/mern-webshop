@@ -93,7 +93,7 @@ line-item: {
     quantity: 1
 }
 
-2nd:
+2nd (the one I chose):
 -> loop through all the cart objects in db and find the one with the correct id
 -> loop through all the product objects in db and find those with matching id as referenced in 
 the objects in the line_items array 
@@ -103,26 +103,28 @@ db structure:
 cart: {
     _id: ...,
     user: ...,
-    line-items: [{
-        line_item_id : {
+    line-items: [
+        {
+            _id: ...,
             product_id: ...,
             quantity: 1
         },
 
-        line_item_id : {
+        {
+            _id: ...,
             product_id: ...,
             quantity: 1
         },
 
-        line_item_id : {
+        {
+            _id: ...,
             product_id: ...,
             quantity: 1
         },
-    }]    
+    ]    
 }
 
-problem with 2nd implementation:
-how to generate line_item_id?
+
 
 
 

@@ -6,6 +6,7 @@ const CartSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  lineItems: [],
 });
 
 module.exports = Cart = mongoose.model("cart", CartSchema);
