@@ -121,7 +121,8 @@ cart: {
     }]    
 }
 
-
+problem with 2nd implementation:
+how to generate line_item_id?
 
 
 
