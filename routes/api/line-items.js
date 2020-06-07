@@ -16,22 +16,29 @@ router.post("/", async (req, res) => {
     });
 
     const lineItem = cart.lineItems.find(
-      (lineItem) => lineItem.product_id !== req.body.product_id
+      (lineItem) => lineItem.product_id == req.body.product_id
     );
 
-    console.log(lineItem);
-
     if (lineItem) {
-      console.log(lineItem.quantity);
-      lineItem.quantity = lineItem.quantity + 1;
-      console.log(lineItem.quantity);
+      const updateQuantity = lineItem.quantity + 1;
+
+      Cart.updateOne(
+        {
+          _id: cart._id,
+          lineItems: { $elemMatch: { _id: lineItem._id } },
+        },
+        { $set: { "lineItems.$.quantity": updateQuantity } },
+        function (err) {
+          console.log(err);
+        }
+      );
     } else {
       cart.lineItems.unshift(newLineItem);
     }
 
     await cart.save();
 
-    res.json(lineItem);
+    res.json(cart);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
