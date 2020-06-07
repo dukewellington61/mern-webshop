@@ -124,12 +124,73 @@ cart: {
     ]    
 }
 
+express routes error handling
+
+catch (err) {
+        console.error(err);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'User not found'})
+        };
+        res.status(500).send('Server Error');
+    }
+})    
+
+@profiles.js
+// @route   GET api/profile/user/:user_id
+// @desc    Get profile by user ID
+// @access  Public
+
+
+
+@posts.js
+// @route   GET api/posts/user/:user_id
+// @desc    Get all post from a user
+// @access  Public    
+
+// @route   GET api/posts/:id
+// @desc    Get post by id
+// @access  Private    
+
+// @route   DELETE api/posts/:id
+// @desc    Delete post by id
+// @access  Private    
+
+// @route   PUT api/posts/like/:id
+// @desc    Like a post
+// @access  Private   
+
+// @route   PUT api/posts/like/:id
+// @desc    Unlike a post
+// @access  Private    
+
+// @route   POST api/posts/comment/:id
+// @desc    Create a comment on a post
+// @access  Private
+
+// @route   UPDATE api/posts/comment/:post_id/:comment_id
+// @desc    Update comment
+// @access  Private  
+
+// @route   DELETE api/posts/comment/:post_id/:comment_id
+// @desc    Delete comment
+// @access  Private    
+
+// @route   PUT api/posts/like/:post_id/:comment_id
+// @desc    Like a comment
+// @access  Private    
+
+// @route   PUT api/posts/comment/unlike/:post_id/:comment_id
+// @desc    Unlike a comment
+// @access  Private    
+
+next up:
+
+comments routing
+-> logged in user can write comment for product
+-> product model gets another property called comments which is an array of comment_ids
+-> comments model has user_id, product_id and comment text + rating
 
 
 
 
-
-
-
-
-
+ratings routing

@@ -11,12 +11,8 @@ router.post("/", async (req, res) => {
   try {
     const cart = await Cart.findById(req.body.cart_id);
 
-    const newLineItem = new LineItem({
-      product_id: req.body.product_id,
-    });
-
     const lineItem = cart.lineItems.find(
-      (lineItem) => lineItem.product_id == req.body.product_id
+      (lineItem) => lineItem.product_id.toString() === req.body.product_id
     );
 
     if (lineItem) {
@@ -33,10 +29,53 @@ router.post("/", async (req, res) => {
         }
       );
     } else {
+      const newLineItem = new LineItem({
+        product_id: req.body.product_id,
+      });
+
       cart.lineItems.unshift(newLineItem);
+
+      await cart.save();
     }
 
-    await cart.save();
+    res.json(cart);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route   Put api/line-items
+// @desc    Remove line item from current cart
+// @access  Public
+router.put("/", async (req, res) => {
+  try {
+    const cart = await Cart.findById(req.body.cart_id);
+
+    const lineItem = cart.lineItems.find(
+      (lineItem) => lineItem._id.toString() === req.body.lineItem_id
+    );
+
+    if (lineItem && lineItem.quantity > 1) {
+      const updateQuantity = lineItem.quantity - 1;
+
+      Cart.updateOne(
+        {
+          _id: cart._id,
+          lineItems: { $elemMatch: { _id: lineItem._id } },
+        },
+        { $set: { "lineItems.$.quantity": updateQuantity } },
+        function (err) {
+          console.log(err);
+        }
+      );
+    } else if (lineItem && lineItem.quantity === 1) {
+      cart.lineItems = cart.lineItems.filter(
+        (lineItem) => lineItem._id.toString() !== req.body.lineItem_id
+      );
+
+      await cart.save();
+    }
 
     res.json(cart);
   } catch (err) {

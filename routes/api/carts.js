@@ -10,8 +10,6 @@ const User = require("../../models/User");
 // @access  Public / Private
 router.post("/", async (req, res) => {
   try {
-    // const user = await User.findById(req.user.id);
-
     const cart = new Cart({});
 
     await cart.save();
@@ -45,10 +43,6 @@ router.get("/:user_id", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
-// @route   api/carts/:id/line-item
-// @desc    Update cart
-// @access  Private
 
 // @route   DELETE api/carts/:id
 // @desc    Delete cart by id
