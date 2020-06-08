@@ -6,7 +6,18 @@ const CartSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
-  lineItems: [],
+  line_items: [
+    {
+      quantity: {
+        type: Number,
+        default: 1,
+      },
+      product_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product",
+      },
+    },
+  ],
 });
 
 module.exports = Cart = mongoose.model("cart", CartSchema);

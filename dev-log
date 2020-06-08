@@ -187,10 +187,23 @@ next up:
 
 comments routing
 -> logged in user can write comment for product
--> product model gets another property called comments which is an array of comment_ids
--> comments model has user_id, product_id and comment text + rating
+-> product model gets another property called comments which is an array of objects
+-> objects have user_id, product_id and comment text + rating
+
+done
+
+next up:
+
+client side: pulling products in cart from db 
+
+-> query no. 1: get cart by user_id
+
+-> cart has array with line item objects
+
+-> each line item object has product_id
+
+-> query no. 2: get product by product_id (in line item object)
 
 
 
-
-ratings routing
+ 

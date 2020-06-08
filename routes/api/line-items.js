@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const LineItem = require("../../models/LineItem");
 const Cart = require("../../models/Cart");
 
 // @route   POST api/line-items
@@ -11,7 +10,7 @@ router.post("/", async (req, res) => {
   try {
     const cart = await Cart.findById(req.body.cart_id);
 
-    const lineItem = cart.lineItems.find(
+    const lineItem = cart.line_items.find(
       (lineItem) => lineItem.product_id.toString() === req.body.product_id
     );
 
@@ -21,9 +20,9 @@ router.post("/", async (req, res) => {
       Cart.updateOne(
         {
           _id: cart._id,
-          lineItems: { $elemMatch: { _id: lineItem._id } },
+          line_items: { $elemMatch: { _id: lineItem._id } },
         },
-        { $set: { "lineItems.$.quantity": updateQuantity } },
+        { $set: { "line_items.$.quantity": updateQuantity } },
         function (err) {
           console.log(err);
         }
@@ -33,7 +32,7 @@ router.post("/", async (req, res) => {
         product_id: req.body.product_id,
       });
 
-      cart.lineItems.unshift(newLineItem);
+      cart.line_items.unshift(newLineItem);
 
       await cart.save();
     }
@@ -52,7 +51,7 @@ router.put("/", async (req, res) => {
   try {
     const cart = await Cart.findById(req.body.cart_id);
 
-    const lineItem = cart.lineItems.find(
+    const lineItem = cart.line_items.find(
       (lineItem) => lineItem._id.toString() === req.body.lineItem_id
     );
 
@@ -62,15 +61,15 @@ router.put("/", async (req, res) => {
       Cart.updateOne(
         {
           _id: cart._id,
-          lineItems: { $elemMatch: { _id: lineItem._id } },
+          line_items: { $elemMatch: { _id: lineItem._id } },
         },
-        { $set: { "lineItems.$.quantity": updateQuantity } },
+        { $set: { "line_items.$.quantity": updateQuantity } },
         function (err) {
           console.log(err);
         }
       );
     } else if (lineItem && lineItem.quantity === 1) {
-      cart.lineItems = cart.lineItems.filter(
+      cart.line_items = cart.line_items.filter(
         (lineItem) => lineItem._id.toString() !== req.body.lineItem_id
       );
 
