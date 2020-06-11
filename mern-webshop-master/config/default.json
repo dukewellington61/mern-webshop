@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://user123:user123@cluster0-d4iyu.mongodb.net/mern-webshop?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
