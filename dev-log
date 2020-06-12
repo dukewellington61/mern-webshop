@@ -210,6 +210,9 @@ next up:
 products page
 
 -> create component(s)
+--> products.component which has productItem component in it
+
 -> create action
+
 -> create reducer
  

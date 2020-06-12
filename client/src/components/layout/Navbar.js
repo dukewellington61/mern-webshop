@@ -6,9 +6,6 @@ const Navbar = () => {
       className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
       id="navbar-example"
     >
-      <a href="#">
-        <img src="img/logo.jpg" alt="" />
-      </a>
       <div className="navbar-brand">
         &nbsp;&nbsp;MERN STACK BICYCLE EXAMPLE WEBSHOP
       </div>
