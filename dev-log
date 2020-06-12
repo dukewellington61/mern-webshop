@@ -205,5 +205,11 @@ client side: pulling products in cart from db
 -> query no. 2: get product by product_id (in line item object)
 
 
+next up:
 
+products page
+
+-> create component(s)
+-> create action
+-> create reducer
  
