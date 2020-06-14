@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ProductItem from "./ProductItem";
+import Spinner from "../layout/Spinner";
 
 import { getProducts } from "../../actions/product";
 
@@ -10,7 +11,9 @@ const Products = ({ getProducts, product: { products, loading } }) => {
     getProducts();
   }, [getProducts]);
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <h1 className="large text-primary">Products</h1>
       <div className="container">
