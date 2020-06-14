@@ -11,17 +11,17 @@ import store from "./store";
 import "./App.css";
 
 const App = () => (
-  <Router>
-    <Fragment>
-      <Provider store={store}>
-        <Fragment>
-          <Navbar />
+  <Provider store={store}>
+    <Router>
+      <Fragment>
+        <Navbar />
+        <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/products" component={Products} />
-        </Fragment>
-      </Provider>
-    </Fragment>
-  </Router>
+        </Switch>
+      </Fragment>
+    </Router>
+  </Provider>
 );
 
 export default App;

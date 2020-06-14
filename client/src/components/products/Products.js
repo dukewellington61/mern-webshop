@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import ProductItem from "./ProductItem";
 
 import { getProducts } from "../../actions/product";
@@ -11,14 +13,24 @@ const Products = ({ getProducts, product: { products, loading } }) => {
   return (
     <Fragment>
       <h1 className="large text-primary">Products</h1>
-
-      <div className="products">
-        {products.map((product) => (
-          <ProductItem key={product._id} product={product} />
-        ))}
+      <div className="container">
+        <div className="row">
+          {products.map((product) => (
+            <ProductItem key={product._id} product={product} />
+          ))}
+        </div>
       </div>
     </Fragment>
   );
 };
 
-export default Products;
+Products.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+  product: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  product: state.product,
+});
+
+export default connect(mapStateToProps, { getProducts })(Products);

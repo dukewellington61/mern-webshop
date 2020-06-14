@@ -1,5 +1,5 @@
 case: I want to work on my project on a different computer
---> download and unzip
+--> download project from repo and unzip
 --> connect local to remote:
 git remote add origin <remote_repo_url>
 git push --all origin
@@ -11,3 +11,10 @@ git commit -m "commit message"
 git pull origin master --allow-unrelated-histories
 
 exit bizzare editor in the console --> don't do anything with it
+
+voila: your local is up to date and you can push changes to remote repo
+
+
+@something else:
+find out which application is using port 3000:
+fuser 3000/tcp
