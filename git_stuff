@@ -1,0 +1,4 @@
+git remote add origin <remote_repo_url>
+git push --all origin
+
+git pull origin master --allow-unrelated-histories
