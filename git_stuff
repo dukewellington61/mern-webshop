@@ -1,4 +1,13 @@
+case: I want to work on my project on a different computer
+--> download and unzip
+--> connect local to remote:
 git remote add origin <remote_repo_url>
 git push --all origin
 
+case: I'm back at my actual computer and I want to update my local with remote (remote has changes that I've made 
+on a different computer)
+git add .
+git commit -m "commit message"
 git pull origin master --allow-unrelated-histories
+
+exit bizzare editor in the console --> don't do anything with it
