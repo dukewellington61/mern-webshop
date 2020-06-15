@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Products from "./components/products/Products";
+import Product from "./components/product/Product";
 
 // Redux
 import { Provider } from "react-redux";
@@ -18,6 +19,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/products" component={Products} />
+          <Route exact path="/products/:id" component={Product} />
         </Switch>
       </Fragment>
     </Router>
