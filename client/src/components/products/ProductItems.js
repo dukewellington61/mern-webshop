@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductItem = ({
+const ProductItems = ({
   product: { _id, name, description, image_url, colour, price },
 }) => (
   <div className="card col-4" style={{ width: "18rem" }}>
@@ -19,4 +19,4 @@ const ProductItem = ({
   </div>
 );
 
-export default ProductItem;
+export default ProductItems;

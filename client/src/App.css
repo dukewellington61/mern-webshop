@@ -1,3 +1,17 @@
+/* @global */
+
+body {
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+/* @components/layout/Navbar.js */
+
+.navbar-expand-lg {
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
 /* @components/products/Products.js */
 
 .container {

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ProductItem from "./ProductItem";
+import ProductItems from "./ProductItems";
 import Spinner from "../layout/Spinner";
 
 import { getProducts } from "../../actions/product";
@@ -18,7 +18,7 @@ const Products = ({ getProducts, product: { products } }) => {
       <div className="container" style={{ marginTop: "100px" }}>
         <div className="row">
           {products.map((product) => (
-            <ProductItem key={product._id} product={product} />
+            <ProductItems key={product._id} product={product} />
           ))}
         </div>
       </div>

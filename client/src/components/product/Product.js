@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
-
+import ProductItem from "./ProductItem";
+import ReviewItem from "./ReviewItem";
 import { getProduct } from "../../actions/product";
 
 const Product = ({ getProduct, product: { product }, match }) => {
@@ -13,17 +14,18 @@ const Product = ({ getProduct, product: { product }, match }) => {
   return !product ? (
     <Spinner />
   ) : (
-    <div className="card" style={{ marginTop: "100px" }}>
-      <img className="card-img-top" src={product.image_url} alt="test" />
-      <div className="card-body">
-        <h5 className="card-title">{product.name}</h5>
-        <p className="card-text">{product.description}</p>
+    <Fragment>
+      <div className="container">
+        <div className="row">
+          <ProductItem className="col-6" key={product._id} product={product} />
+          <div className="reviews col-6">
+            {product.reviews.map((review) => (
+              <ReviewItem key={review._id} review={review} />
+            ))}
+          </div>
+        </div>
       </div>
-      <ul className="list-group list-group-flush">
-        <li className="price">{product.price}</li>
-        <li className="colour">{product.colour}</li>
-      </ul>
-    </div>
+    </Fragment>
   );
 };
 
