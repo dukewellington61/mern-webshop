@@ -6,17 +6,16 @@ import Spinner from "../layout/Spinner";
 
 import { getProducts } from "../../actions/product";
 
-const Products = ({ getProducts, product: { products, loading } }) => {
+const Products = ({ getProducts, product: { products } }) => {
   useEffect(() => {
     getProducts();
   }, [getProducts]);
 
-  return loading ? (
+  return products.length === 0 ? (
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className="large text-primary">Products</h1>
-      <div className="container">
+      <div className="container" style={{ marginTop: "100px" }}>
         <div className="row">
           {products.map((product) => (
             <ProductItem key={product._id} product={product} />

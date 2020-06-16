@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({
-  product: { _id, name, description, image_url, colour, price, reviews },
+  product: { _id, name, description, image_url, colour, price },
 }) => (
   <div className="card col-4" style={{ width: "18rem" }}>
     <Link className="product_link" to={`/products/${_id}`}>
