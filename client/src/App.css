@@ -1,4 +1,7 @@
 /* @global */
+html {
+  background-color: antiquewhite;
+}
 
 body {
   width: 80%;
@@ -7,12 +10,16 @@ body {
 
 /* @components/layout/Navbar.js */
 
-.navbar-expand-lg {
-  width: 80%;
-  margin: 0 auto 0 auto;
+/* @components/product/Description.js */
+
+/* @components/product/Product.js */
+.ratings {
+  display: none;
 }
 
-/* @components/products/Products.js */
+.description {
+  display: block;
+}
 
 .container {
   margin: 0;

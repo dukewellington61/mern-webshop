@@ -2,8 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
-import ProductItem from "./ProductItem";
-import ReviewItem from "./ReviewItem";
+import ProductImage from "./ProductImage";
+import ProductFeatures from "./ProductFeatures";
+import RevDescLinks from "./RevDescLinks";
+import Ratings from "./Ratings";
+import Description from "./Description";
+
 import { getProduct } from "../../actions/product";
 
 const Product = ({ getProduct, product: { product }, match }) => {
@@ -15,13 +19,28 @@ const Product = ({ getProduct, product: { product }, match }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container">
+      <div className="container" style={{ marginTop: "100px" }}>
         <div className="row">
-          <ProductItem className="col-6" key={product._id} product={product} />
-          <div className="reviews col-6">
-            {product.reviews.map((review) => (
-              <ReviewItem key={review._id} review={review} />
-            ))}
+          <div className="col-lg-6 col-md-12">
+            <ProductImage key={product._id} product={product} />
+          </div>
+          <div className="col-lg-6 col-md-12">
+            <ProductFeatures key={product._id} product={product} />
+            <RevDescLinks />
+            <div className="ratings">
+              {product.reviews.map((review) => (
+                <Ratings key={review._id} review={review} />
+              ))}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onClick={() => console.log("yeah")}
+                  >rate product
+                </button>
+            </div>
+            <div className="description">
+              <Description product={product} />
+            </div>
           </div>
         </div>
       </div>
