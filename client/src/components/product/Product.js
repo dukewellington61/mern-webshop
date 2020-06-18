@@ -7,6 +7,7 @@ import ProductFeatures from "./ProductFeatures";
 import RevDescLinks from "./RevDescLinks";
 import Ratings from "./Ratings";
 import Description from "./Description";
+import RateProductButton from "./RateProductButton";
 
 import { getProduct } from "../../actions/product";
 
@@ -21,12 +22,12 @@ const Product = ({ getProduct, product: { product }, match }) => {
     <Fragment>
       <div id="product_page_container" className="container-fluid">
         <div className="row">
-          <div className="col-lg-6 col-md-12">
+          <div className="col-xl-6 col-lg-12">
             <ProductImage key={product._id} product={product} />
           </div>
-          <div className="col-lg-6 col-md-12">
+          <div className="col-xl-6 col-lg-12">
             <ProductFeatures key={product._id} product={product} />
-            <RevDescLinks />
+            <RevDescLinks key="rev_desc_links" />
 
             <div id="ratings" className="row">
               <div id="review_col" className="col-6">
@@ -35,14 +36,7 @@ const Product = ({ getProduct, product: { product }, match }) => {
                 ))}
               </div>
               <div id="button_col" className="col-6">
-                <button
-                  id="write_review_button"
-                  type="button"
-                  className="btn btn-success btn-lg"
-                  onClick={() => console.log("yeah")}
-                >
-                  rate product
-                </button>
+                <RateProductButton key="rate_product_button" />
               </div>
             </div>
 

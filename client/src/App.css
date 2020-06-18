@@ -8,10 +8,6 @@ body {
   margin: 0 auto 0 auto;
 }
 
-/* @components/layout/Navbar.js */
-
-/* @components/product/Description.js */
-
 /* @components/product/Product.js */
 #product_page_container {
   margin-top: 100px;
@@ -30,10 +26,6 @@ body {
   padding: 0;
 }
 
-#review_card {
-  width: 100%;
-}
-
 #button_col {
   padding: 0;
   position: relative;
@@ -46,4 +38,10 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+/* @components/product/Ratings.js */
+#review_card {
+  width: 100%;
+  margin-top: 1rem;
 }
