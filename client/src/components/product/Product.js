@@ -19,7 +19,7 @@ const Product = ({ getProduct, product: { product }, match }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container" style={{ marginTop: "100px" }}>
+      <div id="product_page_container" className="container-fluid">
         <div className="row">
           <div className="col-lg-6 col-md-12">
             <ProductImage key={product._id} product={product} />
@@ -27,18 +27,26 @@ const Product = ({ getProduct, product: { product }, match }) => {
           <div className="col-lg-6 col-md-12">
             <ProductFeatures key={product._id} product={product} />
             <RevDescLinks />
-            <div className="ratings">
-              {product.reviews.map((review) => (
-                <Ratings key={review._id} review={review} />
-              ))}
+
+            <div id="ratings" className="row">
+              <div id="review_col" className="col-6">
+                {product.reviews.map((review) => (
+                  <Ratings key={review._id} review={review} />
+                ))}
+              </div>
+              <div id="button_col" className="col-6">
                 <button
+                  id="write_review_button"
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-success btn-lg"
                   onClick={() => console.log("yeah")}
-                  >rate product
+                >
+                  rate product
                 </button>
+              </div>
             </div>
-            <div className="description">
+
+            <div id="description">
               <Description product={product} />
             </div>
           </div>

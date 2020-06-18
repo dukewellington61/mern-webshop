@@ -1,13 +1,13 @@
 import React from "react";
 
 const switchDescriptionToRating = () => {
-  document.querySelector(".ratings").style.display = "block";
-  document.querySelector(".description").style.display = "none";
+  document.querySelector("#ratings").style.display = "flex";
+  document.querySelector("#description").style.display = "none";
 };
 
 const switchRatingToDescription = () => {
-  document.querySelector(".ratings").style.display = "none";
-  document.querySelector(".description").style.display = "block";
+  document.querySelector("#ratings").style.display = "none";
+  document.querySelector("#description").style.display = "flex";
 };
 
 const RevDescLinks = () => (

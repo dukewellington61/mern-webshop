@@ -13,15 +13,37 @@ body {
 /* @components/product/Description.js */
 
 /* @components/product/Product.js */
-.ratings {
+#product_page_container {
+  margin-top: 100px;
+  max-width: 100%;
+}
+
+#description {
+  display: flex;
+}
+
+#ratings {
   display: none;
 }
 
-.description {
-  display: block;
+#review_col {
+  padding: 0;
 }
 
-.container {
+#review_card {
+  width: 100%;
+}
+
+#button_col {
+  padding: 0;
+  position: relative;
+}
+
+#write_review_button {
   margin: 0;
-  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
