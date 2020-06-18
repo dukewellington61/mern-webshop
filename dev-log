@@ -221,3 +221,7 @@ product page
 -> similar setup as on Products component wich has ProductItems component
 -> Product component has ProductItem component
 -> don't reuse ProductItems component because I want the product page to has a different layout than the items on the products page
+
+next up:
+
+write action createRating()

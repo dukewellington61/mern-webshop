@@ -26,6 +26,10 @@ body {
   padding: 0;
 }
 
+#rating_form {
+  display: none;
+}
+
 #button_col {
   padding: 0;
   position: relative;

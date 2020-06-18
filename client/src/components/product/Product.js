@@ -5,13 +5,14 @@ import Spinner from "../layout/Spinner";
 import ProductImage from "./ProductImage";
 import ProductFeatures from "./ProductFeatures";
 import RevDescLinks from "./RevDescLinks";
-import Ratings from "./Ratings";
+import RatingsItem from "./RatingsItem";
 import Description from "./Description";
 import RateProductButton from "./RateProductButton";
 
 import { getProduct } from "../../actions/product";
+import RatingForm from "./RatingForm";
 
-const Product = ({ getProduct, product: { product }, match }) => {
+const Product = ({ getProduct, product: { product }, user, match }) => {
   useEffect(() => {
     getProduct(match.params.id);
   }, [getProduct]);
@@ -31,12 +32,17 @@ const Product = ({ getProduct, product: { product }, match }) => {
 
             <div id="ratings" className="row">
               <div id="review_col" className="col-6">
+                <div id="rating_form">
+                  <RatingForm key="rating_form" user={user} />
+                </div>
                 {product.reviews.map((review) => (
-                  <Ratings key={review._id} review={review} />
+                  <RatingsItem key={review._id} review={review} />
                 ))}
               </div>
               <div id="button_col" className="col-6">
-                <RateProductButton key="rate_product_button" />
+                <div id="rate_product_button">
+                  <RateProductButton key="rate_product_button" />
+                </div>
               </div>
             </div>
 
@@ -57,6 +63,7 @@ Product.propTypes = {
 
 const mapStateToProps = (state) => ({
   product: state.product,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, { getProduct })(Product);

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Ratings = ({ review: { user_name, review, rating } }) => (
+const RatingsItem = ({ review: { user_name, review, rating } }) => (
   <div>
     <div id="review_card" className="card">
       <ul className="list-group list-group-flush">
@@ -11,4 +11,4 @@ const Ratings = ({ review: { user_name, review, rating } }) => (
   </div>
 );
 
-export default Ratings;
+export default RatingsItem;
