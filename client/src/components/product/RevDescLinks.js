@@ -14,14 +14,14 @@ const RevDescLinks = () => (
   <div>
     <button
       type="button"
-      class="btn btn-primary"
+      className="btn btn-primary"
       onClick={() => switchRatingToDescription()}
     >
       Description
     </button>
     <button
       type="button"
-      class="btn btn-primary"
+      className="btn btn-primary"
       style={{ marginLeft: "20px" }}
       onClick={() => switchDescriptionToRating()}
     >

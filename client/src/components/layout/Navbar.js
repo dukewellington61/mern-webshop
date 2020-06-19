@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import RegisterLogInLogOutLinks from "../auth/RegisterLogInLogOutLinks";
 
 const Navbar = () => {
   return (
@@ -56,6 +57,7 @@ const Navbar = () => {
             Search
           </button>
         </form>
+        <RegisterLogInLogOutLinks />
       </div>
     </nav>
   );

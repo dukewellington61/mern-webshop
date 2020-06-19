@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createReview } from "../../actions/product";
 
-const RatingForm = (user) => {
+const RatingForm = ({ user, createReview }) => {
   const [formData, setFormData] = useState({
     description: "",
   });
@@ -8,13 +11,14 @@ const RatingForm = (user) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    createRating(formData);
-  };
-
   return (
-    <form action="/action_page.php">
+    <form
+      onSubmit={(e) => {
+        console.log("onSubmit");
+        e.preventDefault();
+        createReview(formData, user._id);
+      }}
+    >
       <div id="review_card" className="card">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
@@ -28,14 +32,10 @@ const RatingForm = (user) => {
               onChange={(e) => onChange(e)}
             ></textarea>
           </li>
-          <input type="hidden" name="user_id" value={user._id}></input>
-          <input type="hidden" name="user_name" value={user.firstname}></input>
+          <input type="hidden" name="user_id" value="user_id"></input>
+          <input type="hidden" name="user_name" value="user_first_name"></input>
           <li>
-            <input
-              type="submit"
-              value="Submit"
-              onSubmit={(e) => onSubmit(e)}
-            ></input>
+            <input type="submit" className="btn btn-dark my-1" value="Submit" />
           </li>
         </ul>
       </div>
@@ -43,4 +43,8 @@ const RatingForm = (user) => {
   );
 };
 
-export default RatingForm;
+RatingForm.propTypes = {
+  createReview: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createReview })(RatingForm);

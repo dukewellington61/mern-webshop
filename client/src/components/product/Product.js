@@ -8,11 +8,10 @@ import RevDescLinks from "./RevDescLinks";
 import RatingsItem from "./RatingsItem";
 import Description from "./Description";
 import RateProductButton from "./RateProductButton";
-
 import { getProduct } from "../../actions/product";
 import RatingForm from "./RatingForm";
 
-const Product = ({ getProduct, product: { product }, user, match }) => {
+const Product = ({ getProduct, product: { product }, match }) => {
   useEffect(() => {
     getProduct(match.params.id);
   }, [getProduct]);
@@ -33,7 +32,7 @@ const Product = ({ getProduct, product: { product }, user, match }) => {
             <div id="ratings" className="row">
               <div id="review_col" className="col-6">
                 <div id="rating_form">
-                  <RatingForm key="rating_form" user={user} />
+                  <RatingForm key="rating_form" />
                 </div>
                 {product.reviews.map((review) => (
                   <RatingsItem key={review._id} review={review} />
@@ -63,7 +62,6 @@ Product.propTypes = {
 
 const mapStateToProps = (state) => ({
   product: state.product,
-  user: state.user,
 });
 
 export default connect(mapStateToProps, { getProduct })(Product);
