@@ -1,4 +1,10 @@
-import { GET_PRODUCTS, GET_PRODUCT, PRODUCT_ERROR } from "../actions/types";
+import {
+  GET_PRODUCTS,
+  GET_PRODUCT,
+  PRODUCT_ERROR,
+  CREATE_REVIEW,
+  REVIEW_ERROR,
+} from "../actions/types";
 
 const initialState = {
   products: [],
@@ -28,6 +34,16 @@ export default function (state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
+      };
+    case CREATE_REVIEW:
+      return {
+        ...state,
+        product: payload,
+      };
+    case REVIEW_ERROR:
+      return {
+        ...state,
+        error: payload,
       };
     default:
       return state;

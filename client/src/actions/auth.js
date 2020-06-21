@@ -12,7 +12,6 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-// Load User --> this will only check the first time a user loads so we want to run this in App.js as well
 export const loadUser = () => async (dispatch) => {
   // if there is a token in local storage it is beeing set to the header of the axios - request
   if (localStorage.token) {

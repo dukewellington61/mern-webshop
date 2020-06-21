@@ -50,7 +50,7 @@ export const getProduct = (id) => async (dispatch) => {
 
 // Create review
 export const createReview = (formData, id) => async (dispatch) => {
-  console.log("createReview");
+  console.log(formData);
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -58,13 +58,18 @@ export const createReview = (formData, id) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post(`.products/${id}/review`, formData, config);
+    const res = await axios.post(
+      `/api/products/${id}/review`,
+      formData,
+      config
+    );
 
     dispatch({
       type: CREATE_REVIEW,
       payload: res.data,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
       type: REVIEW_ERROR,
       payload: {
