@@ -11,10 +11,19 @@ import RateProductButton from "./RateProductButton";
 import { getProduct } from "../../actions/product";
 import RatingForm from "./RatingForm";
 
-const Product = ({ getProduct, product: { product }, match }) => {
+const Product = ({
+  getProduct,
+  product: { product },
+  user: { user, isAuthenticated },
+  match,
+}) => {
   useEffect(() => {
     getProduct(match.params.id);
   }, [getProduct]);
+
+  const checkIfStillToRate = () =>
+    product.reviews.filter((review) => review.user_id === user._id).length ===
+    0;
 
   return !product ? (
     <Spinner />
@@ -32,7 +41,9 @@ const Product = ({ getProduct, product: { product }, match }) => {
             <div id="ratings" className="row">
               <div id="review_col" className="col-6">
                 <div id="rating_form">
-                  <RatingForm key="rating_form" />
+                  {isAuthenticated && checkIfStillToRate() && (
+                    <RatingForm key="rating_form" />
+                  )}
                 </div>
                 {product.reviews.map((review) => (
                   <RatingsItem key={review._id} review={review} />
@@ -40,7 +51,9 @@ const Product = ({ getProduct, product: { product }, match }) => {
               </div>
               <div id="button_col" className="col-6">
                 <div id="rate_product_button">
-                  <RateProductButton key="rate_product_button" />
+                  {isAuthenticated && checkIfStillToRate() && (
+                    <RateProductButton key="rate_product_button" />
+                  )}
                 </div>
               </div>
             </div>
@@ -62,6 +75,7 @@ Product.propTypes = {
 
 const mapStateToProps = (state) => ({
   product: state.product,
+  user: state.auth,
 });
 
 export default connect(mapStateToProps, { getProduct })(Product);

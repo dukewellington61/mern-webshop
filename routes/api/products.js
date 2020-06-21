@@ -122,7 +122,6 @@ router.post(
 
       res.json(product);
     } catch (err) {
-      console.error(err);
       if (err.kind === "ObjectId") {
         return res.status(404).json({ msg: "Product not found" });
       }
