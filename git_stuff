@@ -18,3 +18,9 @@ voila: your local is up to date and you can push changes to remote repo
 @something else:
 find out which application is using port 3000:
 fuser 3000/tcp
+
+
+
+keyboard shortcut
+racfp
+functional component with prop types

@@ -50,7 +50,6 @@ export const getProduct = (id) => async (dispatch) => {
 
 // Create review
 export const createReview = (formData, id) => async (dispatch) => {
-  console.log(formData);
   const config = {
     headers: {
       "Content-Type": "application/json",

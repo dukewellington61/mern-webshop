@@ -49,3 +49,13 @@ body {
   width: 100%;
   margin-top: 1rem;
 }
+
+/* @components/product/RatingForm.js */
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}

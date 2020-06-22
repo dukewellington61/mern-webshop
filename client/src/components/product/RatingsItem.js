@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "./StarRating";
 
 const RatingsItem = ({ review: { user_name, review, rating } }) => (
   <div>
@@ -6,6 +7,9 @@ const RatingsItem = ({ review: { user_name, review, rating } }) => (
       <ul className="list-group list-group-flush">
         <li className="list-group-item">{user_name}</li>
         <li className="list-group-item">{review}</li>
+        <li className="list-group-item">
+          <StarRating rating={rating} />
+        </li>
       </ul>
     </div>
   </div>

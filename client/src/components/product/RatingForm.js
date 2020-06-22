@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createReview } from "../../actions/product";
+import StarRatingForm from "./StarRatingForm";
 
 const RatingForm = ({ product, createReview }) => {
   const [reviewText, setReviewText] = useState({ review: "" });
+  const [starRatingValue, setStarRatingValue] = useState("");
+
+  const handleStarRatingValue = (e) => setStarRatingValue(e);
+
+  console.log(typeof starRatingValue);
 
   return (
     <form
@@ -19,7 +25,12 @@ const RatingForm = ({ product, createReview }) => {
       <div id="review_card" className="card">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <div>placeholder</div>
+            <div>
+              <StarRatingForm
+                key="star_rating"
+                getValue={handleStarRatingValue}
+              />
+            </div>
           </li>
           <li className="list-group-item">
             <textarea
@@ -36,6 +47,8 @@ const RatingForm = ({ product, createReview }) => {
               }
             ></textarea>
           </li>
+          <input type="hidden" name="rating" value={starRatingValue} />
+
           <li>
             <input type="submit" className="btn btn-dark my-1" value="Submit" />
           </li>
