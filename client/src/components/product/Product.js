@@ -32,36 +32,40 @@ const Product = ({
       <div id="product_page_container" className="container-fluid">
         <div className="row">
           <div className="col-xl-6 col-lg-12">
-            <ProductImage key={product._id} product={product} />
+            <ProductImage
+              id="product_image"
+              key={product._id}
+              product={product}
+            />
           </div>
           <div className="col-xl-6 col-lg-12">
             <ProductFeatures key={product._id} product={product} />
-            <RevDescLinks key="rev_desc_links" />
+          </div>
+        </div>
+        <RevDescLinks key="rev_desc_links" />
 
-            <div id="ratings" className="row">
-              <div id="review_col" className="col-6">
-                <div id="rating_form">
-                  {isAuthenticated && checkIfStillToRate() && (
-                    <RatingForm key="rating_form" />
-                  )}
-                </div>
-                {product.reviews.map((review) => (
-                  <RatingsItem key={review._id} review={review} />
-                ))}
-              </div>
-              <div id="button_col" className="col-6">
-                <div id="rate_product_button">
-                  {isAuthenticated && checkIfStillToRate() && (
-                    <RateProductButton key="rate_product_button" />
-                  )}
-                </div>
-              </div>
+        <div id="ratings" className="container">
+          <div id="review_col" className="row">
+            <div id="rating_form">
+              {isAuthenticated && checkIfStillToRate() && (
+                <RatingForm key="rating_form" />
+              )}
             </div>
-
-            <div id="description">
-              <Description product={product} />
+            {product.reviews.map((review) => (
+              <RatingsItem key={review._id} review={review} />
+            ))}
+          </div>
+          <div id="button_col">
+            <div id="rate_product_button">
+              {isAuthenticated && checkIfStillToRate() && (
+                <RateProductButton key="rate_product_button" />
+              )}
             </div>
           </div>
+        </div>
+
+        <div id="description">
+          <Description product={product} />
         </div>
       </div>
     </Fragment>

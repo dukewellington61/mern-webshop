@@ -6,17 +6,15 @@ import StarRatingForm from "./StarRatingForm";
 
 const RatingForm = ({ product, createReview }) => {
   const [reviewText, setReviewText] = useState({ review: "" });
-  const [starRatingValue, setStarRatingValue] = useState("");
+  const [starRatingValue, setStarRatingValue] = useState({ rating: null });
 
-  const handleStarRatingValue = (e) => setStarRatingValue(e);
-
-  console.log(typeof starRatingValue);
+  const handleStarRatingValue = (e) => setStarRatingValue({ rating: e });
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        createReview(reviewText, product._id);
+        createReview({ ...reviewText, ...starRatingValue }, product._id);
         setReviewText({
           review: "",
         });
@@ -47,8 +45,6 @@ const RatingForm = ({ product, createReview }) => {
               }
             ></textarea>
           </li>
-          <input type="hidden" name="rating" value={starRatingValue} />
-
           <li>
             <input type="submit" className="btn btn-dark my-1" value="Submit" />
           </li>

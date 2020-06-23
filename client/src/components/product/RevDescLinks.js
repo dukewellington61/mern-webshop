@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const switchDescriptionToRating = () => {
   document.querySelector("#ratings").style.display = "flex";
@@ -11,7 +11,7 @@ const switchRatingToDescription = () => {
 };
 
 const RevDescLinks = () => (
-  <div>
+  <Fragment>
     <button
       type="button"
       className="btn btn-primary"
@@ -27,7 +27,7 @@ const RevDescLinks = () => (
     >
       Ratings
     </button>
-  </div>
+  </Fragment>
 );
 
 export default RevDescLinks;
