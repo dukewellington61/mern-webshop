@@ -10,6 +10,7 @@ import Description from "./Description";
 import RateProductButton from "./RateProductButton";
 import { getProduct } from "../../actions/product";
 import RatingForm from "./RatingForm";
+import RatingStatistics from "./RatingStatistics";
 
 const Product = ({
   getProduct,
@@ -42,7 +43,9 @@ const Product = ({
             <ProductFeatures key={product._id} product={product} />
           </div>
         </div>
-        <RevDescLinks key="rev_desc_links" />
+        <div id="rev_desc_links">
+          <RevDescLinks key="rev_desc_links" />
+        </div>
 
         <div id="ratings" className="container">
           <div id="review_col" className="row">
@@ -51,15 +54,20 @@ const Product = ({
                 <RatingForm key="rating_form" />
               )}
             </div>
-            {product.reviews.map((review) => (
-              <RatingsItem key={review._id} review={review} />
-            ))}
-          </div>
-          <div id="button_col">
-            <div id="rate_product_button">
+
+            <div id="rate_product_button" className="col-xl-6 col-lg-12">
               {isAuthenticated && checkIfStillToRate() && (
                 <RateProductButton key="rate_product_button" />
               )}
+
+              {product.reviews.map((review) => (
+                <RatingsItem key={review._id} review={review} />
+              ))}
+            </div>
+
+            <div className="col-xl-6 col-lg-12">
+              {" "}
+              <RatingStatistics product={product} />
             </div>
           </div>
         </div>

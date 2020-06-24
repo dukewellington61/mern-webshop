@@ -1,9 +1,9 @@
 import React from "react";
 
 const openRatingForm = () => {
-    document.querySelector("#rating_form").style.display = "block";
-    document.querySelector("#rate_product_button").style.display = "none";
-}
+  document.querySelector("#rating_form").style.display = "block";
+  document.querySelector("#rate_product_button").style.display = "none";
+};
 
 const RateProductButton = () => (
   <button
