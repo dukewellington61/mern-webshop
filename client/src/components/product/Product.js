@@ -55,11 +55,12 @@ const Product = ({
               )}
             </div>
 
-            <div id="rate_product_button" className="col-xl-6 col-lg-12">
-              {isAuthenticated && checkIfStillToRate() && (
-                <RateProductButton key="rate_product_button" />
-              )}
-
+            <div className="col-xl-6 col-lg-12">
+              <div id="rate_product_button">
+                {isAuthenticated && checkIfStillToRate() && (
+                  <RateProductButton key="rate_product_button" />
+                )}
+              </div>
               {product.reviews.map((review) => (
                 <RatingsItem key={review._id} review={review} />
               ))}
