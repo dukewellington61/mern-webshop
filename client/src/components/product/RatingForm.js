@@ -18,6 +18,8 @@ const RatingForm = ({ product, createReview }) => {
         setReviewText({
           review: "",
         });
+        document.querySelector("#average_stars_in_statistics").style.display =
+          "block";
       }}
     >
       <div id="review_card" className="card">
@@ -45,8 +47,30 @@ const RatingForm = ({ product, createReview }) => {
               }
             ></textarea>
           </li>
-          <li>
-            <input type="submit" className="btn btn-dark my-1" value="Submit" />
+          <li
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              listStyleType: "none",
+            }}
+          >
+            <button type="submit" class="btn btn-primary">
+              Submit <i class="fas fa-angle-right"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              onClick={() => {
+                document.querySelector("#rating_form").style.display = "none";
+                document.querySelector(
+                  "#average_stars_in_statistics"
+                ).style.display = "flex";
+                document.querySelector("#rate_product_button").style.display =
+                  "block";
+              }}
+            >
+              go back <i class="fas fa-backspace"></i>
+            </button>
           </li>
         </ul>
       </div>

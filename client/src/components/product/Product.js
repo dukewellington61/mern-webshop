@@ -11,6 +11,9 @@ import RateProductButton from "./RateProductButton";
 import { getProduct } from "../../actions/product";
 import RatingForm from "./RatingForm";
 import RatingStatistics from "./RatingStatistics";
+import { totalNumberOfRatings } from "../../utils/ratingStatistics";
+import { averageStars } from "../../utils/ratingStatistics";
+import StarRating from "./StarRating";
 
 const Product = ({
   getProduct,
@@ -48,28 +51,37 @@ const Product = ({
         </div>
 
         <div id="ratings" className="container">
-          <div id="review_col" className="row">
-            <div id="rating_form">
-              {isAuthenticated && checkIfStillToRate() && (
-                <RatingForm key="rating_form" />
-              )}
+          <div className="row">
+            <div className="col-xl-6 col-lg-12">
+              <div id="rating_statistics">
+                <RatingStatistics product={product} />
+              </div>
             </div>
 
-            <div className="col-xl-6 col-lg-12">
+            <div id="rating_statistics_right" className="col-xl-6 col-lg-12">
+              <div id="average_stars_in_statistics">
+                <StarRating rating={averageStars(product)} statistics={true} />
+                {`(${totalNumberOfRatings(product)})`}
+              </div>
+
               <div id="rate_product_button">
                 {isAuthenticated && checkIfStillToRate() && (
                   <RateProductButton key="rate_product_button" />
                 )}
               </div>
-              {product.reviews.map((review) => (
-                <RatingsItem key={review._id} review={review} />
-              ))}
-            </div>
 
-            <div className="col-xl-6 col-lg-12">
-              {" "}
-              <RatingStatistics product={product} />
+              <div id="rating_form">
+                {isAuthenticated && checkIfStillToRate() && (
+                  <RatingForm key="rating_form" />
+                )}
+              </div>
             </div>
+          </div>
+
+          <div className="row">
+            {product.reviews.map((review) => (
+              <RatingsItem key={review._id} review={review} />
+            ))}
           </div>
         </div>
 

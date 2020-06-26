@@ -27,23 +27,32 @@ body {
 }
 
 #ratings {
+  flex-direction: column;
   display: none;
   padding: 0;
   margin: 0;
 }
 
-#review_col {
-  padding: 0;
+#rating_statistics {
   width: 100%;
+}
+
+#rating_statistics_right {
+  position: relative;
 }
 
 #rating_form {
   display: none;
 }
 
-#button_col {
-  padding: 0;
-  position: relative;
+#rate_product_button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#average_stars {
+  display: block;
 }
 
 /* @components/product/Ratings.js */
@@ -78,7 +87,10 @@ input[type="radio"] {
 
 #average_stars {
   display: flex;
+  margin-top: 1rem;
 }
+
+/* Rating Statistics */
 
 /* Three column layout */
 .side {
@@ -93,9 +105,16 @@ input[type="radio"] {
   width: 70%;
 }
 
+.ratings_statistics_row {
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 1rem;
+}
+
 /* Place text to the right */
 .right {
   text-align: right;
+  width: 1rem;
 }
 
 /* Clear floats after the columns */
