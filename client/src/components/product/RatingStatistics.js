@@ -21,7 +21,7 @@ const RatingStatistics = ({ product }) => {
           </div>
         </div>
         <div className="side right">
-          <div>{starCount(product, 5)}</div>
+          <div>{`(${starCount(product, 5)})`}</div>
         </div>
         <div className="side">
           <StarRating rating={4} statistics={true} />
@@ -37,7 +37,7 @@ const RatingStatistics = ({ product }) => {
           </div>
         </div>
         <div className="side right">
-          <div>{starCount(product, 4)}</div>
+          <div>{`(${starCount(product, 4)})`}</div>
         </div>
         <div className="side">
           <StarRating rating={3} statistics={true} />
@@ -53,7 +53,7 @@ const RatingStatistics = ({ product }) => {
           </div>
         </div>
         <div className="side right">
-          <div>{starCount(product, 3)}</div>
+          <div>{`(${starCount(product, 3)})`}</div>
         </div>
         <div className="side">
           <StarRating rating={2} statistics={true} />
@@ -69,7 +69,7 @@ const RatingStatistics = ({ product }) => {
           </div>
         </div>
         <div className="side right">
-          <div>{starCount(product, 2)}</div>
+          <div>{`(${starCount(product, 2)})`}</div>
         </div>
         <div className="side">
           <StarRating rating={1} statistics={true} />
@@ -85,7 +85,7 @@ const RatingStatistics = ({ product }) => {
           </div>
         </div>
         <div className="side right">
-          <div>{starCount(product, 1)}</div>
+          <div>{`(${starCount(product, 1)})`}</div>
         </div>
       </div>
     </Fragment>

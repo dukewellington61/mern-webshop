@@ -13,7 +13,7 @@ const RateProductButton = () => (
     className="btn btn-success btn-lg"
     onClick={() => openRatingForm()}
   >
-    rate product <i class="fas fa-angle-right"></i>
+    rate product <i className="fas fa-angle-right"></i>
   </button>
 );
 

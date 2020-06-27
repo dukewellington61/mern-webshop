@@ -51,8 +51,9 @@ body {
   transform: translateY(-50%);
 }
 
-#average_stars {
-  display: block;
+#average_stars_in_statistics {
+  display: flex;
+  margin-top: 1.5rem;
 }
 
 /* @components/product/Ratings.js */

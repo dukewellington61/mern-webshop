@@ -19,7 +19,7 @@ const RatingForm = ({ product, createReview }) => {
           review: "",
         });
         document.querySelector("#average_stars_in_statistics").style.display =
-          "block";
+          "flex";
       }}
     >
       <div id="review_card" className="card">

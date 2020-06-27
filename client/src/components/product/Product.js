@@ -60,7 +60,7 @@ const Product = ({
 
             <div id="rating_statistics_right" className="col-xl-6 col-lg-12">
               <div id="average_stars_in_statistics">
-                <StarRating rating={averageStars(product)} statistics={true} />
+                <StarRating rating={averageStars(product)} />
                 {`(${totalNumberOfRatings(product)})`}
               </div>
 
