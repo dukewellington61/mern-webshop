@@ -2,13 +2,13 @@ import React from "react";
 import Moment from "react-moment";
 import StarRating from "./StarRating";
 
-const RatingsItem = ({ review: { user_name, review, rating, date } }) => (
+const RatingsItem = ({ review: { user_name, review, rating, created_at } }) => (
   <div className="col-xl-6 col-lg-12">
     <div id="review_card" className="card">
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           {user_name}&nbsp;&nbsp;
-          <Moment format="YYYY/MM/DD">{date}</Moment>
+          <Moment format="YYYY/MM/DD">{created_at}</Moment>
         </li>
         <li className="list-group-item">{review}</li>
         <li className="list-group-item">

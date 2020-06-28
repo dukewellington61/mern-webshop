@@ -16,6 +16,7 @@ router.post(
     [
       check("name", "product name is required").not().isEmpty(),
       check("description", "description is required").not().isEmpty(),
+      check("tag_line", "tag_line is required").not().isEmpty(),
       check("image_url", "image url is required").not().isEmpty(),
       check("colour", "colour is required").not().isEmpty(),
       check("price", "enter a proper montary value").isCurrency(),
@@ -27,7 +28,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, description, image_url, colour, price } = req.body;
+    const { name, tag_line, description, image_url, colour, price } = req.body;
 
     try {
       const user = await User.findById(req.user.id);
@@ -40,6 +41,7 @@ router.post(
 
       product = new Product({
         name,
+        tag_line,
         description,
         image_url,
         colour,

@@ -11,8 +11,9 @@ const ProductFeatures = ({ product }) => (
       {`(${totalNumberOfRatings(product)})`}
     </div>
     <p>{product.name}</p>
+    <p>{product.tag_line}</p>
     <p>{product.colour}</p>
-    <p>{product.price}</p>
+    <p>{`${(Math.round(product.price * 100) / 100).toFixed(2)} €`}</p>
   </div>
 );
 export default ProductFeatures;

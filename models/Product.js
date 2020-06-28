@@ -6,6 +6,10 @@ const ProductSchema = new Schema({
     type: String,
     requires: true,
   },
+  tag_line: {
+    type: String,
+    requires: true,
+  },
   description: {
     type: String,
     requires: true,
@@ -21,6 +25,8 @@ const ProductSchema = new Schema({
   price: {
     type: Number,
     required: true,
+    min: 0,
+    max: 5000,
   },
   reviews: [
     {

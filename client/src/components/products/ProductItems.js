@@ -12,7 +12,9 @@ const ProductItems = ({
       <h5 className="card-title">{name}</h5>
     </div>
     <ul className="list-group list-group-flush">
-      <li className="price">{price}</li>
+      <li className="price">{`${(Math.round(price * 100) / 100).toFixed(
+        2
+      )} €`}</li>
       <li className="colour">{colour}</li>
     </ul>
   </div>
