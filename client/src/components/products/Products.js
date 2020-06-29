@@ -15,7 +15,7 @@ const Products = ({ getProducts, product: { products } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container" style={{ marginTop: "100px" }}>
+      <div id="products_container" className="container">
         <div className="row">
           {products.map((product) => (
             <ProductItems key={product._id} product={product} />

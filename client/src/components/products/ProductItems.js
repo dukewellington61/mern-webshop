@@ -1,22 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProductImages from "./ProductImages";
+import StarRating from "../product/StarRating";
+import { totalNumberOfRatings } from "../../utils/ratingStatistics";
+import { averageStars } from "../../utils/ratingStatistics";
 
-const ProductItems = ({
-  product: { _id, name, description, image_url, colour, price },
-}) => (
-  <div className="card col-4" style={{ width: "18rem" }}>
-    <Link className="product_link" to={`/products/${_id}`}>
-      <img className="card-img-top" src={image_url} alt="test" />
+const ProductItems = ({ product }) => (
+  <div id="products" className="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <Link to={`/products/${product._id}`}>
+      <ProductImages image_url={product.image_url} />
     </Link>
-    <div className="card-body">
-      <h5 className="card-title">{name}</h5>
-    </div>
-    <ul className="list-group list-group-flush">
-      <li className="price">{`${(Math.round(price * 100) / 100).toFixed(
-        2
-      )} €`}</li>
-      <li className="colour">{colour}</li>
-    </ul>
+    <p>
+      {" "}
+      <div id="average_stars">
+        <StarRating rating={averageStars(product)} statistics={true} />
+        {`(${totalNumberOfRatings(product)})`}
+      </div>
+    </p>
+    <b>{product.name}</b>
+    <p>{product.colour}</p>
+    <p>{`${(Math.round(product.price * 100) / 100).toFixed(2)} €`}</p>
   </div>
 );
 
