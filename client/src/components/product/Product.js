@@ -5,7 +5,6 @@ import Spinner from "../layout/Spinner";
 import ProductImage from "./ProductImage";
 import ProductFeatures from "./ProductFeatures";
 import RevDescLinks from "./RevDescLinks";
-import RatingsItem from "./RatingsItem";
 import Description from "./Description";
 import RateProductButton from "./RateProductButton";
 import { getProduct } from "../../actions/product";
@@ -14,6 +13,7 @@ import RatingStatistics from "./RatingStatistics";
 import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
 import StarRating from "./StarRating";
+import UserRatings from "./UserRatings";
 
 const Product = ({
   getProduct,
@@ -77,12 +77,7 @@ const Product = ({
               </div>
             </div>
           </div>
-
-          <div className="row">
-            {product.reviews.map((review) => (
-              <RatingsItem key={review._id} review={review} />
-            ))}
-          </div>
+          <UserRatings product={product} />
         </div>
 
         <div id="description">
