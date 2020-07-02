@@ -59,7 +59,7 @@ const RatingForm = ({ product, createReview }) => {
             </button>
             <button
               type="button"
-              class="btn btn-light"
+              className="btn btn-light"
               onClick={() => {
                 document.querySelector("#rating_form").style.display = "none";
                 document.querySelector(
