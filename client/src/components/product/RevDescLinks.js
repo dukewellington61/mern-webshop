@@ -13,6 +13,7 @@ const switchRatingToDescription = () => {
 const RevDescLinks = () => (
   <Fragment>
     <button
+      id="description_button"
       type="button"
       className="btn btn-primary"
       onClick={() => switchRatingToDescription()}
@@ -20,6 +21,7 @@ const RevDescLinks = () => (
       Description
     </button>
     <button
+      id="ratings_button"
       type="button"
       className="btn btn-primary"
       style={{ marginLeft: "20px" }}

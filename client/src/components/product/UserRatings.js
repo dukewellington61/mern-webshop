@@ -1,30 +1,44 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import RatingsItem from "./RatingsItem";
 
 const scrollToRef = (ref) => {
-  setTimeout(() => window.scrollTo(0, ref.current.offsetTop, 500));
+  setTimeout(() => window.scrollTo(0, ref.current.offsetTop), 100);
 };
 
 const UserRatings = ({ product }) => {
   const [currentNumberOfReviews, setCurrentNumberOfReviews] = useState(2);
 
-  const renderReviews = product.reviews.slice(0, currentNumberOfReviews);
-  const numberOfReviews = product.reviews.length;
+  useEffect(() => {
+    hideButton();
+  }, [currentNumberOfReviews, product.reviews]);
 
   const myRef = useRef(null);
+
+  const scrollToButton = () => scrollToRef(myRef);
+
+  const renderReviews = product.reviews.slice(0, currentNumberOfReviews);
+  const numberOfReviews = product.reviews.length;
 
   const renderMoreReviews = () =>
     setCurrentNumberOfReviews(currentNumberOfReviews + 2);
 
-  const executeScroll = () => scrollToRef(myRef);
-
-  const hideButton = () => {
-    console.log(currentNumberOfReviews);
-    console.log(numberOfReviews);
+  const hideButton = () =>
     currentNumberOfReviews >= numberOfReviews
       ? (document.querySelector("#more_button").style.visibility = "hidden")
       : (document.querySelector("#more_button").style.visibility = "visible");
-  };
+
+  // set number of reviews on display back to two when user hits 'Description' button
+  const descriptionButton = document.querySelector("#description_button");
+
+  if (descriptionButton)
+    descriptionButton.addEventListener("click", () =>
+      setCurrentNumberOfReviews(2)
+    );
+
+  // scrolls to 'see more' button when user hits 'Ratings' button (so the reviews are within the viewport)
+  const ratingsButton = document.querySelector("#ratings_button");
+
+  if (ratingsButton) ratingsButton.addEventListener("click", scrollToButton);
 
   return (
     <Fragment>
@@ -41,8 +55,7 @@ const UserRatings = ({ product }) => {
           ref={myRef}
           onClick={() => {
             renderMoreReviews();
-            executeScroll();
-            hideButton();
+            scrollToButton();
           }}
         >
           see more <i className="fas fa-angle-right"></i>

@@ -5,6 +5,7 @@
 
 html {
   background-color: antiquewhite;
+  scroll-behavior: smooth;
 }
 
 body {
