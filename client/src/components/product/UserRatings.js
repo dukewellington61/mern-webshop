@@ -7,7 +7,6 @@ const scrollToRef = (ref) => {
 
 const UserRatings = ({ product }) => {
   const [currentNumberOfReviews, setCurrentNumberOfReviews] = useState(2);
-  const [clickSeeMoreButton, setClickSeeMoreButton] = useState(false);
 
   useEffect(() => {
     hideButton();
@@ -15,13 +14,9 @@ const UserRatings = ({ product }) => {
 
   // scrolls to 'see more' button when user hits 'Ratings' button (so the reviews are within the viewport)
   useEffect(() => {
-    clickSeeMoreButton === false
-      ? document
-          .querySelector("#ratings_button")
-          .addEventListener("click", scrollToButton)
-      : document
-          .querySelector("#ratings_button")
-          .removeEventListener("click", scrollToButton);
+    document
+      .querySelector("#ratings_button")
+      .addEventListener("click", scrollToButton);
   }, []);
 
   const myRef = useRef(null);
@@ -64,7 +59,6 @@ const UserRatings = ({ product }) => {
           onClick={() => {
             renderMoreReviews();
             scrollToButton();
-            setClickSeeMoreButton(true);
           }}
         >
           see more <i className="fas fa-angle-right"></i>
