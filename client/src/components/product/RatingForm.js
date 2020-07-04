@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createReview } from "../../actions/product";
 import StarRatingForm from "./StarRatingForm";
+import ReturnButton from "./ReturnButton";
 
 const RatingForm = ({ product, createReview }) => {
   const [reviewText, setReviewText] = useState({ review: "" });
@@ -54,23 +55,10 @@ const RatingForm = ({ product, createReview }) => {
               listStyleType: "none",
             }}
           >
-            <button type="submit" class="btn btn-primary">
-              Submit <i class="fas fa-angle-right"></i>
+            <button type="submit" className="btn btn-primary">
+              Submit <i className="fas fa-angle-right"></i>
             </button>
-            <button
-              type="button"
-              className="btn btn-light"
-              onClick={() => {
-                document.querySelector("#rating_form").style.display = "none";
-                document.querySelector(
-                  "#average_stars_in_statistics"
-                ).style.display = "flex";
-                document.querySelector("#rate_product_button").style.display =
-                  "block";
-              }}
-            >
-              go back <i class="fas fa-backspace"></i>
-            </button>
+            <ReturnButton ratingForm={true} />
           </li>
         </ul>
       </div>

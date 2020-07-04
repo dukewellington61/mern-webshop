@@ -10,7 +10,7 @@ const RateProductButton = () => (
   <button
     id="write_review_button"
     type="button"
-    className="btn btn-success btn-lg"
+    className="btn btn-warning btn-lg"
     onClick={() => openRatingForm()}
   >
     rate product <i className="fas fa-angle-right"></i>

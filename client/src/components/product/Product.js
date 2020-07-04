@@ -14,6 +14,9 @@ import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
 import StarRating from "./StarRating";
 import UserRatings from "./UserRatings";
+import AddToShoppingCartBtn from "./AddToShoppingCartBtn";
+import ReturnButton from "./ReturnButton";
+import { Link } from "react-router-dom";
 
 const Product = ({
   getProduct,
@@ -43,7 +46,17 @@ const Product = ({
             />
           </div>
           <div className="col-xl-6 col-lg-12">
-            <ProductFeatures key={product._id} product={product} />
+            <div style={{ display: "flex" }}>
+              <ProductFeatures key={product._id} product={product} />
+              <div id="return_to_products_button">
+                <Link to="/products">
+                  <ReturnButton returnToProductsPage={true} />
+                </Link>
+              </div>
+            </div>
+            <div id="add_to_shopping_cart_button">
+              <AddToShoppingCartBtn />
+            </div>
           </div>
         </div>
         <div id="rev_desc_links">
