@@ -107,7 +107,7 @@ input[type="radio"] {
   display: none;
 }
 
-/* @ccomponents/product/RatingStatistics.js */
+/* @components/product/RatingStatistics.js */
 .star {
   cursor: pointer;
   transition: color 200ms;

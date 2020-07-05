@@ -4,7 +4,7 @@ const auth = require("../../middleware/auth");
 
 const Cart = require("../../models/Cart");
 
-// @route   POST api/carts
+// @route   POST api/cart
 // @desc    Create cart
 // @access  Public / Private
 router.post("/", async (req, res) => {
@@ -20,13 +20,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-// @route   GET api/carts/:user_id
+// @route   GET api/cart/:user_id
 // @desc    Get cart by user id
 // @access  Private
-router.get("/:user_id", async (req, res) => {
+router.get("/:user_id", auth, async (req, res) => {
   try {
     const cart = await Cart.findOne({
-      user: req.params.user_id,
+      user: req.user.id,
     });
 
     if (!cart) {
@@ -43,7 +43,7 @@ router.get("/:user_id", async (req, res) => {
   }
 });
 
-// @route   DELETE api/carts/:id
+// @route   DELETE api/cart/:id
 // @desc    Delete cart by id
 // @access  Private
 router.delete("/:id", auth, async (req, res) => {

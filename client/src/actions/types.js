@@ -15,3 +15,6 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const PRODUCT_ERROR = "PRODUCT_ERROR";
 export const CREATE_REVIEW = "CREATE_REVIEW";
 export const REVIEW_ERROR = "REVIEW_ERROR";
+
+export const GET_CART = "GET_CART";
+export const CART_ERROR = "CART_ERROR";

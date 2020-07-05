@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
+import { getCart } from "../../actions/cart";
+import { createCart } from "../../actions/cart";
+
 import img_1 from "../../img/carousel/img_1.jpg";
 import img_2 from "../../img/carousel/img_2.jpg";
 import img_3 from "../../img/carousel/img_3.jpg";
 
-const Landing = () => {
+const Landing = ({ getCart, createCart, user }) => {
+  useEffect(() => {
+    user.isAuthenticated ? getCart() : createCart();
+  }, []);
+
   return (
     <Carousel>
       <Carousel.Item>
@@ -36,4 +45,12 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+Landing.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+
+export default connect(mapStateToProps, { getCart, createCart })(Landing);
