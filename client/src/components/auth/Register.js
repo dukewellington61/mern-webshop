@@ -4,8 +4,15 @@ import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { createUserCart } from "../../actions/cart";
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({
+  setAlert,
+  register,
+  isAuthenticated,
+  user,
+  createUserCart,
+}) => {
   /* props.setAlert bas been destructured to ({ setAlert })*/
   const [formData, setFormData] = useState({
     firstname: "",
@@ -25,7 +32,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      register({ firstname, lastname, email, password });
+      await register({ firstname, lastname, email, password });
+      createUserCart();
     }
   };
 
@@ -106,6 +114,9 @@ Register.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register, createUserCart })(
+  Register
+);

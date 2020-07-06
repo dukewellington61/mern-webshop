@@ -225,3 +225,32 @@ product page
 next up:
 
 write action createRating()
+
+
+
+
+back to shopping cart
+
+@ on access app (no user logged in)
+check for item in localStorage
+--> if no item exists
+create new cart
+setItem (key: cart_id, value: 989dd1hgj...) in localStorage
+
+--> if item exists in localStorage 
+load matching webshop
+
+@ on create user
+a new cart is created and associated with new user
+line items in cart that is associated with browser are beeing copied to that new cart
+that cart is loaded
+
+@ user log in
+load users cart
+line items in cart that is associated with browser are beeing copied to that user's cart
+
+
+logic for 
+
+
+
