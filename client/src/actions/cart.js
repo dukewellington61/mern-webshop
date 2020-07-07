@@ -48,7 +48,6 @@ export const createUserCart = () => async (dispatch) => {
 
 // Get Cart by user_id
 export const getCartByUserId = () => async (dispatch) => {
-  console.log("getCartByUserId");
   try {
     const res = await axios.get(`/api/cart/`);
 
@@ -69,7 +68,6 @@ export const getCartByUserId = () => async (dispatch) => {
 
 // Get Cart by cart_id
 export const getCartByCartId = (id) => async (dispatch) => {
-  console.log("getCartByCartId");
   try {
     const res = await axios.get(`/api/cart/${id}`);
 

@@ -64,8 +64,6 @@ router.post(
         { new: true }
       );
 
-      console.log(cart);
-
       // Return json web token
       const payload = {
         user: {

@@ -1,4 +1,9 @@
-import { GET_CART } from "../actions/types";
+import {
+  GET_CART,
+  CART_ERROR,
+  UPDATE_LINEITEMS,
+  LINEITEMS_ERROR,
+} from "../actions/types";
 
 const initialState = {
   cart: null,
@@ -14,6 +19,24 @@ export default function (state = initialState, action) {
       return {
         ...state,
         cart: payload,
+        loading: false,
+      };
+    case CART_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+      };
+    case UPDATE_LINEITEMS:
+      return {
+        ...state,
+        cart: { ...state.cart, lineItems: payload },
+        loading: false,
+      };
+    case LINEITEMS_ERROR:
+      return {
+        ...state,
+        error: payload,
         loading: false,
       };
     default:

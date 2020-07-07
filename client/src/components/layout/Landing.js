@@ -19,9 +19,6 @@ const Landing = ({ getCartByCartId, getCartByUserId, createCart, user }) => {
       getCartByUserId();
     } else {
       const cartId = checkIfCart();
-
-      console.log(cartId);
-      console.log(JSON.parse(cartId));
       cartId ? getCartByCartId(JSON.parse(cartId)) : createCart();
     }
   }, [user.isAuthenticated]);

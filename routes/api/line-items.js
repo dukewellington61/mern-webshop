@@ -28,16 +28,16 @@ router.post("/", async (req, res) => {
         }
       );
     } else {
-      const newLineItem = new LineItem({
+      const newLineItem = {
         product_id: req.body.product_id,
-      });
+      };
 
       cart.line_items.unshift(newLineItem);
 
       await cart.save();
     }
 
-    res.json(cart);
+    res.json(cart.line_items);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
