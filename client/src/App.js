@@ -15,6 +15,8 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 
+import { loadCart } from "./actions/cart";
+
 import "./App.css";
 
 // if there is a token in local storage it is beeing set to the header of the axios - request
@@ -24,7 +26,12 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
-    store.dispatch(loadUser());
+    const getData = async () => {
+      await store.dispatch(loadUser());
+      loadCart();
+    };
+
+    getData();
   }, []);
 
   return (

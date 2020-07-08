@@ -1,28 +1,11 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
-import { getCartByCartId } from "../../actions/cart";
-import { getCartByUserId } from "../../actions/cart";
-import { createCart } from "../../actions/cart";
 
 import img_1 from "../../img/carousel/img_1.jpg";
 import img_2 from "../../img/carousel/img_2.jpg";
 import img_3 from "../../img/carousel/img_3.jpg";
 
-const checkIfCart = () =>
-  localStorage.getItem("mern_stack_dummy_bicycle_webshop_shopping_cart_id");
-
-const Landing = ({ getCartByCartId, getCartByUserId, createCart, user }) => {
-  useEffect(() => {
-    if (user.isAuthenticated) {
-      getCartByUserId();
-    } else {
-      const cartId = checkIfCart();
-      cartId ? getCartByCartId(JSON.parse(cartId)) : createCart();
-    }
-  }, [user.isAuthenticated]);
-
+const Landing = (props) => {
   return (
     <Carousel>
       <Carousel.Item>
@@ -54,16 +37,4 @@ const Landing = ({ getCartByCartId, getCartByUserId, createCart, user }) => {
   );
 };
 
-Landing.propTypes = {
-  user: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  user: state.auth,
-});
-
-export default connect(mapStateToProps, {
-  getCartByCartId,
-  getCartByUserId,
-  createCart,
-})(Landing);
+export default Landing;

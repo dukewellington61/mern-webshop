@@ -41,7 +41,6 @@ router.put("/", auth, async (req, res) => {
 // @access  Private
 router.get("/", auth, async (req, res) => {
   try {
-    console.log(req.user.id);
     const cart = await Cart.findOne({
       user: req.user.id,
     });

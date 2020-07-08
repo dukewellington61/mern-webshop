@@ -1,6 +1,24 @@
 import axios from "axios";
 import { GET_CART, CART_ERROR } from "./types";
+import store from "../store";
 
+// Load cart
+export const loadCart = () => {
+  // checks if the current browser has already been used to access app
+  const checkIfCart = () =>
+    localStorage.getItem("mern_stack_dummy_bicycle_webshop_shopping_cart_id");
+
+  const user = store.getState().auth;
+
+  if (user.isAuthenticated) {
+    store.dispatch(getCartByUserId());
+  } else {
+    const cartId = checkIfCart();
+    cartId
+      ? store.dispatch(getCartByCartId(JSON.parse(cartId)))
+      : store.dispatch(createCart());
+  }
+};
 // Create a cart
 export const createCart = () => async (dispatch) => {
   try {
