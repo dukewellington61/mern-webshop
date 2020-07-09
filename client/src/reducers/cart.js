@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
     case UPDATE_LINEITEMS:
       return {
         ...state,
-        cart: { ...state.cart, lineItems: payload },
+        cart: { ...state.cart, line_items: payload },
         loading: false,
       };
     case LINEITEMS_ERROR:

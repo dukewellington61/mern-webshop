@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
 import img_1 from "../../img/carousel/img_1.jpg";

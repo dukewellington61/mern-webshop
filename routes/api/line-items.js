@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
         },
         { $set: { "line_items.$.quantity": updateQuantity } },
         function (err) {
-          console.log(err);
+          console.error(err);
         }
       );
     } else {
@@ -36,8 +36,8 @@ router.post("/", async (req, res) => {
 
       await cart.save();
     }
-
-    res.json(cart.line_items);
+    const updatedCart = await Cart.findById(req.body.cart_id);
+    res.json(updatedCart.line_items);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

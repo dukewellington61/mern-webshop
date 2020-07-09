@@ -23,7 +23,7 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
 };
 
 AddToShoppingCartBtn.propTypes = {
-  cart: PropTypes.object.isRequired,
+  // cart: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
 };
 

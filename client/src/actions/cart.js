@@ -86,6 +86,7 @@ export const getCartByUserId = () => async (dispatch) => {
 
 // Get Cart by cart_id
 export const getCartByCartId = (id) => async (dispatch) => {
+  console.log(id);
   try {
     const res = await axios.get(`/api/cart/${id}`);
 
