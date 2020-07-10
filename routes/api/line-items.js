@@ -10,6 +10,8 @@ router.post("/", async (req, res) => {
   try {
     const cart = await Cart.findById(req.body.cart_id);
 
+    console.log(req.body);
+
     const lineItem = cart.line_items.find(
       (lineItem) => lineItem.product_id.toString() === req.body.product_id
     );
@@ -27,6 +29,10 @@ router.post("/", async (req, res) => {
           console.error(err);
         }
       );
+
+      await cart.save();
+
+      res.json({ quantity: updateQuantity, id: lineItem._id });
     } else {
       const newLineItem = {
         product_id: req.body.product_id,
@@ -35,9 +41,9 @@ router.post("/", async (req, res) => {
       cart.line_items.unshift(newLineItem);
 
       await cart.save();
+
+      res.json(cart.line_items);
     }
-    const updatedCart = await Cart.findById(req.body.cart_id);
-    res.json(updatedCart.line_items);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

@@ -19,5 +19,6 @@ export const REVIEW_ERROR = "REVIEW_ERROR";
 export const GET_CART = "GET_CART";
 export const CART_ERROR = "CART_ERROR";
 
-export const UPDATE_LINEITEMS = "UPDATE_LINEITEMS";
-export const LINEITEMS_ERROR = "LINEITEMS_ERROR";
+export const CREATE_LINEITEM = "CREATE_LINEITEM";
+export const ADD_LINEITEM = "ADD_LINEITEM";
+export const LINEITEM_ERROR = "LINEITEM_ERROR";

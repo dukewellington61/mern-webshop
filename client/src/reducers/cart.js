@@ -1,8 +1,9 @@
 import {
   GET_CART,
   CART_ERROR,
-  UPDATE_LINEITEMS,
-  LINEITEMS_ERROR,
+  CREATE_LINEITEM,
+  ADD_LINEITEM,
+  LINEITEM_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -27,13 +28,26 @@ export default function (state = initialState, action) {
         error: payload,
         loading: false,
       };
-    case UPDATE_LINEITEMS:
+    case CREATE_LINEITEM:
       return {
         ...state,
         cart: { ...state.cart, line_items: payload },
         loading: false,
       };
-    case LINEITEMS_ERROR:
+    case ADD_LINEITEM:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          line_items: state.cart.line_items.map((line_item) =>
+            line_item._id === payload.id
+              ? { ...line_item, quantity: payload.quantity }
+              : line_item
+          ),
+        },
+        loading: false,
+      };
+    case LINEITEM_ERROR:
       return {
         ...state,
         error: payload,

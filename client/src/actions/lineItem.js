@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UPDATE_LINEITEMS, LINEITEMS_ERROR } from "./types";
+import { CREATE_LINEITEM, ADD_LINEITEM, LINEITEM_ERROR } from "./types";
 
 // Add line-item to cart
 export const addLineItem = (formData) => async (dispatch) => {
@@ -12,14 +12,21 @@ export const addLineItem = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/api/line-items/", formData, config);
 
-    dispatch({
-      type: UPDATE_LINEITEMS,
-      payload: res.data,
-    });
+    console.log(res);
+
+    res.data.quantity
+      ? dispatch({
+          type: ADD_LINEITEM,
+          payload: res.data,
+        })
+      : dispatch({
+          type: CREATE_LINEITEM,
+          payload: res.data,
+        });
   } catch (err) {
     console.log(err);
     dispatch({
-      type: LINEITEMS_ERROR,
+      type: LINEITEM_ERROR,
       payload: {
         msg: err.response.statusTest,
         status: err.response.status,
