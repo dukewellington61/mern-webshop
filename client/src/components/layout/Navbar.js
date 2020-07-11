@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RegisterLogInLogOutLinks from "../auth/RegisterLogInLogOutLinks";
+import CartIcon from "./CartIcon";
 
 const Navbar = () => {
   return (
@@ -13,6 +14,9 @@ const Navbar = () => {
           &nbsp;&nbsp;MERN STACK BICYCLE EXAMPLE WEBSHOP
         </Link>
       </div>
+
+      <CartIcon />
+
       <button
         className="navbar-toggler"
         type="button"

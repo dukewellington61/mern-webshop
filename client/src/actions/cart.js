@@ -4,7 +4,7 @@ import store from "../store";
 
 // Load cart
 export const loadCart = () => {
-  // checks if the current browser has already been used to access app
+  // Checks if the current browser has already been used to access app
   const checkIfCart = () =>
     localStorage.getItem("mern_stack_dummy_bicycle_webshop_shopping_cart_id");
 
