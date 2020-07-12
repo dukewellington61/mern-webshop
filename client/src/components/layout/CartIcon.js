@@ -15,10 +15,7 @@ const calculateItemQuantity = (cart) => {
     });
     return quantity.quantity;
   } else if (cart.line_items.length === 1) {
-    document.querySelector("#cart_navigation_quantity").style.display = "flex";
     return cart.line_items[0].quantity;
-  } else {
-    document.querySelector("#cart_navigation_quantity").style.display = "none";
   }
 };
 
@@ -28,7 +25,12 @@ const CartIcon = ({ cart }) => {
       <Link id="shopping_cart_link">
         <i class="fas fa-shopping-cart"></i>
       </Link>
-      <span id="cart_navigation_quantity">
+      <span
+        id="cart_navigation_quantity"
+        style={{
+          display: cart && cart.line_items.length > 0 ? "flex" : "none",
+        }}
+      >
         {cart && calculateItemQuantity(cart)}
       </span>
     </div>

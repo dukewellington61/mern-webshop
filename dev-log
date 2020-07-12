@@ -251,6 +251,50 @@ line items in cart that is associated with browser are beeing copied to that use
 
 
 
+Welcome back future me! I hope you had a good trip!
+
+next up:
+
+get rid of document.querySelectors by passing function from child to parent component
+
+@parent component:
+
+const [useStateValue, setUseStateValue] = useState(false);
+
+const blahblahfn = () => setUseStateValue(true);
+
+const parentComponent = (props) => {
+    <childElement blahblahfn={blahblahfn} />
+
+    <someDomElement style={{display: useStateValue ? "block" : "none}} />
+}
+
+@child component:
+
+const childComponent = {{blahblahfn}} => {
+
+    <someDomButtonElement onClick={() => blahblahfn()}
+
+}
+
+child component (amongst others): 
+
+RateProductButton.js
+
+
+parent component: 
+
+Product.js
+
+
+
+
+
+
+
+
+
+
 
 
 
