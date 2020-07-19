@@ -5,7 +5,7 @@ import { createReview } from "../../actions/product";
 import StarRatingForm from "./StarRatingForm";
 import ReturnButton from "./ReturnButton";
 
-const RatingForm = ({ product, createReview }) => {
+const RatingForm = ({ product, createReview, toggleRatingForm }) => {
   const [reviewText, setReviewText] = useState({ review: "" });
   const [starRatingValue, setStarRatingValue] = useState({ rating: null });
 
@@ -19,8 +19,7 @@ const RatingForm = ({ product, createReview }) => {
         setReviewText({
           review: "",
         });
-        document.querySelector("#average_stars_in_statistics").style.display =
-          "flex";
+        toggleRatingForm(false);
       }}
     >
       <div id="review_card" className="card">
@@ -58,7 +57,10 @@ const RatingForm = ({ product, createReview }) => {
             <button type="submit" className="btn btn-primary">
               Submit <i className="fas fa-angle-right"></i>
             </button>
-            <ReturnButton ratingForm={true} />
+            <ReturnButton
+              ratingForm={true}
+              toggleRatingForm={toggleRatingForm}
+            />
           </li>
         </ul>
       </div>

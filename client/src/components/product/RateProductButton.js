@@ -1,17 +1,11 @@
 import React from "react";
 
-const openRatingForm = () => {
-  document.querySelector("#rating_form").style.display = "block";
-  document.querySelector("#rate_product_button").style.display = "none";
-  document.querySelector("#average_stars_in_statistics").style.display = "none";
-};
-
-const RateProductButton = () => (
+const RateProductButton = ({ toggleRatingForm }) => (
   <button
     id="write_review_button"
     type="button"
     className="btn btn-warning btn-lg"
-    onClick={() => openRatingForm()}
+    onClick={() => toggleRatingForm(true)}
   >
     rate product <i className="fas fa-angle-right"></i>
   </button>

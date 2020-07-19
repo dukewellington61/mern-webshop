@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
@@ -27,6 +27,11 @@ const Product = ({
   useEffect(() => {
     getProduct(match.params.id);
   }, [getProduct]);
+
+  const [renderRatingForm, setRenderRatingForm] = useState(false);
+
+  const toggleRatingForm = (render) =>
+    render ? setRenderRatingForm(true) : setRenderRatingForm(false);
 
   const checkIfStillToRate = () =>
     product.reviews.filter((review) => review.user_id === user._id).length ===
@@ -72,20 +77,35 @@ const Product = ({
             </div>
 
             <div id="rating_statistics_right" className="col-xl-6 col-lg-12">
-              <div id="average_stars_in_statistics">
+              <div
+                id="average_stars_in_statistics"
+                style={{ display: renderRatingForm ? "none" : "flex" }}
+              >
                 <StarRating rating={averageStars(product)} />
                 {`(${totalNumberOfRatings(product)})`}
               </div>
 
-              <div id="rate_product_button">
+              <div
+                id="rate_product_button"
+                style={{ display: renderRatingForm ? "none" : "block" }}
+              >
                 {isAuthenticated && checkIfStillToRate() && (
-                  <RateProductButton key="rate_product_button" />
+                  <RateProductButton
+                    key="rate_product_button"
+                    toggleRatingForm={toggleRatingForm}
+                  />
                 )}
               </div>
 
-              <div id="rating_form">
+              <div
+                id="rating_form"
+                style={{ display: renderRatingForm ? "block" : "none" }}
+              >
                 {isAuthenticated && checkIfStillToRate() && (
-                  <RatingForm key="rating_form" />
+                  <RatingForm
+                    key="rating_form"
+                    toggleRatingForm={toggleRatingForm}
+                  />
                 )}
               </div>
             </div>

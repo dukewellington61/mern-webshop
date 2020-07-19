@@ -289,7 +289,30 @@ Product.js
 
 
 
+@Products.js
+const [renderRatingForm, setRenderRatingForm] = useState(false);
 
+@user clicks rate product button
+
+setRenderRatingForm(true)
+
+button (#rate_product_button) disappears 
+average rating in statistics (#average_stars_in_statistics) disappears
+rating form (#rating_form) pops up
+
+@user clicks return button @components/product/ReturnButton.js
+
+setRenderRatingForm(false)
+
+button (#rate_product_button) appears 
+average rating in statistics (#average_stars_in_statistics) appears
+rating form (#rating_form) disappears
+
+@user clicks submit button @components/product/RatingForm.js
+
+setRenderRatingForm(false)
+
+average rating in statistics (#average_stars_in_statistics) appears
 
 
 
