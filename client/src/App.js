@@ -9,6 +9,8 @@ import Login from "./components/auth/Login";
 import Products from "./components/products/Products";
 import Product from "./components/product/Product";
 
+import Cart from "./components/cart/Cart";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -45,6 +47,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/:id" component={Product} />
+            <Route exact path="/cart" component={Cart} />
           </Switch>
         </Fragment>
       </Router>

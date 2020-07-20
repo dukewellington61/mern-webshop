@@ -11,6 +11,7 @@ import {
   CLEAR_PROFILE,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
+import { loadCart } from "./cart";
 
 export const loadUser = () => async (dispatch) => {
   // if there is a token in local storage it is beeing set to the header of the axios - request
@@ -89,6 +90,8 @@ export const login = (email, password) => async (dispatch) => {
 
     // Login action returns only the token, not the user --> hence user has to be loaded
     dispatch(loadUser());
+
+    loadCart();
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -106,4 +109,5 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
+  loadCart();
 };

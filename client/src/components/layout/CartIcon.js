@@ -22,8 +22,8 @@ const calculateItemQuantity = (cart) => {
 const CartIcon = ({ cart }) => {
   return (
     <div id="shopping_cart_icon">
-      <Link id="shopping_cart_link">
-        <i class="fas fa-shopping-cart"></i>
+      <Link id="shopping_cart_link" to="/cart">
+        <i className="fas fa-shopping-cart"></i>
       </Link>
       <span
         id="cart_navigation_quantity"
