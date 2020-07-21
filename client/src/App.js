@@ -14,8 +14,8 @@ import Cart from "./components/cart/Cart";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
-import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import { loadUser } from "./actions/auth";
 import { loadCart } from "./actions/cart";
 
 import "./App.css";
@@ -30,6 +30,8 @@ const App = () => {
     const getData = async () => {
       await store.dispatch(loadUser());
       loadCart();
+
+      console.log("useEffect");
     };
 
     getData();

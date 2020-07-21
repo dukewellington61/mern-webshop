@@ -6,7 +6,14 @@ import { addLineItem } from "../../actions/lineItem";
 const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    addLineItem({ cart_id: cart._id, product_id: product._id });
+    addLineItem({
+      product_id: product._id,
+      cart_id: cart._id,
+      name: product.name,
+      image_url: product.image_url,
+      colour: product.colour,
+      price: product.price,
+    });
   };
 
   return (

@@ -8,11 +8,11 @@ const ProductSchema = new Schema({
   },
   tag_line: {
     type: String,
-    requires: true,
+    required: true,
   },
   description: {
     type: String,
-    requires: true,
+    required: true,
   },
   image_url: {
     type: String,

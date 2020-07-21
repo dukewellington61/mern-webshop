@@ -1,36 +1,26 @@
-import React, { Fragment, useEffect } from "react";
-// import PropTypes from "prop-types";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { getProducts } from "../../actions/product";
-
-const Cart = ({ line_items, products, getProducts }) => {
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const productIds = line_items.map((line_item) => line_item.product_id);
-
-  const productsInCart = products.filter(
-    (product) => productIds.indexOf(product._id) !== -1
-  );
-
+const Cart = ({ line_items }) => {
+  console.log(line_items);
   return (
     <Fragment>
-      <div style={{ position: "absolute", top: "500px", color: "white" }}>
-        {productsInCart.map((productInCart) => (
-          <div key={productInCart._id}>{productInCart.name}</div>
+      <div style={{ position: "absolute", top: "500px", color: "black" }}>
+        {line_items.map((line_item) => (
+          <div key={line_item._id}>{line_item.name}</div>
         ))}
       </div>
     </Fragment>
   );
 };
 
-// Cart.propTypes = {};
+Cart.propTypes = {
+  line_items: PropTypes.array.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   line_items: state.cart.cart.line_items,
-  products: state.product.products,
 });
 
-export default connect(mapStateToProps, { getProducts })(Cart);
+export default connect(mapStateToProps, null)(Cart);

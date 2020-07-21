@@ -12,8 +12,6 @@ export const addLineItem = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/api/line-items/", formData, config);
 
-    console.log(res);
-
     res.data.quantity
       ? dispatch({
           type: ADD_LINEITEM,

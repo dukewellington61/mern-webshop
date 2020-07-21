@@ -10,10 +10,9 @@ router.post("/", async (req, res) => {
   try {
     const cart = await Cart.findById(req.body.cart_id);
 
-    console.log(req.body);
-
     const lineItem = cart.line_items.find(
-      (lineItem) => lineItem.product_id.toString() === req.body.product_id
+      (lineItem) =>
+        JSON.parse(JSON.stringify(lineItem)).product_id === req.body.product_id
     );
 
     if (lineItem) {
@@ -35,6 +34,10 @@ router.post("/", async (req, res) => {
       res.json({ quantity: updateQuantity, id: lineItem._id });
     } else {
       const newLineItem = {
+        name: req.body.name,
+        image_url: req.body.image_url,
+        colour: req.body.colour,
+        price: req.body.price,
         product_id: req.body.product_id,
       };
 

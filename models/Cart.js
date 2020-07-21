@@ -12,7 +12,21 @@ const CartSchema = new Schema({
         type: Number,
         default: 1,
       },
-      product_id: {
+      name: {
+        type: String,
+      },
+      image_url: {
+        type: String,
+      },
+      colour: {
+        type: String,
+      },
+      price: {
+        type: Number,
+        min: 0,
+        max: 5000,
+      },
+       product_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "product",
       },
