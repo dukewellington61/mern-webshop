@@ -28,7 +28,7 @@ const Products = ({ getProducts, products }) => {
 
 Products.propTypes = {
   getProducts: PropTypes.func.isRequired,
-  product: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({

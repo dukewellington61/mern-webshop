@@ -3,19 +3,16 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const calculateItemQuantity = (cart) => {
-  if (cart.line_items.length > 1) {
-    let quantity = cart.line_items.reduce(function (
-      previousValue,
-      currentValue
-    ) {
+const calculateItemQuantity = (line_items) => {
+  if (line_items.length > 1) {
+    let quantity = line_items.reduce(function (previousValue, currentValue) {
       return {
         quantity: previousValue.quantity + currentValue.quantity,
       };
     });
     return quantity.quantity;
-  } else if (cart.line_items.length === 1) {
-    return cart.line_items[0].quantity;
+  } else if (line_items.length === 1) {
+    return line_items[0].quantity;
   }
 };
 
@@ -28,10 +25,11 @@ const CartIcon = ({ cart }) => {
       <span
         id="cart_navigation_quantity"
         style={{
-          display: cart && cart.line_items.length > 0 ? "flex" : "none",
+          display:
+            !cart.loading && cart.line_items.length > 0 ? "flex" : "none",
         }}
       >
-        {cart && calculateItemQuantity(cart)}
+        {!cart.loading && calculateItemQuantity(cart.line_items)}
       </span>
     </div>
   );
@@ -43,7 +41,7 @@ CartIcon.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, null)(CartIcon);

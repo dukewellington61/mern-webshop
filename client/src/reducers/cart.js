@@ -7,7 +7,8 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  cart: null,
+  _id: null,
+  line_items: [],
   loading: true,
   error: {},
 };
@@ -19,7 +20,8 @@ export default function (state = initialState, action) {
     case GET_CART:
       return {
         ...state,
-        cart: payload,
+        _id: payload._id,
+        line_items: payload.line_items,
         loading: false,
       };
     case CART_ERROR:
@@ -31,20 +33,17 @@ export default function (state = initialState, action) {
     case CREATE_LINEITEM:
       return {
         ...state,
-        cart: { ...state.cart, line_items: payload },
+        line_items: payload,
         loading: false,
       };
     case ADD_LINEITEM:
       return {
         ...state,
-        cart: {
-          ...state.cart,
-          line_items: state.cart.line_items.map((line_item) =>
-            line_item._id === payload.id
-              ? { ...line_item, quantity: payload.quantity }
-              : line_item
-          ),
-        },
+        line_items: state.line_items.map((line_item) =>
+          line_item._id === payload.id
+            ? { ...line_item, quantity: payload.quantity }
+            : line_item
+        ),
         loading: false,
       };
     case LINEITEM_ERROR:

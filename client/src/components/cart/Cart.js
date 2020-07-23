@@ -1,19 +1,16 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LineItems from "./LineItem";
 import { getProducts } from "../../actions/product";
 
-const Cart = ({ products, getProducts }) => {
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+const Cart = ({ line_items }) => {
   return (
     <Fragment>
       <div style={{ position: "absolute", top: "500px", color: "black" }}>
-        <div className="row">
-          {products.map((product) => (
-            <LineItems key={product._id} product={product} />
+        <div>
+          {line_items.map((line_item) => (
+            <LineItems key={line_item._id} line_item={line_item} />
           ))}
         </div>
       </div>
@@ -22,11 +19,11 @@ const Cart = ({ products, getProducts }) => {
 };
 
 Cart.propTypes = {
-  line_items: PropTypes.array.isRequired,
+  cart: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  products: state.product.products,
+  line_items: state.cart.line_items,
 });
 
 export default connect(mapStateToProps, { getProducts })(Cart);

@@ -45,6 +45,11 @@ body {
   transform: translate(6px, -16px);
 }
 
+/* @components/cart/LineItemImages.js */
+#line_item_images {
+  width: 20rem;
+}
+
 /* @components/products/Products.js */
 #products_container {
   width: auto;

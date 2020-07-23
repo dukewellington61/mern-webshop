@@ -7,8 +7,8 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
   const handleClick = (e) => {
     e.preventDefault();
     addLineItem({
-      product_id: product._id,
       cart_id: cart._id,
+      product_id: product._id,
       name: product.name,
       image_url: product.image_url,
       colour: product.colour,
@@ -30,13 +30,13 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
 };
 
 AddToShoppingCartBtn.propTypes = {
-  // cart: PropTypes.object.isRequired,
+  cart: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   product: state.product.product,
-  cart: state.cart.cart,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, { addLineItem })(AddToShoppingCartBtn);
