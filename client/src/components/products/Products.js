@@ -6,7 +6,7 @@ import Spinner from "../layout/Spinner";
 
 import { getProducts } from "../../actions/product";
 
-const Products = ({ getProducts, product: { products } }) => {
+const Products = ({ getProducts, products }) => {
   useEffect(() => {
     getProducts();
   }, [getProducts]);
@@ -32,7 +32,7 @@ Products.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  product: state.product,
+  products: state.product.products,
 });
 
 export default connect(mapStateToProps, { getProducts })(Products);
