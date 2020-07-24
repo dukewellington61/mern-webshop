@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const QuantityField = ({ quantity }) => {
-  const onChange = (e) => console.log(e);
+import { addLineItem } from "../../actions/lineItem.js";
+
+const QuantityField = ({ quantity, cart, addLineItem }) => {
+  const [newQuantity, setNewQuantity] = useState(quantity);
+
+  const onChange = (e) => {
+    setNewQuantity(e.target.value);
+    addLineItem({ quantity: newQuantity, cart_id: cart._id });
+  };
 
   return (
     <form className="form">
-      <div className="form-group">
-        <input
-          type="number"
-          placeholder="Email Address"
-          name="email"
-          value={quantity}
-          onChange={(e) => onChange(e)}
-          required
-        />
-      </div>
+      <input
+        type="integer"
+        placeholder={newQuantity}
+        name="quantity"
+        value={newQuantity}
+        onChange={(e) => onChange(e)}
+      />
     </form>
   );
 };
 
 QuantityField.propTypes = {};
 
-export default QuantityField;
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps, { addLineItem })(QuantityField);
