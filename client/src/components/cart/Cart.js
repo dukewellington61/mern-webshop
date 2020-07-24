@@ -3,13 +3,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LineItems from "./LineItem";
 import { getProducts } from "../../actions/product";
+import Spinner from "../layout/Spinner";
 
-const Cart = ({ line_items }) => {
-  return (
+const Cart = ({ cart }) => {
+  return cart.loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
-      <div style={{ position: "absolute", top: "500px", color: "black" }}>
+      <div id="cart_container" className="container">
         <div>
-          {line_items.map((line_item) => (
+          {cart.line_items.map((line_item) => (
             <LineItems key={line_item._id} line_item={line_item} />
           ))}
         </div>
@@ -23,7 +26,7 @@ Cart.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  line_items: state.cart.line_items,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, { getProducts })(Cart);
