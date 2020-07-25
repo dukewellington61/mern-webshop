@@ -16,7 +16,11 @@ router.post("/", async (req, res) => {
     );
 
     if (lineItem) {
-      const updateQuantity = lineItem.quantity + 1;
+      // if request comes from cart it has attribute quantity
+
+      console.log(req.body.quantity);
+
+      const updateQuantity = req.body.quantity || lineItem.quantity + 1;
 
       Cart.updateOne(
         {
@@ -64,28 +68,13 @@ router.put("/", async (req, res) => {
       (lineItem) => lineItem._id.toString() === req.body.lineItem_id
     );
 
-    if (lineItem && lineItem.quantity > 1) {
-      const updateQuantity = lineItem.quantity - 1;
+    cart.line_items = cart.line_items.filter(
+      (lineItem) => lineItem._id.toString() !== req.body.lineItem_id
+    );
 
-      Cart.updateOne(
-        {
-          _id: cart._id,
-          line_items: { $elemMatch: { _id: lineItem._id } },
-        },
-        { $set: { "line_items.$.quantity": updateQuantity } },
-        function (err) {
-          console.log(err);
-        }
-      );
-    } else if (lineItem && lineItem.quantity === 1) {
-      cart.line_items = cart.line_items.filter(
-        (lineItem) => lineItem._id.toString() !== req.body.lineItem_id
-      );
+    await cart.save();
 
-      await cart.save();
-    }
-
-    res.json(cart);
+    res.json(cart.line_items);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

@@ -50,6 +50,16 @@ body {
   margin-top: 8rem;
 }
 
+/* @components/cart/LineItem.js */
+#line_item_row {
+  position: relative;
+}
+
+#delete_line_icon {
+  position: absolute;
+  right: 0;
+}
+
 /* @components/cart/LineItemImages.js */
 #line_item_images {
   width: 20rem;

@@ -21,4 +21,5 @@ export const CART_ERROR = "CART_ERROR";
 
 export const CREATE_LINEITEM = "CREATE_LINEITEM";
 export const ADD_LINEITEM = "ADD_LINEITEM";
+export const REMOVE_LINEITEM = "REMOVE_LINEITEM";
 export const LINEITEM_ERROR = "LINEITEM_ERROR";

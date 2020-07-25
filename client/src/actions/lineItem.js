@@ -1,5 +1,10 @@
 import axios from "axios";
-import { CREATE_LINEITEM, ADD_LINEITEM, LINEITEM_ERROR } from "./types";
+import {
+  CREATE_LINEITEM,
+  ADD_LINEITEM,
+  REMOVE_LINEITEM,
+  LINEITEM_ERROR,
+} from "./types";
 
 // Add line-item to cart
 export const addLineItem = (formData) => async (dispatch) => {
@@ -21,6 +26,33 @@ export const addLineItem = (formData) => async (dispatch) => {
           type: CREATE_LINEITEM,
           payload: res.data,
         });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: LINEITEM_ERROR,
+      payload: {
+        msg: err.response.statusTest,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Remove line-item from cart
+export const removeLineItem = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.put("/api/line-items/", formData, config);
+
+    dispatch({
+      type: REMOVE_LINEITEM,
+      payload: res.data,
+    });
   } catch (err) {
     console.log(err);
     dispatch({

@@ -13,7 +13,7 @@ const Cart = ({ cart }) => {
       <div id="cart_container" className="container">
         <div>
           {cart.line_items.map((line_item) => (
-            <LineItems key={line_item._id} line_item={line_item} />
+            <LineItems key={line_item._id} line_item={line_item} cart={cart} />
           ))}
         </div>
       </div>

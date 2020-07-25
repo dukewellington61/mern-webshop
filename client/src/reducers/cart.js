@@ -3,6 +3,7 @@ import {
   CART_ERROR,
   CREATE_LINEITEM,
   ADD_LINEITEM,
+  REMOVE_LINEITEM,
   LINEITEM_ERROR,
 } from "../actions/types";
 
@@ -44,6 +45,12 @@ export default function (state = initialState, action) {
             ? { ...line_item, quantity: payload.quantity }
             : line_item
         ),
+        loading: false,
+      };
+    case REMOVE_LINEITEM:
+      return {
+        ...state,
+        line_items: payload,
         loading: false,
       };
     case LINEITEM_ERROR:
