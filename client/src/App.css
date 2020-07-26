@@ -17,7 +17,7 @@ body {
   margin: 0;
 }
 
-/* @ components/layout/Navbar.js */
+/* @components/layout/Navbar.js */
 #shopping_cart_link {
   color: white;
 }
@@ -47,7 +47,13 @@ body {
 
 /* @components/cart/Cart.js */
 #cart_container {
+  position: relative;
   margin-top: 8rem;
+}
+
+#grand_total {
+  position: absolute;
+  right: 0;
 }
 
 /* @components/cart/LineItem.js */
@@ -63,6 +69,11 @@ body {
 /* @components/cart/LineItemImages.js */
 #line_item_images {
   width: 20rem;
+}
+
+/* @components/cart/RemoveLineItem.js */
+#delete_line_icon {
+  cursor: pointer;
 }
 
 /* @components/products/Products.js */

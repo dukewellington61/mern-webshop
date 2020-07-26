@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LineItemImages from "./LineItemImages";
 import QuantityField from "./QuantityField";
 import RemoveLineItem from "./RemoveLineItem";
@@ -8,12 +9,16 @@ const LineItem = ({ line_item, cart }) => {
   return (
     <div id="line_item_row" className="row">
       <div className="col-xl">
-        <LineItemImages image_url={line_item.image_url} />
+        <Link to={`/products/${line_item.product_id}`}>
+          <LineItemImages image_url={line_item.image_url} />
+        </Link>
       </div>
       <div className="col-xl">
-        <b>{line_item.name}</b>
+        <Link to={`/products/${line_item.product_id}`}>
+          <b>{line_item.name}</b>
+        </Link>
         <div>colour:&nbsp;&nbsp;{line_item.colour}</div>
-        <div>price:&nbsp;&nbsp;{line_item.price}</div>
+        <div>price:&nbsp;&nbsp;{line_item.price.toFixed(2)}&nbsp;&euro;</div>
       </div>
       <div className="col-xl">
         <QuantityField
