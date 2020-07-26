@@ -2,6 +2,7 @@ import React from "react";
 import LineItemImages from "./LineItemImages";
 import QuantityField from "./QuantityField";
 import RemoveLineItem from "./RemoveLineItem";
+import SubTotal from "./SubTotal";
 
 const LineItem = ({ line_item, cart }) => {
   return (
@@ -18,9 +19,12 @@ const LineItem = ({ line_item, cart }) => {
         <QuantityField
           quantity={line_item.quantity}
           product_id={line_item.product_id}
+          lineItem_id={line_item._id}
         />
       </div>
-      <div className="col-xl">Total</div>
+      <div className="col-xl">
+        <SubTotal line_item={line_item} />
+      </div>
       <RemoveLineItem line_item={line_item} cart={cart} />
     </div>
   );

@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import { addLineItem } from "../../actions/lineItem.js";
+import { removeLineItem } from "../../actions/lineItem.js";
 
-const QuantityField = ({ product_id, quantity, cart, addLineItem }) => {
+const QuantityField = ({
+  product_id,
+  quantity,
+  lineItem_id,
+  cart,
+  addLineItem,
+  removeLineItem,
+}) => {
   const [newQuantity, setNewQuantity] = useState(quantity);
 
   const handleChange = (e) => setNewQuantity(parseInt(e.target.value));
 
   const handleSubmit = (e) => {
-    addLineItem({ product_id, quantity: newQuantity, cart_id: cart._id });
+    newQuantity === 0
+      ? removeLineItem({ lineItem_id, cart_id: cart._id })
+      : addLineItem({ product_id, quantity: newQuantity, cart_id: cart._id });
     e.preventDefault();
   };
 
@@ -23,15 +32,20 @@ const QuantityField = ({ product_id, quantity, cart, addLineItem }) => {
         name="quantity"
         value={newQuantity}
         onChange={handleChange}
+        required
       />
     </form>
   );
 };
 
-QuantityField.propTypes = {};
+QuantityField.propTypes = {
+  cart: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps, { addLineItem })(QuantityField);
+export default connect(mapStateToProps, { addLineItem, removeLineItem })(
+  QuantityField
+);
