@@ -71,6 +71,12 @@ body {
   width: 20rem;
 }
 
+/* @components/cart/QuantityField.js */
+#quantity_input {
+  max-width: 25%;
+  text-align: center;
+}
+
 /* @components/cart/RemoveLineItem.js */
 #delete_line_icon {
   cursor: pointer;

@@ -18,6 +18,7 @@ app.use("/api/products", require("./routes/api/products"));
 app.use("/api/cart", require("./routes/api/cart"));
 app.use("/api/line-items", require("./routes/api/line-items"));
 app.use("/api/orders", require("./routes/api/orders"));
+app.use("/api/checkout", require("./routes/api/checkout"));
 
 const PORT = process.env.PORT || 5000;
 

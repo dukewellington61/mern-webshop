@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import StripeComponent from "./StripeComponent";
 
 const GrantTotal = ({ cart }) => {
   const calculateGrandTotal = () => {
@@ -36,6 +37,7 @@ const GrantTotal = ({ cart }) => {
           &nbsp;&euro;
         </div>
       </div>
+      <StripeComponent amount={Number(calculateGrandTotal() + 2.95)} />
     </Fragment>
   );
 };

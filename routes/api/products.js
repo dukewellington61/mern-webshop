@@ -8,7 +8,7 @@ const Product = require("../../models/Product");
 
 // @route   POST api/products
 // @desc    Create Product
-// @access  Public
+// @access  Private
 router.post(
   "/",
   [

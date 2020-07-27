@@ -26,7 +26,7 @@ const QuantityField = ({
   return (
     <form className="form" onSubmit={handleSubmit}>
       <input
-        style={{ maxWidth: "100%" }}
+        id="quantity_input"
         type="number"
         placeholder={isNaN(newQuantity) ? "" : newQuantity}
         name="quantity"

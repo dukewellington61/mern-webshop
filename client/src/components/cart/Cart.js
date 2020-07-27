@@ -5,11 +5,8 @@ import LineItems from "./LineItem";
 import GrantTotal from "./GrantTotal";
 import { getProducts } from "../../actions/product";
 import Spinner from "../layout/Spinner";
-import StripeCheckOut from "react-stripe-checkout";
 
 const Cart = ({ cart }) => {
-  const handleToken = () => console.log("handling token");
-
   return cart.loading ? (
     <Spinner />
   ) : (
@@ -20,9 +17,8 @@ const Cart = ({ cart }) => {
             <LineItems key={line_item._id} line_item={line_item} cart={cart} />
           ))}
         </div>
-        <div id="grand_total">
-          <GrantTotal cart={cart} />
-          <StripeCheckOut stripeKey="blablakey" token={handleToken} />
+        <div id="#grand_total">
+          <div>{cart.line_items.length > 0 && <GrantTotal cart={cart} />}</div>
         </div>
       </div>
     </Fragment>
