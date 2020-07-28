@@ -2,7 +2,7 @@ import axios from "axios";
 import { DUMMY_DISPATCH } from "./types";
 
 // Process Stripe payment
-export const processPayment = (token, addresses) => async (dispatch) => {
+export const processPayment = (formData) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -10,13 +10,9 @@ export const processPayment = (token, addresses) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post(
-      "/api/checkout/",
-      { token, addresses },
-      config
-    );
+    const res = await axios.post("/api/checkout/", formData, config);
 
-    console.log("Response:", res.data);
+    // console.log("Response:", res.data);
 
     dispatch({
       type: DUMMY_DISPATCH,

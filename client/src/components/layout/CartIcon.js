@@ -36,7 +36,7 @@ const CartIcon = ({ cart }) => {
 };
 
 CartIcon.propTypes = {
-  calculateItemQuantity: PropTypes.func.isRequired,
+  // calculateItemQuantity: PropTypes.func.isRequired,
   cart: PropTypes.object.isRequired,
 };
 

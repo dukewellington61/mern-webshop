@@ -11,7 +11,7 @@ const RemoveLineItem = ({ line_item, cart, removeLineItem }) => {
 
   return (
     <div id="delete_line_icon" onClick={handleClick}>
-      <i class="fas fa-times"></i>
+      <i className="fas fa-times"></i>
     </div>
   );
 };

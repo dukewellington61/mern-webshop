@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import StripeComponent from "./StripeComponent";
 
-const GrantTotal = ({ cart }) => {
+const GrantTotal = ({ cart, user }) => {
   const calculateGrandTotal = () => {
     if (cart.line_items.length > 1) {
       let grandTotal = 0;
@@ -37,7 +37,10 @@ const GrantTotal = ({ cart }) => {
           &nbsp;&euro;
         </div>
       </div>
-      <StripeComponent amount={Number(calculateGrandTotal() + 2.95)} />
+      <StripeComponent
+        total={Number(calculateGrandTotal() + 2.95)}
+        user={user}
+      />
     </Fragment>
   );
 };

@@ -6,7 +6,7 @@ import GrantTotal from "./GrantTotal";
 import { getProducts } from "../../actions/product";
 import Spinner from "../layout/Spinner";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, user }) => {
   return cart.loading ? (
     <Spinner />
   ) : (
@@ -18,7 +18,11 @@ const Cart = ({ cart }) => {
           ))}
         </div>
         <div id="#grand_total">
-          <div>{cart.line_items.length > 0 && <GrantTotal cart={cart} />}</div>
+          <div>
+            {cart.line_items.length > 0 && (
+              <GrantTotal cart={cart} user={user} />
+            )}
+          </div>
         </div>
       </div>
     </Fragment>
@@ -27,10 +31,12 @@ const Cart = ({ cart }) => {
 
 Cart.propTypes = {
   cart: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { getProducts })(Cart);

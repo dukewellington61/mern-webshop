@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 import StripeCheckOut from "react-stripe-checkout";
 import { processPayment } from "../../actions/checkout";
 
-const StripeComponent = ({ amount, processPayment }) => {
-  const handleToken = (token, addresses) =>
-    processPayment({ token, addresses });
+const StripeComponent = ({ total, processPayment, user }) => {
+  const handleToken = (token, addresses) => {
+    processPayment({ token, addresses, total, user });
+  };
 
   return (
     <div>
@@ -16,7 +17,7 @@ const StripeComponent = ({ amount, processPayment }) => {
         token={handleToken}
         billingAddress
         shippingAddress
-        amount={amount * 100}
+        amount={total * 100}
         name={"Your shopping cart"}
       />
     </div>

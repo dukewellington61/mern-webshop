@@ -5,32 +5,32 @@ const stripe = require("stripe")(
   "sk_test_51H9aCqGnYOPoEHalx696AcqYwRYaghlauUjRd7pvi0xK2MvBu9ghMyXmx0QbtsXk389DPeHMj8Gm4ShTUCLc5W8Y00sCanfRRM"
 );
 const { v4: uuidv4 } = require("uuid");
+const auth = require("../../middleware/auth");
+
 router.use(cors());
 
 // @route   POST api/checkout
 // @desc    Process stripe payment in the backend
 // @access  Private
-router.post("/checkout", async (req, res) => {
-  console.log("Request:", req.body);
-
+router.post("/", auth, async (req, res) => {
   let error;
   let status;
   try {
-    const { product, token } = req.body;
+    const { token, total, user } = req.body;
 
     const customer = await stripe.customers.create({
       email: token.email,
       source: token.id,
     });
 
-    const idempotency_key = uuidv4();
+    const idempotencyKey = uuidv4();
     const charge = await stripe.charges.create(
       {
-        amount: product.price * 100,
-        currency: "usd",
+        amount: total * 100,
+        currency: "eur",
         customer: customer.id,
         receipt_email: token.email,
-        description: `Purchased the ${product.name}`,
+        description: `${user.firstname} ${user.lastname}'s shopping cart`,
         shipping: {
           name: token.card.name,
           address: {
@@ -43,10 +43,10 @@ router.post("/checkout", async (req, res) => {
         },
       },
       {
-        idempotency_key,
+        idempotencyKey,
       }
     );
-    console.log("Charge:", { charge });
+    // console.log("Charge:", charge);
     status = "success";
   } catch (error) {
     console.error("Error:", error);
