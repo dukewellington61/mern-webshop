@@ -13,13 +13,16 @@ const StripeComponent = ({ total, processPayment, user }) => {
     <div>
       {" "}
       <StripeCheckOut
-        stripeKey="pk_test_51H9aCqGnYOPoEHal5RMlvSbq6Ms7Ln66jxjxJqiBwfOarxnsA6y92AgYeGeNMpTtzDWeIDmvYfC9tqfJ2jV85RWB00aAgTZ8M9"
         token={handleToken}
-        billingAddress
-        shippingAddress
+        stripeKey={process.env.REACT_APP_KEY}
+        email={user.email}
+        // billingAddress
+        // shippingAddress
         amount={total * 100}
         name={"Your shopping cart"}
-      />
+      >
+        <button className="btn btn-outline-primary">PAY WITH CARD</button>
+      </StripeCheckOut>
     </div>
   );
 };

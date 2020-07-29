@@ -12,7 +12,7 @@ export const processPayment = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/api/checkout/", formData, config);
 
-    // console.log("Response:", res.data);
+    console.log("Response:", res);
 
     dispatch({
       type: DUMMY_DISPATCH,

@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const router = express.Router();
-const stripe = require("stripe")(
-  "sk_test_51H9aCqGnYOPoEHalx696AcqYwRYaghlauUjRd7pvi0xK2MvBu9ghMyXmx0QbtsXk389DPeHMj8Gm4ShTUCLc5W8Y00sCanfRRM"
-);
 const { v4: uuidv4 } = require("uuid");
 const auth = require("../../middleware/auth");
+
+require("dotenv").config();
+const stripe = require("stripe")(process.env.NODE_APP_KEY);
 
 router.use(cors());
 
@@ -13,8 +13,6 @@ router.use(cors());
 // @desc    Process stripe payment in the backend
 // @access  Private
 router.post("/", auth, async (req, res) => {
-  let error;
-  let status;
   try {
     const { token, total, user } = req.body;
 
@@ -46,14 +44,14 @@ router.post("/", auth, async (req, res) => {
         idempotencyKey,
       }
     );
-    // console.log("Charge:", charge);
-    status = "success";
-  } catch (error) {
-    console.error("Error:", error);
-    status = "failure";
+
+    res.status(200).send("Payment successfully processed");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
   }
 
-  res.json({ error, status });
+  // res.json({ error, status });
 });
 
 module.exports = router;
