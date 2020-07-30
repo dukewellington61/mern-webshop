@@ -2,9 +2,10 @@ import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import { updateLineItems } from "../../actions/lineItem";
 import PropTypes from "prop-types";
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, updateLineItems, isAuthenticated, cart }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +18,14 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
+    console.log(cart);
+    updateLineItems({
+      user_cart: cart,
+      browser_cart_id: localStorage.getItem(
+        "mern_stack_dummy_bicycle_webshop_shopping_cart_id"
+      ),
+    });
   };
 
   // Redirect if logged in
@@ -65,6 +73,7 @@ const Login = ({ login, isAuthenticated }) => {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  cart: PropTypes.object.isRequired,
 };
 
 // adds isAuthenticated to props (which already has the login function)
@@ -72,6 +81,7 @@ Login.propTypes = {
 // after login
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  cart: state.cart,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, updateLineItems })(Login);

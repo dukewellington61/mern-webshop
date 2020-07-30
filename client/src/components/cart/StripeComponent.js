@@ -15,7 +15,7 @@ const StripeComponent = ({ total, processPayment, user }) => {
       <StripeCheckOut
         token={handleToken}
         stripeKey={process.env.REACT_APP_KEY}
-        email={user.email}
+        email={user && user.email}
         // billingAddress
         // shippingAddress
         amount={total * 100}

@@ -315,8 +315,18 @@ setRenderRatingForm(false)
 average rating in statistics (#average_stars_in_statistics) appears
 
 
+@shopping cart --> user experience
 
+on log in
 
+if not logged in user shopping cart has line_items --> 
+on log in these line_items are beeing added to the line_items,
+that might be already in users shopping cart
+
+on register
+
+if not registered user's shopping cart has line_items --> 
+on register these line_items are beeing added to new user's newly created shopping cart
 
 
 

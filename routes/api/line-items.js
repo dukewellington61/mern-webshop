@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../../middleware/auth");
 
 const Cart = require("../../models/Cart");
 
@@ -17,8 +18,6 @@ router.post("/", async (req, res) => {
 
     if (lineItem) {
       // if request comes from cart it has attribute quantity
-
-      console.log(req.body.quantity);
 
       const updateQuantity = req.body.quantity || lineItem.quantity + 1;
 
@@ -51,6 +50,32 @@ router.post("/", async (req, res) => {
 
       res.json(cart.line_items);
     }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route   PUT api/line-items
+// @desc    Add line items from not logged in user to logged in user's cart
+// @access  Private
+router.put("/update", auth, async (req, res) => {
+  try {
+    const user_cart = req.body.user_cart;
+
+    console.log(user_cart);
+
+    const browser_cart = await Cart.findById(
+      JSON.parse(req.body.browser_cart_id)
+    );
+
+    console.log(browser_cart);
+
+    // const newArr = user_cart.line_items.concat(browser_cart.line_items);
+
+    // res.json(user_cart.cart.line_items);
+
+    console.log(newArr);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
