@@ -51,16 +51,17 @@ export const updateLineItems = (formData) => async (dispatch) => {
     const res = await axios.put("/api/line-items/update", formData, config);
 
     dispatch({
-      type: UPDATE_LINEITEMS,
+      type: CREATE_LINEITEM,
       payload: res.data,
     });
   } catch (err) {
     console.log(err);
+
     dispatch({
       type: LINEITEM_ERROR,
       payload: {
-        msg: err.response.statusTest,
-        status: err.response.status,
+        msg: "err.response.statusTest",
+        status: "err.response.status",
       },
     });
   }
@@ -82,7 +83,7 @@ export const removeLineItem = (formData) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     dispatch({
       type: LINEITEM_ERROR,
       payload: {

@@ -89,8 +89,6 @@ export const login = (email, password) => async (dispatch) => {
 
     // Login action returns only the token, not the user --> hence user has to be loaded
     dispatch(loadUser());
-
-    loadCart();
   } catch (err) {
     const errors = err.response.data.errors;
 

@@ -4,18 +4,11 @@ import StripeComponent from "./StripeComponent";
 
 const GrantTotal = ({ cart, user }) => {
   const calculateGrandTotal = () => {
-    if (cart.line_items.length > 1) {
-      let grandTotal = 0;
-      grandTotal = cart.line_items.reduce(
-        (previousLine_item, currentLine_item) =>
-          (grandTotal =
-            previousLine_item.price * previousLine_item.quantity +
-            currentLine_item.price * currentLine_item.quantity)
-      );
-      return grandTotal;
-    } else {
-      return cart.line_items[0].price * cart.line_items[0].quantity;
+    let sum = 0;
+    for (let i = 0; i < cart.line_items.length; i++) {
+      sum = sum + cart.line_items[i].quantity * cart.line_items[i].price;
     }
+    return sum;
   };
 
   return (

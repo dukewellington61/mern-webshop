@@ -1,11 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import { updateLineItems } from "../../actions/lineItem";
+import { getCartByUserId } from "../../actions/cart";
 import PropTypes from "prop-types";
 
-const Login = ({ login, updateLineItems, isAuthenticated, cart }) => {
+const Login = ({
+  login,
+  updateLineItems,
+  getCartByUserId,
+  isAuthenticated,
+  cart,
+}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,15 +23,16 @@ const Login = ({ login, updateLineItems, isAuthenticated, cart }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const browser_cart = cart;
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
-    console.log(cart);
+    login(email, password);
+    const user_cart = await getCartByUserId();
+
     updateLineItems({
-      user_cart: cart,
-      browser_cart_id: localStorage.getItem(
-        "mern_stack_dummy_bicycle_webshop_shopping_cart_id"
-      ),
+      user_cart,
+      browser_cart,
     });
   };
 
@@ -39,14 +47,14 @@ const Login = ({ login, updateLineItems, isAuthenticated, cart }) => {
       <p className="lead">
         <i className="fa fa-user"></i> Sign Into Your Account
       </p>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
             type="email"
             placeholder="Email Address"
             name="email"
             value={email}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             required
           />
         </div>
@@ -84,4 +92,8 @@ const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps, { login, updateLineItems })(Login);
+export default connect(mapStateToProps, {
+  login,
+  getCartByUserId,
+  updateLineItems,
+})(Login);

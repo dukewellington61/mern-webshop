@@ -319,9 +319,11 @@ average rating in statistics (#average_stars_in_statistics) appears
 
 on log in
 
-if not logged in user shopping cart has line_items --> 
+if not logged in user shopping cart (browser) has line_items --> 
 on log in these line_items are beeing added to the line_items,
 that might be already in users shopping cart
+
+line items in browser cart are beeing deleted
 
 on register
 

@@ -56,26 +56,37 @@ router.post("/", async (req, res) => {
   }
 });
 
-// @route   PUT api/line-items
+// @route   PUT api/line-items/update
 // @desc    Add line items from not logged in user to logged in user's cart
 // @access  Private
 router.put("/update", auth, async (req, res) => {
   try {
+    const browser_cart = req.body.browser_cart;
+
     const user_cart = req.body.user_cart;
 
-    console.log(user_cart);
+    // if user_cart.line_items has line_items in browser_cart.line_items already
+    // --> update quantitiy of those line_items in user cart
+    // else: add line_items to those already in user_cart
 
-    const browser_cart = await Cart.findById(
-      JSON.parse(req.body.browser_cart_id)
+    // if line_item.product_id (in user_cart) === line_item_product_id (in browser_cart)
+    // --> update value of line_item.quantity (in user_cart)
+
+    // const line_item_product_ids = user_cart.line_items.map(
+    //   (line_item) => line_item.product_id
+    // );
+
+    const indizes = browser_cart.line_items.map((browser_cart_line_item) =>
+      user_cart.line_items.findIndex(browser_cart_line_item)
     );
 
-    console.log(browser_cart);
+    console.log(indizes);
 
-    // const newArr = user_cart.line_items.concat(browser_cart.line_items);
+    // const isDuplicate = browser_cart.some((line_item) => line_item.product_id);
 
-    // res.json(user_cart.cart.line_items);
+    // res.json(newArr);
 
-    console.log(newArr);
+    // console.log(newArr);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

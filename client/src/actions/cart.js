@@ -19,6 +19,7 @@ export const loadCart = () => {
       : store.dispatch(createCart());
   }
 };
+
 // Create a cart
 export const createCart = () => async (dispatch) => {
   try {
@@ -73,6 +74,8 @@ export const getCartByUserId = () => async (dispatch) => {
       type: GET_CART,
       payload: res.data,
     });
+
+    return res.data;
   } catch (err) {
     dispatch({
       type: CART_ERROR,
@@ -86,7 +89,6 @@ export const getCartByUserId = () => async (dispatch) => {
 
 // Get Cart by cart_id
 export const getCartByCartId = (id) => async (dispatch) => {
-  console.log(id);
   try {
     const res = await axios.get(`/api/cart/${id}`);
 
