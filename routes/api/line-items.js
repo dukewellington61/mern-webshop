@@ -61,24 +61,43 @@ router.post("/", async (req, res) => {
 // @access  Private
 router.put("/update", auth, async (req, res) => {
   try {
-    const browser_cart = req.body.browser_cart;
+    const browserCart = req.body.browser_cart;
 
-    const user_cart = req.body.user_cart;
+    const userCart = req.body.user_cart;
 
-    let newArr = browser_cart.line_items.concat(user_cart.line_items);
+    const updatedCart = await Cart.findById(userCart._id);
 
-    console.log(newArr);
+    let newArr = browserCart.line_items.concat(userCart.line_items);
 
-    let arrNoReduncies = newArr.filter(
+    // updates line_item quantity
+    // (is browser_cart has line_items, that user_cart has also, user_cart.line_item.quantity is updated)
+    const length = newArr.length;
+
+    for (let i = 0; i < length; i++) {
+      newArr[i];
+      for (let j = 0; j < length; j++) {
+        if (newArr[i].product_id === newArr[j].product_id && i != j) {
+          newArr[i].quantity = newArr[i].quantity + newArr[j].quantity;
+          break;
+        }
+      }
+    }
+
+    // after updating line_item quantity, newArr has still all the objects i.e. duplicates
+    // next lines of code remove duplicates from array of line_item objects
+    let arrNoDuplicates = newArr.filter(
       (line_item, index, array) =>
-        index === array.findIndex((t) => t.product_id === line_item.product_id)
+        index ===
+        array.findIndex(
+          (array_item) => array_item.product_id === line_item.product_id
+        )
     );
 
-    console.log(arrNoReduncies);
+    updatedCart.line_items = arrNoDuplicates;
 
-    // res.json(newArr);
+    updatedCart.save();
 
-    // console.log(newArr);
+    res.json(arrNoDuplicates);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
