@@ -65,24 +65,16 @@ router.put("/update", auth, async (req, res) => {
 
     const user_cart = req.body.user_cart;
 
-    // if user_cart.line_items has line_items in browser_cart.line_items already
-    // --> update quantitiy of those line_items in user cart
-    // else: add line_items to those already in user_cart
+    let newArr = browser_cart.line_items.concat(user_cart.line_items);
 
-    // if line_item.product_id (in user_cart) === line_item_product_id (in browser_cart)
-    // --> update value of line_item.quantity (in user_cart)
+    console.log(newArr);
 
-    // const line_item_product_ids = user_cart.line_items.map(
-    //   (line_item) => line_item.product_id
-    // );
-
-    const indizes = browser_cart.line_items.map((browser_cart_line_item) =>
-      user_cart.line_items.findIndex(browser_cart_line_item)
+    let arrNoReduncies = newArr.filter(
+      (line_item, index, array) =>
+        index === array.findIndex((t) => t.product_id === line_item.product_id)
     );
 
-    console.log(indizes);
-
-    // const isDuplicate = browser_cart.some((line_item) => line_item.product_id);
+    console.log(arrNoReduncies);
 
     // res.json(newArr);
 
