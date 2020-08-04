@@ -65,7 +65,9 @@ router.put("/update", auth, async (req, res) => {
 
     const userCart = req.body.user_cart;
 
-    const updatedCart = await Cart.findById(userCart._id);
+    const updatedUserCart = await Cart.findById(userCart._id);
+
+    const updatedBrowserCart = await Cart.findById(browserCart._id);
 
     let arrayOfLineItems = browserCart.line_items.concat(userCart.line_items);
 
@@ -88,9 +90,13 @@ router.put("/update", auth, async (req, res) => {
         )
     );
 
-    updatedCart.line_items = arrNoDuplicates;
+    updatedUserCart.line_items = arrNoDuplicates;
 
-    updatedCart.save();
+    updatedUserCart.save();
+
+    updatedBrowserCart.line_items = [];
+
+    updatedBrowserCart.save();
 
     res.json(arrNoDuplicates);
   } catch (err) {
