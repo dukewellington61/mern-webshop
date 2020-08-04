@@ -67,25 +67,20 @@ router.put("/update", auth, async (req, res) => {
 
     const updatedCart = await Cart.findById(userCart._id);
 
-    let newArr = browserCart.line_items.concat(userCart.line_items);
+    let arrayOfLineItems = browserCart.line_items.concat(userCart.line_items);
 
     // updates line_item quantity
     // (is browser_cart has line_items, that user_cart has also, user_cart.line_item.quantity is updated)
-    const length = newArr.length;
-
-    for (let i = 0; i < length; i++) {
-      newArr[i];
-      for (let j = 0; j < length; j++) {
-        if (newArr[i].product_id === newArr[j].product_id && i != j) {
-          newArr[i].quantity = newArr[i].quantity + newArr[j].quantity;
-          break;
-        }
-      }
-    }
+    arrayOfLineItems.map((line_item, i, array) =>
+      array.forEach((array_item, j) => {
+        if (line_item.product_id === array_item.product_id && i != j)
+          line_item.quantity += array_item.quantity;
+      })
+    );
 
     // after updating line_item quantity, newArr has still all the objects i.e. duplicates
     // next lines of code remove duplicates from array of line_item objects
-    let arrNoDuplicates = newArr.filter(
+    let arrNoDuplicates = arrayOfLineItems.filter(
       (line_item, index, array) =>
         index ===
         array.findIndex(

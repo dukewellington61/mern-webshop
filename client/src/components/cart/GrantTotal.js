@@ -5,9 +5,10 @@ import StripeComponent from "./StripeComponent";
 const GrantTotal = ({ cart, user }) => {
   const calculateGrandTotal = () => {
     let sum = 0;
-    for (let i = 0; i < cart.line_items.length; i++) {
-      sum = sum + cart.line_items[i].quantity * cart.line_items[i].price;
-    }
+
+    cart.line_items.forEach(
+      (line_item) => (sum += line_item.quantity * line_item.price)
+    );
     return sum;
   };
 
