@@ -1,38 +1,16 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import RatingsItem from "./RatingsItem";
 
-const scrollToRef = (ref) => {
-  setTimeout(() => window.scrollTo(0, ref.current.offsetTop), 100);
-};
-
-const UserRatings = ({ product }) => {
+const UserRatings = ({ product, scrollToRef }) => {
   const [currentNumberOfReviews, setCurrentNumberOfReviews] = useState(2);
 
-  useEffect(() => {
-    hideButton();
-  }, [currentNumberOfReviews, product.reviews]);
-
-  // scrolls to 'see more' button when user hits 'Ratings' button (so the reviews are within the viewport)
-  useEffect(() => {
-    document
-      .querySelector("#ratings_button")
-      .addEventListener("click", scrollToButton);
-  }, []);
-
   const myRef = useRef(null);
-
-  const scrollToButton = () => scrollToRef(myRef);
 
   const renderReviews = product.reviews.slice(0, currentNumberOfReviews);
   const numberOfReviews = product.reviews.length;
 
   const renderMoreReviews = () =>
     setCurrentNumberOfReviews(currentNumberOfReviews + 2);
-
-  const hideButton = () =>
-    currentNumberOfReviews >= numberOfReviews
-      ? (document.querySelector("#more_button").style.visibility = "hidden")
-      : (document.querySelector("#more_button").style.visibility = "visible");
 
   // set number of reviews on display back to two when user hits 'Description' button
   const descriptionButton = document.querySelector("#description_button");
@@ -55,10 +33,14 @@ const UserRatings = ({ product }) => {
           id="more_button"
           type="button"
           className="btn btn-secondary mt-1"
+          style={{
+            visibility:
+              currentNumberOfReviews >= numberOfReviews ? "hidden" : "visible",
+          }}
           ref={myRef}
           onClick={() => {
             renderMoreReviews();
-            scrollToButton();
+            scrollToRef(myRef);
           }}
         >
           see more <i className="fas fa-angle-right"></i>

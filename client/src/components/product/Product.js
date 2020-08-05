@@ -37,6 +37,10 @@ const Product = ({
     product.reviews.filter((review) => review.user_id === user._id).length ===
     0;
 
+  const scrollToRef = (ref) => {
+    setTimeout(() => window.scrollTo(0, ref.current.offsetTop), 100);
+  };
+
   return !product ? (
     <Spinner />
   ) : (
@@ -65,7 +69,7 @@ const Product = ({
           </div>
         </div>
         <div id="rev_desc_links">
-          <RevDescLinks key="rev_desc_links" />
+          <RevDescLinks key="rev_desc_links" scrollToRef={scrollToRef} />
         </div>
 
         <div id="ratings" className="container">
@@ -110,7 +114,7 @@ const Product = ({
               </div>
             </div>
           </div>
-          <UserRatings product={product} />
+          <UserRatings product={product} scrollToRef={scrollToRef} />
         </div>
 
         <div id="description">

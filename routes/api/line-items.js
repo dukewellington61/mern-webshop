@@ -94,6 +94,7 @@ router.put("/update", auth, async (req, res) => {
 
     updatedUserCart.save();
 
+    // removes line_items from browser cart on user log in
     updatedBrowserCart.line_items = [];
 
     updatedBrowserCart.save();

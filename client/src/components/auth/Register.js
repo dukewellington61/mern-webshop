@@ -5,13 +5,15 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { createUserCart } from "../../actions/cart";
+import { updateLineItems } from "../../actions/lineItem";
 
 const Register = ({
   setAlert,
   register,
   isAuthenticated,
-  user,
   createUserCart,
+  updateLineItems,
+  browser_cart,
 }) => {
   /* props.setAlert bas been destructured to ({ setAlert })*/
   const [formData, setFormData] = useState({
@@ -33,7 +35,12 @@ const Register = ({
       setAlert("Passwords do not match", "danger");
     } else {
       await register({ firstname, lastname, email, password });
-      createUserCart();
+      const user_cart = await createUserCart();
+
+      updateLineItems({
+        user_cart,
+        browser_cart,
+      });
     }
   };
 
@@ -114,9 +121,12 @@ Register.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user,
+  browser_cart: state.cart,
 });
 
-export default connect(mapStateToProps, { setAlert, register, createUserCart })(
-  Register
-);
+export default connect(mapStateToProps, {
+  setAlert,
+  register,
+  createUserCart,
+  updateLineItems,
+})(Register);
