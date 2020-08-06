@@ -26,19 +26,33 @@ const Product = ({
 }) => {
   useEffect(() => {
     getProduct(match.params.id);
-  }, [getProduct]);
+  }, [getProduct, match.params.id]);
+
+  const [renderRatings, setRenderRatings] = useState(false);
 
   const [renderRatingForm, setRenderRatingForm] = useState(false);
 
   const toggleRatingForm = (render) =>
     render ? setRenderRatingForm(true) : setRenderRatingForm(false);
 
+  const switchRatingToDescription = (val) =>
+    val === "rating" ? setRenderRatings(true) : setRenderRatings(false);
+
   const checkIfStillToRate = () =>
     product.reviews.filter((review) => review.user_id === user._id).length ===
     0;
 
+  // fn is called when user hits ratings button or hits see more (ratings) button
   const scrollToRef = (ref) => {
-    setTimeout(() => window.scrollTo(0, ref.current.offsetTop), 100);
+    setTimeout(
+      () =>
+        // ref has attribute current ? fn call comes from @components/product/RevDescLinks.js :
+        // fn call comes from @components/product/UserRatings.js
+        window.scrollTo({
+          top: ref.current ? ref.current.offsetTop : ref.offsetTop,
+        }),
+      100
+    );
   };
 
   return !product ? (
@@ -69,10 +83,18 @@ const Product = ({
           </div>
         </div>
         <div id="rev_desc_links">
-          <RevDescLinks key="rev_desc_links" scrollToRef={scrollToRef} />
+          <RevDescLinks
+            key="rev_desc_links"
+            scrollToRef={scrollToRef}
+            switchRatingToDescription={switchRatingToDescription}
+          />
         </div>
 
-        <div id="ratings" className="container">
+        <div
+          id="ratings"
+          className="container"
+          style={{ display: renderRatings ? "flex" : "none" }}
+        >
           <div className="row">
             <div className="col-xl-6 col-lg-12">
               <div id="rating_statistics">
@@ -117,7 +139,10 @@ const Product = ({
           <UserRatings product={product} scrollToRef={scrollToRef} />
         </div>
 
-        <div id="description">
+        <div
+          id="description"
+          style={{ display: renderRatings ? "none" : "flex" }}
+        >
           <Description product={product} />
         </div>
       </div>

@@ -16,6 +16,8 @@ const RemoveLineItem = ({ line_item, cart, removeLineItem }) => {
   );
 };
 
-RemoveLineItem.propTypes = {};
+RemoveLineItem.propTypes = {
+  removeLineItem: PropTypes.func.isRequired,
+};
 
 export default connect(null, { removeLineItem })(RemoveLineItem);

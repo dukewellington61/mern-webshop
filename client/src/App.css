@@ -127,13 +127,13 @@ body {
   margin: 1rem 0;
 }
 
-#description {
+/* #description {
   display: flex;
-}
+} */
 
 #ratings {
   flex-direction: column;
-  display: none;
+  /* display: none; */
   padding: 0;
   margin: 0;
 }

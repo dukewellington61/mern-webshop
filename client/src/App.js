@@ -30,8 +30,6 @@ const App = () => {
     const getData = async () => {
       await store.dispatch(loadUser());
       loadCart();
-
-      console.log("useEffect");
     };
 
     getData();

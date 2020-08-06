@@ -10,7 +10,7 @@ const LineItem = ({ line_item, cart }) => {
     <div id="line_item_row" className="row">
       <div className="col-xl">
         <Link to={`/products/${line_item.product_id}`}>
-          <LineItemImages image_url={line_item.image_url} />
+          <LineItemImages line_item={line_item} />
         </Link>
       </div>
       <div className="col-xl">

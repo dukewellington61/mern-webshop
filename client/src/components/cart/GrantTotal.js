@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import StripeComponent from "./StripeComponent";
 
 const GrantTotal = ({ cart, user }) => {
@@ -38,7 +37,5 @@ const GrantTotal = ({ cart, user }) => {
     </Fragment>
   );
 };
-
-GrantTotal.propTypes = {};
 
 export default GrantTotal;

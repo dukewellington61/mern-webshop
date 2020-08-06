@@ -1,22 +1,12 @@
 import React, { Fragment } from "react";
 
-const switchDescriptionToRating = () => {
-  document.querySelector("#ratings").style.display = "flex";
-  document.querySelector("#description").style.display = "none";
-};
-
-const switchRatingToDescription = () => {
-  document.querySelector("#ratings").style.display = "none";
-  document.querySelector("#description").style.display = "flex";
-};
-
-const RevDescLinks = () => (
+const RevDescLinks = ({ switchRatingToDescription, scrollToRef }) => (
   <Fragment>
     <button
       id="description_button"
       type="button"
       className="btn btn-primary"
-      onClick={() => switchRatingToDescription()}
+      onClick={() => switchRatingToDescription("description")}
     >
       Description
     </button>
@@ -25,7 +15,10 @@ const RevDescLinks = () => (
       type="button"
       className="btn btn-primary"
       style={{ marginLeft: "20px" }}
-      onClick={() => switchDescriptionToRating()}
+      onClick={() => {
+        switchRatingToDescription("rating");
+        scrollToRef(document.querySelector("#more_button"));
+      }}
     >
       Ratings
     </button>

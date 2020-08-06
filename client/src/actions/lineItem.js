@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   CREATE_LINEITEM,
   ADD_LINEITEM,
-  UPDATE_LINEITEMS,
   REMOVE_LINEITEM,
   LINEITEM_ERROR,
 } from "./types";

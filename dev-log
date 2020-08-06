@@ -330,6 +330,26 @@ on register
 if not registered user's shopping cart has line_items --> 
 on register these line_items are beeing added to new user's newly created shopping cart
 
+done.
+
+next up
+
+clean up: try to eliminate messages in console
+
+next up
+
+messages:
+
+user actions that should trigger a message
+
+register
+login
+add product to shopping cart
+remove product from shopping cart
+pay shopping cart
+
+
+
 
 
 

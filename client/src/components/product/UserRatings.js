@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import RatingsItem from "./RatingsItem";
 
 const UserRatings = ({ product, scrollToRef }) => {
