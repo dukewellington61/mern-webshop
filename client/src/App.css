@@ -1,4 +1,12 @@
 /* @global */
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,6 +23,34 @@ body {
 
 .row {
   margin: 0;
+}
+
+/* @components/layout/Alert.js */
+.alert {
+  /* padding: 10rem; */
+  /* margin: 1rem 0; */
+  z-index: 99;
+  position: absolute;
+  width: 80%;
+  top: 5rem;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+/* @components/auth/Login.js */
+#log_in {
+  margin-top: 8rem;
 }
 
 /* @components/layout/Navbar.js */

@@ -11,6 +11,8 @@ import Product from "./components/product/Product";
 
 import Cart from "./components/cart/Cart";
 
+import Alert from "./components/layout/Alert";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -40,6 +42,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
+          <Alert />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />

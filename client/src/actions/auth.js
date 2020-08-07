@@ -106,4 +106,5 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
   loadCart();
+  dispatch(setAlert("You've successfully logged out", "success"));
 };
