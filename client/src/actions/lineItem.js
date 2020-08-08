@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alert";
 import {
   CREATE_LINEITEM,
   ADD_LINEITEM,
@@ -26,6 +27,26 @@ export const addLineItem = (formData) => async (dispatch) => {
           type: CREATE_LINEITEM,
           payload: res.data,
         });
+
+    if (res.data.quantity && formData.addToShoppingCartBtn) {
+      dispatch(
+        setAlert(
+          "Quantity of this product has been successfully increased",
+          "success"
+        )
+      );
+    } else if (res.data.quantity) {
+      dispatch(
+        setAlert(
+          "Quantity of this product has been successfully changed",
+          "success"
+        )
+      );
+    } else {
+      dispatch(
+        setAlert("Product has been added to your shopping cart", "success")
+      );
+    }
   } catch (err) {
     console.log(err);
     dispatch({

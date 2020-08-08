@@ -11,6 +11,7 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 import { loadCart } from "./cart";
+import store from "../store";
 
 export const loadUser = () => async (dispatch) => {
   // if there is a token in local storage it is beeing set to the header of the axios - request
@@ -55,7 +56,14 @@ export const register = ({ firstname, lastname, email, password }) => async (
 
     // Register action returns only the token, not the user --> hence user has to be loaded
     // dispatches whatever loadUser() returns which is type and payload
-    dispatch(loadUser());
+    await dispatch(loadUser());
+    const user = store.getState().auth.user;
+    dispatch(
+      setAlert(
+        `Welcome ${user.firstname}! You've successfully registered`,
+        "success"
+      )
+    );
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -88,7 +96,14 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     // Login action returns only the token, not the user --> hence user has to be loaded
-    dispatch(loadUser());
+    await dispatch(loadUser());
+    const user = store.getState().auth.user;
+    dispatch(
+      setAlert(
+        `Welcome ${user.firstname}! You've successfully logged in`,
+        "success"
+      )
+    );
   } catch (err) {
     const errors = err.response.data.errors;
 

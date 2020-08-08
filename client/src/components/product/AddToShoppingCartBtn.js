@@ -13,6 +13,7 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
       image_url: product.image_url,
       colour: product.colour,
       price: product.price,
+      addToShoppingCartBtn: true,
     });
   };
 
