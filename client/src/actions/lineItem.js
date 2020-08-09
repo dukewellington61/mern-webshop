@@ -32,7 +32,8 @@ export const addLineItem = (formData) => async (dispatch) => {
       dispatch(
         setAlert(
           "Quantity of this product has been successfully increased",
-          "success"
+          "success",
+          "link"
         )
       );
     } else if (res.data.quantity) {
@@ -44,7 +45,11 @@ export const addLineItem = (formData) => async (dispatch) => {
       );
     } else {
       dispatch(
-        setAlert("Product has been added to your shopping cart", "success")
+        setAlert(
+          "Product has been added to your shopping cart",
+          "success",
+          "link"
+        )
       );
     }
   } catch (err) {

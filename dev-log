@@ -348,7 +348,17 @@ add product to shopping cart
 remove product from shopping cart
 pay shopping cart
 
+welcome back traveler!! didn't get too wet last monday, I hope, did ye?
 
+status:
+
+you've somehow managed to set up your @components/layout/Alert.js so it conditionally 
+renders different alert messages depending on what those messages are supposed to display
+
+next up:
+
+create a conditional plus error message, that asks if the user really wants to remove a line item from
+the shopping cart. 
 
 
 
