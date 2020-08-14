@@ -101,12 +101,18 @@ export const removeLineItem = (formData) => async (dispatch) => {
   };
 
   try {
+    console.log("fn call");
+
     const res = await axios.put("/api/line-items/", formData, config);
 
     dispatch({
       type: REMOVE_LINEITEM,
       payload: res.data,
     });
+
+    dispatch(
+      setAlert("Product has been removed from your shopping cart", "success")
+    );
   } catch (err) {
     console.log(err.response);
     dispatch({

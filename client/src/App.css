@@ -118,6 +118,13 @@ body {
   cursor: pointer;
 }
 
+/* @components/cart/RemoveLineItemSecurityQuery.js */
+#security_query_container {
+  height: 100vh;
+  width: 100vh;
+  opacity: 0.5;
+}
+
 /* @components/products/Products.js */
 #products_container {
   width: auto;
