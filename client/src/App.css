@@ -120,9 +120,37 @@ body {
 
 /* @components/cart/RemoveLineItemSecurityQuery.js */
 #security_query_container {
-  height: 100vh;
-  width: 100vh;
-  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1005;
+  background-color: rgba(10, 10, 10, 0.45);
+}
+
+#security_query {
+  /* display: flex;
+  justify-content: space-around; */
+  /* width: 20rem;
+  height: 2.5rem; */
+  z-index: 1006;
+  margin: 0 auto;
+  background-color: grey;
+  padding: 1rem;
+}
+
+#security_query_buttons {
+  display: flex;
+  justify-content: center;
+}
+
+#security_query_buttons button {
+  margin: 1rem;
 }
 
 /* @components/products/Products.js */

@@ -15,7 +15,7 @@ const RemoveLineItem = ({ line_item, cart }) => {
       </div>
       <div style={{ display: renderSecurityQuery ? "block" : "none" }}>
         <RemoveLineItemSecurityQuery
-          line_item_id={line_item._id}
+          line_item={line_item}
           cart_id={cart._id}
           setRenderSecurityQuery={setRenderSecurityQuery}
         />
