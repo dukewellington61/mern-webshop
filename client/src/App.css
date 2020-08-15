@@ -121,9 +121,7 @@ body {
 /* @components/cart/RemoveLineItemSecurityQuery.js */
 #security_query_container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow-y: auto;
   position: fixed;
   top: 0;
   right: 0;
@@ -134,14 +132,16 @@ body {
 }
 
 #security_query {
-  /* display: flex;
-  justify-content: space-around; */
-  /* width: 20rem;
-  height: 2.5rem; */
-  z-index: 1006;
   margin: 0 auto;
-  background-color: grey;
+  background-color: rgba(10, 10, 10, 0.5);
   padding: 1rem;
+  border-style: solid;
+  border-color: red;
+}
+
+#security_query_text {
+  color: white;
+  font-weight: bold;
 }
 
 #security_query_buttons {

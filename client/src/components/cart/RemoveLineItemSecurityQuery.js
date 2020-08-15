@@ -15,7 +15,7 @@ const RemoveLineItemSecurityQuery = ({
   return (
     <div id="security_query_container">
       <div id="security_query">
-        <div>
+        <div id="security_query_text">
           {" "}
           Are you sure that you want to remove {line_item.name} from your
           shopping cart?
