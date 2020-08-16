@@ -13,14 +13,14 @@ export const processPayment = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/api/checkout/", formData, config);
 
-    console.log("Response:", res);
-
     dispatch({
       type: DUMMY_DISPATCH,
       payload: res.data,
     });
 
-    dispatch(setAlert("Payment successful", "success"));
+    dispatch(setAlert(res.data, "success"));
+
+    return res;
   } catch (err) {
     dispatch(setAlert(err.response.data, "danger"));
   }

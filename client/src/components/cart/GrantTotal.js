@@ -33,6 +33,7 @@ const GrantTotal = ({ cart, user }) => {
       <StripeComponent
         total={Number(calculateGrandTotal() + 2.95)}
         user={user}
+        cart={cart}
       />
     </Fragment>
   );

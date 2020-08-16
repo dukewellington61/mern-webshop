@@ -3,10 +3,22 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import StripeCheckOut from "react-stripe-checkout";
 import { processPayment } from "../../actions/checkout";
+import { createOrder } from "../../actions/order";
 
-const StripeComponent = ({ total, processPayment, user }) => {
-  const handleToken = (token, addresses) => {
-    processPayment({ token, addresses, total, user });
+const StripeComponent = ({
+  total,
+  processPayment,
+  createOrder,
+  user,
+  cart,
+}) => {
+  const handleToken = async (token, addresses) => {
+    await processPayment({ token, addresses, total, user });
+    createOrder({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      invoice_items: cart.line_items,
+    });
   };
 
   return (
@@ -31,4 +43,4 @@ StripeComponent.propTypes = {
   processPayment: PropTypes.func.isRequired,
 };
 
-export default connect(null, { processPayment })(StripeComponent);
+export default connect(null, { processPayment, createOrder })(StripeComponent);

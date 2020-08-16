@@ -23,14 +23,14 @@ const RemoveLineItemSecurityQuery = ({
         <div id="security_query_buttons">
           <button
             type="button"
-            class="btn btn-dark"
+            className="btn btn-dark"
             onClick={() => handleClick(line_item._id, cart_id)}
           >
             Yes
           </button>{" "}
           <button
             type="button"
-            class="btn btn-dark"
+            className="btn btn-dark"
             onClick={() => setRenderSecurityQuery(false)}
           >
             No{" "}
