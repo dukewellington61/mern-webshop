@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alert";
 import { DUMMY_DISPATCH } from "./types";
 
 // Process Stripe payment
@@ -18,7 +19,9 @@ export const processPayment = (formData) => async (dispatch) => {
       type: DUMMY_DISPATCH,
       payload: res.data,
     });
+
+    dispatch(setAlert("Payment successful", "success"));
   } catch (err) {
-    console.log(err);
+    dispatch(setAlert(err.response.data, "danger"));
   }
 };

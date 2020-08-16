@@ -24,7 +24,7 @@ router.post("/", auth, async (req, res) => {
     const idempotencyKey = uuidv4();
     const charge = await stripe.charges.create(
       {
-        amount: total * 100,
+        amount: Math.round(total * 100),
         currency: "eur",
         customer: customer.id,
         receipt_email: token.email,
@@ -48,7 +48,7 @@ router.post("/", auth, async (req, res) => {
     res.status(200).send("Payment successfully processed");
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).send(err.message);
   }
 
   // res.json({ error, status });
