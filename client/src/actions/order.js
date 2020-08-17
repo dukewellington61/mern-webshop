@@ -17,7 +17,6 @@ export const createOrder = (formData) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
     dispatch({
       type: ORDER_ERROR,
       payload: {

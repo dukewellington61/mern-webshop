@@ -20,7 +20,7 @@ export const processPayment = (formData) => async (dispatch) => {
 
     dispatch(setAlert(res.data, "success"));
 
-    return res;
+    return res.status;
   } catch (err) {
     dispatch(setAlert(err.response.data, "danger"));
   }

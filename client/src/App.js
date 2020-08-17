@@ -13,6 +13,8 @@ import Cart from "./components/cart/Cart";
 
 import Alert from "./components/layout/Alert";
 
+import Order from "./components/order/Order";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -50,6 +52,7 @@ const App = () => {
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/:id" component={Product} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/order" component={Order} />
           </Switch>
         </Fragment>
       </Router>
