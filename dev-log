@@ -363,3 +363,27 @@ the shopping cart.
 
 
 
+hey. he's back. the golden boy. now: your next tasks
+
+status:
+
+orders: you have implemented some of the functionality already
+
+next up:
+
+make sure @components/order/Order.js on browser refresh --> latest order by that user is pulled into state 
+so it is correctly displayed --> because as it stands if the user happenes to refresh the browser while said component is displayed
+the app throws an error 
+in order to do so a corresponding route has to be established
+
+
+create a component that serves as a 'header' for the order component and includes order_id, date and total price
+
+later:
+
+I want a summary of all orders (for the loged in user) as a list of header which if clicked on reveal the full order details as 
+displayed in @components/order/Order.js 
+
+
+
+

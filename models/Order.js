@@ -35,6 +35,13 @@ const OrderSchema = new Schema({
         min: 0,
         max: 5000,
       },
+      image_url: {
+        type: String,
+      },
+      product_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product",
+      },
     },
   ],
 });

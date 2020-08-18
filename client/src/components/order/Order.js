@@ -6,7 +6,6 @@ import InvoiceItem from "./InvoiceItem";
 import InvoiceGrandTotal from "./InvoiceGrandTotal";
 
 const Order = ({ order }) => {
-  console.log(order);
   return order.loading ? (
     <Spinner />
   ) : (
