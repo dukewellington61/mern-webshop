@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import StripeCheckOut from "react-stripe-checkout";
 import { processPayment } from "../../actions/checkout";
 import { createOrder } from "../../actions/order";
+import store from "../../store";
+import { setAlert } from "../../actions/alert";
+import { removeAllLineItems } from "../../actions/lineItem";
 
 const StripeComponent = ({
   total,
@@ -12,6 +16,8 @@ const StripeComponent = ({
   createOrder,
   user,
   cart,
+  auth,
+  removeAllLineItems,
 }) => {
   let history = useHistory();
 
@@ -27,10 +33,16 @@ const StripeComponent = ({
       });
 
       history.push("/order");
+
+      // empty state.cart.line_items array
+      removeAllLineItems({ cart_id: cart._id });
     }
   };
 
-  return (
+  const displayAlert = () =>
+    store.dispatch(setAlert("Log in before you pay", "danger"));
+
+  return auth.isAuthenticated ? (
     <div>
       {" "}
       <StripeCheckOut
@@ -41,10 +53,17 @@ const StripeComponent = ({
         // shippingAddress
         amount={total * 100}
         name={"Your shopping cart"}
+        panelLabel={"pay"}
       >
         <button className="btn btn-outline-primary">PAY WITH CARD</button>
       </StripeCheckOut>
     </div>
+  ) : (
+    <Link to={"/login"}>
+      <button className="btn btn-outline-primary" onClick={displayAlert}>
+        PAY WITH CARD
+      </button>
+    </Link>
   );
 };
 
@@ -52,4 +71,12 @@ StripeComponent.propTypes = {
   processPayment: PropTypes.func.isRequired,
 };
 
-export default connect(null, { processPayment, createOrder })(StripeComponent);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {
+  processPayment,
+  createOrder,
+  removeAllLineItems,
+})(StripeComponent);

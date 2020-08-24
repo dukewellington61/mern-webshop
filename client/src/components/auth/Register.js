@@ -6,6 +6,7 @@ import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { createUserCart } from "../../actions/cart";
 import { updateLineItems } from "../../actions/lineItem";
+import { useHistory } from "react-router-dom";
 
 const Register = ({
   setAlert,
@@ -29,6 +30,8 @@ const Register = ({
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  let history = useHistory();
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
@@ -37,14 +40,19 @@ const Register = ({
       await register({ firstname, lastname, email, password });
       const user_cart = await createUserCart();
 
-      updateLineItems({
+      const arr = await updateLineItems({
         user_cart,
         browser_cart,
       });
+
+      // after log in redirect to cart if cart has line items
+      // otherwhise redirect to landing page
+      arr.data.length > 0 ? history.push("/cart") : history.push("/");
     }
   };
 
-  // Redirect if registered
+  // if some nasty user enters .../login in url --> redirect to landing page
+  // otherwhise the register form could be displayed to a logged in user
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }

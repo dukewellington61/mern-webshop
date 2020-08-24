@@ -79,6 +79,8 @@ export const updateLineItems = (formData) => async (dispatch) => {
       type: CREATE_LINEITEM,
       payload: res.data,
     });
+
+    return res;
   } catch (err) {
     console.log(err);
 
@@ -92,7 +94,7 @@ export const updateLineItems = (formData) => async (dispatch) => {
   }
 };
 
-// Remove line-item from cart
+// Remove individual line-item from cart
 export const removeLineItem = (formData) => async (dispatch) => {
   const config = {
     headers: {
@@ -101,8 +103,6 @@ export const removeLineItem = (formData) => async (dispatch) => {
   };
 
   try {
-    console.log("fn call");
-
     const res = await axios.put("/api/line-items/", formData, config);
 
     dispatch({
@@ -113,6 +113,35 @@ export const removeLineItem = (formData) => async (dispatch) => {
     dispatch(
       setAlert("Product has been removed from your shopping cart", "success")
     );
+  } catch (err) {
+    console.log(err.response);
+    dispatch({
+      type: LINEITEM_ERROR,
+      payload: {
+        msg: err.response.statusTest,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Remove all line-items from cart
+export const removeAllLineItems = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  console.log(formData);
+
+  try {
+    const res = await axios.delete("/api/line-items/", formData, config);
+
+    dispatch({
+      type: REMOVE_LINEITEM,
+      payload: res.data,
+    });
   } catch (err) {
     console.log(err.response);
     dispatch({

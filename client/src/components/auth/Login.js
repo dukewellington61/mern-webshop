@@ -5,6 +5,7 @@ import { login } from "../../actions/auth";
 import { updateLineItems } from "../../actions/lineItem";
 import { getCartByUserId } from "../../actions/cart";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
 const Login = ({
   login,
@@ -23,20 +24,28 @@ const Login = ({
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // browser_cart is the cart if no user is logged in
   const browser_cart = cart;
+
+  let history = useHistory();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     login(email, password);
     const user_cart = await getCartByUserId();
 
-    updateLineItems({
+    const arr = await updateLineItems({
       user_cart,
       browser_cart,
     });
+
+    // after log in redirect to cart if cart has line items
+    // otherwhise redirect to landing page
+    arr.data.length > 0 ? history.push("/cart") : history.push("/");
   };
 
-  // Redirect if logged in
+  // if some nasty user enters .../login in url --> redirect to landing page
+  // otherwhise the login form could be displayed to a logged in user
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
@@ -87,9 +96,6 @@ Login.propTypes = {
   cart: PropTypes.object.isRequired,
 };
 
-// adds isAuthenticated to props (which already has the login function)
-// isAuthenticated is then used up above in const Login = ({ login, isAuthenticated }) for the redirect
-// after login
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   cart: state.cart,

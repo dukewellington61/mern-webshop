@@ -5,7 +5,7 @@ const auth = require("../../middleware/auth");
 const Cart = require("../../models/Cart");
 
 // @route   POST api/line-items
-// @desc    Add line item to current cart
+// @desc    Change quantity of individual line_item in cart
 // @access  Public
 router.post("/", async (req, res) => {
   try {
@@ -120,6 +120,26 @@ router.put("/", async (req, res) => {
     cart.line_items = cart.line_items.filter(
       (lineItem) => lineItem._id.toString() !== req.body.lineItem_id
     );
+
+    await cart.save();
+
+    res.json(cart.line_items);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route   Put api/line-items
+// @desc    Remove all line items from current cart
+// @access  Public
+router.delete("/", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const cart = await Cart.findById(req.body.cart_id);
+
+    cart.line_items = [];
 
     await cart.save();
 

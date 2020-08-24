@@ -371,6 +371,8 @@ orders: you have implemented some of the functionality already
 
 next up:
 
+ensure that not loged in user can't pay cart
+
 make sure @components/order/Order.js on browser refresh --> latest order by that user is pulled into state 
 so it is correctly displayed --> because as it stands if the user happenes to refresh the browser while said component is displayed
 the app throws an error 
