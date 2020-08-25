@@ -1,11 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import InvoiceItem from "./InvoiceItem";
 import InvoiceGrandTotal from "./InvoiceGrandTotal";
+import { getLatestOrder } from "../../actions/order";
 
-const Order = ({ order }) => {
+const Order = ({ order, getLatestOrder }) => {
+  useEffect(() => {
+    getLatestOrder();
+  }, []);
+
   return order.loading ? (
     <Spinner />
   ) : (
@@ -36,4 +41,4 @@ const mapStateToProps = (state) => ({
   order: state.order.order,
 });
 
-export default connect(mapStateToProps, null)(Order);
+export default connect(mapStateToProps, { getLatestOrder })(Order);

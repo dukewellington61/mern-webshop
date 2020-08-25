@@ -133,10 +133,8 @@ export const removeAllLineItems = (formData) => async (dispatch) => {
     },
   };
 
-  console.log(formData);
-
   try {
-    const res = await axios.delete("/api/line-items/", formData, config);
+    const res = await axios.put("/api/line-items/empty-cart", formData, config);
 
     dispatch({
       type: REMOVE_LINEITEM,

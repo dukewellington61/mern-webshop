@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CREATE_ORDER, ORDER_ERROR } from "./types";
+import { CREATE_ORDER, GET_ORDER, ORDER_ERROR } from "./types";
 
 // Create order
 export const createOrder = (formData) => async (dispatch) => {
@@ -16,6 +16,28 @@ export const createOrder = (formData) => async (dispatch) => {
       type: CREATE_ORDER,
       payload: res.data,
     });
+  } catch (err) {
+    dispatch({
+      type: ORDER_ERROR,
+      payload: {
+        msg: err.response.statusTest,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Get latest order
+export const getLatestOrder = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/orders/latest");
+
+    dispatch({
+      type: GET_ORDER,
+      payload: res.data,
+    });
+
+    return res.data;
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,

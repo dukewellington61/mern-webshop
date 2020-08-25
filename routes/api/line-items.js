@@ -133,10 +133,8 @@ router.put("/", async (req, res) => {
 // @route   Put api/line-items
 // @desc    Remove all line items from current cart
 // @access  Public
-router.delete("/", async (req, res) => {
+router.put("/empty-cart", async (req, res) => {
   try {
-    console.log(req.body);
-
     const cart = await Cart.findById(req.body.cart_id);
 
     cart.line_items = [];

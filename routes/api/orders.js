@@ -26,4 +26,20 @@ router.post("/", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+// @route   Get api/latest-order/
+// @desc    Create order
+// @access  Private
+router.get("/latest", auth, async (req, res) => {
+  console.log("backend");
+  try {
+    const latestOrder = await Order.find().sort({ date: -1 }).limit(1);
+
+    res.json(latestOrder[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
