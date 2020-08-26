@@ -9,9 +9,11 @@ import { getLatestOrder } from "../../actions/order";
 const Order = ({ order, getLatestOrder }) => {
   // if Order component is rendered in @components/order/Orders.js --> props.order has value in state
   // else if Order component is rendered immediately after order is created fn getLatestOrder() pulls
-  // order object from sessionStorage because props.order === {} --> hence: order === null
+  // order object from sessionStorage because props.order === {} --> hence: Object.keys(order).length === 0
   let orderObject = {};
-  order === null ? (orderObject = order) : (orderObject = getLatestOrder());
+  Object.keys(order).length === 0
+    ? (orderObject = getLatestOrder())
+    : (orderObject = order);
 
   return order.loading ? (
     <Spinner />
