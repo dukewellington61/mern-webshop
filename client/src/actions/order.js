@@ -16,6 +16,9 @@ export const createOrder = (formData) => async (dispatch) => {
       type: CREATE_ORDER,
       payload: res.data,
     });
+
+    const serializedResponse = JSON.stringify(res.data);
+    localStorage.setItem("order", serializedResponse);
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,
@@ -28,16 +31,11 @@ export const createOrder = (formData) => async (dispatch) => {
 };
 
 // Get latest order
-export const getLatestOrder = () => async (dispatch) => {
+export const getLatestOrder = () => (dispatch) => {
   try {
-    const res = await axios.get("/api/orders/latest");
+    const serializedResponse = localStorage.getItem("order");
 
-    dispatch({
-      type: GET_ORDER,
-      payload: res.data,
-    });
-
-    return res.data;
+    return JSON.parse(serializedResponse);
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,

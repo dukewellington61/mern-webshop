@@ -7,9 +7,9 @@ import InvoiceGrandTotal from "./InvoiceGrandTotal";
 import { getLatestOrder } from "../../actions/order";
 
 const Order = ({ order, getLatestOrder }) => {
-  useEffect(() => {
-    getLatestOrder();
-  }, []);
+  const latestOrder = getLatestOrder();
+
+  console.log(latestOrder);
 
   return order.loading ? (
     <Spinner />
@@ -17,14 +17,14 @@ const Order = ({ order, getLatestOrder }) => {
     <Fragment>
       <div id="cart_container" className="container">
         <div>
-          {order.invoice_items.map((invoice_item) => (
+          {latestOrder.invoice_items.map((invoice_item) => (
             <InvoiceItem invoice_item={invoice_item} />
           ))}
         </div>
         <div id="#grand_total">
           <div>
-            {order.invoice_items.length > 0 && (
-              <InvoiceGrandTotal order={order} />
+            {latestOrder.invoice_items.length > 0 && (
+              <InvoiceGrandTotal order={latestOrder} />
             )}
           </div>
         </div>
