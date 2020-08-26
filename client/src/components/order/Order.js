@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
@@ -7,9 +7,11 @@ import InvoiceGrandTotal from "./InvoiceGrandTotal";
 import { getLatestOrder } from "../../actions/order";
 
 const Order = ({ order, getLatestOrder }) => {
-  const latestOrder = getLatestOrder();
-
-  console.log(latestOrder);
+  // if Order component is rendered in @components/order/Orders.js --> props.order has value in state
+  // else if Order component is rendered immediately after order is created fn getLatestOrder() pulls
+  // order object from sessionStorage because props.order === {} --> hence: order === null
+  let orderObject = {};
+  order === null ? (orderObject = order) : (orderObject = getLatestOrder());
 
   return order.loading ? (
     <Spinner />
@@ -17,14 +19,14 @@ const Order = ({ order, getLatestOrder }) => {
     <Fragment>
       <div id="cart_container" className="container">
         <div>
-          {latestOrder.invoice_items.map((invoice_item) => (
+          {orderObject.invoice_items.map((invoice_item) => (
             <InvoiceItem invoice_item={invoice_item} />
           ))}
         </div>
         <div id="#grand_total">
           <div>
-            {latestOrder.invoice_items.length > 0 && (
-              <InvoiceGrandTotal order={latestOrder} />
+            {orderObject.invoice_items.length > 0 && (
+              <InvoiceGrandTotal order={orderObject} />
             )}
           </div>
         </div>

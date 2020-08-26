@@ -18,7 +18,7 @@ export const createOrder = (formData) => async (dispatch) => {
     });
 
     const serializedResponse = JSON.stringify(res.data);
-    localStorage.setItem("order", serializedResponse);
+    sessionStorage.setItem("order", serializedResponse);
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,
@@ -33,7 +33,7 @@ export const createOrder = (formData) => async (dispatch) => {
 // Get latest order
 export const getLatestOrder = () => (dispatch) => {
   try {
-    const serializedResponse = localStorage.getItem("order");
+    const serializedResponse = sessionStorage.getItem("order");
 
     return JSON.parse(serializedResponse);
   } catch (err) {
