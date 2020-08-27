@@ -1,4 +1,9 @@
-import { CREATE_ORDER, GET_ORDER, ORDER_ERROR } from "../actions/types";
+import {
+  CREATE_ORDER,
+  GET_ORDER,
+  GET_ORDERS,
+  ORDER_ERROR,
+} from "../actions/types";
 
 const initialState = {
   order: {},
@@ -21,6 +26,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         order: payload,
+        loading: false,
+      };
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: payload,
         loading: false,
       };
     case ORDER_ERROR:
