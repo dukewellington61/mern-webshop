@@ -155,11 +155,16 @@ body {
 
 /* @components/order/OrderHeaders.js */
 #order_headers {
-  /* display: flex; */
+  cursor: pointer;
   margin-top: 1rem;
   border-style: solid;
   border-width: 1px;
   border-color: black;
+}
+
+/* @components/order/Orders.js */
+#orders_header_container {
+  margin-top: 8rem;
 }
 
 /* @components/products/Products.js */

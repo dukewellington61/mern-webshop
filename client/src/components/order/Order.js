@@ -41,8 +41,4 @@ Order.propTypes = {
   order: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  order: state.order.order,
-});
-
-export default connect(mapStateToProps, { getLatestOrder })(Order);
+export default connect(null, { getLatestOrder })(Order);

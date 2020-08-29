@@ -5,7 +5,7 @@ const auth = require("../../middleware/auth");
 const Cart = require("../../models/Cart");
 
 // @route   POST api/line-items
-// @desc    Change quantity of individual line_item in cart
+// @desc    Add line item to cart or change quantity of line_item
 // @access  Public
 router.post("/", async (req, res) => {
   try {

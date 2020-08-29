@@ -5,19 +5,28 @@ import { getAllOrdersByUser } from "../../actions/order";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 
-const Orders = ({ order, orders, getAllOrdersByUser }) => {
+const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
   useEffect(() => {
     getAllOrdersByUser();
-    console.log(orders);
   }, []);
+
   return order.loading ? (
     <Spinner />
   ) : (
     <Fragment>
       <div id="orders_header_container" className="container">
-        <div className="row">
+        <div>customer number: {user._id}</div>
+        <div class="row">
+          <b class="col">order id</b>
+          <b class="col">date</b>
+          <b class="col">total</b>
+          <b class="col">status</b>
+        </div>
+        <div>
           {orders.map((order) => (
-            <OrderHeaders key={order._id} order={order} />
+            <div>
+              <OrderHeaders key={order._id} order={order} />
+            </div>
           ))}
         </div>
       </div>
@@ -25,11 +34,16 @@ const Orders = ({ order, orders, getAllOrdersByUser }) => {
   );
 };
 
-Orders.propTypes = {};
+Orders.propTypes = {
+  order: PropTypes.object.isRequired,
+  orders: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   order: state.order,
   orders: state.order.orders,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { getAllOrdersByUser })(Orders);

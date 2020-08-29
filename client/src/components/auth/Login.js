@@ -41,7 +41,7 @@ const Login = ({
 
     // after log in redirect to cart if cart has line items
     // otherwhise redirect to landing page
-    arr.data.length > 0 ? history.push("/cart") : history.push("/");
+    arr && arr.data.length > 0 ? history.push("/cart") : history.push("/");
   };
 
   // if some nasty user enters .../login in url --> redirect to landing page
