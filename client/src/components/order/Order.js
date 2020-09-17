@@ -11,11 +11,11 @@ const Order = ({ order, getLatestOrder }) => {
   // else if Order component is rendered immediately after order is created fn getLatestOrder() pulls
   // order object from sessionStorage because props.order === {} --> hence: Object.keys(order).length === 0
   let orderObject = {};
-  Object.keys(order).length === 0
+  order === undefined
     ? (orderObject = getLatestOrder())
     : (orderObject = order);
 
-  return order.loading ? (
+  return orderObject.loading ? (
     <Spinner />
   ) : (
     <Fragment>

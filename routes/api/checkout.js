@@ -3,9 +3,10 @@ const cors = require("cors");
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const auth = require("../../middleware/auth");
+const keys = require("../../config/keys");
 
 require("dotenv").config();
-const stripe = require("stripe")(process.env.NODE_APP_KEY);
+const stripe = require("stripe")(keys.stripeSecretKey);
 
 router.use(cors());
 

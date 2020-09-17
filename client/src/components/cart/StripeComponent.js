@@ -47,7 +47,7 @@ const StripeComponent = ({
       {" "}
       <StripeCheckOut
         token={handleToken}
-        stripeKey={process.env.REACT_APP_KEY}
+        stripeKey={process.env.REACT_APP_STRIPE_KEY}
         email={user && user.email}
         // billingAddress
         // shippingAddress
