@@ -157,14 +157,23 @@ body {
 #order_headers {
   cursor: pointer;
   margin-top: 1rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
+}
+
+#order_headers:hover {
+  background-color: #b3b3b3;
+}
+
+.not_render_orders {
+  display: none !important;
 }
 
 /* @components/order/Orders.js */
 #orders_header_container {
   margin-top: 8rem;
+}
+
+#orders_container {
+  background-color: grey;
 }
 
 /* @components/products/Products.js */

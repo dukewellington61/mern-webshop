@@ -15,16 +15,16 @@ const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
   ) : (
     <Fragment>
       <div id="orders_header_container" className="container">
-        <div>customer number: {user._id}</div>
-        <div class="row">
-          <b class="col">order id</b>
-          <b class="col">date</b>
-          <b class="col">total</b>
-          <b class="col">status</b>
+        <div>customer number: {user && user._id}</div>
+        <div className="row">
+          <b className="col">order id</b>
+          <b className="col">date</b>
+          <b className="col">total</b>
+          <b className="col">status</b>
         </div>
         <div>
           {orders.map((order) => (
-            <div>
+            <div id="orders_container">
               <OrderHeaders key={order._id} order={order} />
             </div>
           ))}
