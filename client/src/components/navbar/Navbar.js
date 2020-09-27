@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RegisterLogInLogOutLinks from "../auth/RegisterLogInLogOutLinks";
 import CartIcon from "./CartIcon";
+import AccountIcon from "./AccountIcon";
 
 const Navbar = () => {
   return (
@@ -36,18 +36,18 @@ const Navbar = () => {
               Products
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link active" to="/orders">
               Orders
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <a className="nav-link" href="./contact.html">
               Contact
             </a>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
+        {/* <form className="form-inline my-2 my-lg-0">
           <input
             className="form-control mr-sm-2"
             type="search"
@@ -60,8 +60,8 @@ const Navbar = () => {
           >
             Search
           </button>
-        </form>
-        <RegisterLogInLogOutLinks />
+        </form> */}
+        <AccountIcon />
       </div>
     </nav>
   );

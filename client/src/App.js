@@ -1,21 +1,22 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Landing from "./components/layout/Landing";
 
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 
-import Products from "./components/products/Products";
 import Product from "./components/product/Product";
+import Products from "./components/products/Products";
 
 import Cart from "./components/cart/Cart";
 
 import Alert from "./components/layout/Alert";
 
 import Order from "./components/order/Order";
-
 import Orders from "./components/order/Orders";
+
+import RatingSummary from "./components/rating/RatingSummary";
 
 // Redux
 import { Provider } from "react-redux";
@@ -56,6 +57,7 @@ const App = () => {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/order" component={Order} />
             <Route exact path="/orders" component={Orders} />
+            <Route exact path="/reviews" component={RatingSummary} />
           </Switch>
         </Fragment>
       </Router>

@@ -111,16 +111,28 @@ router.post(
         return res.status(401).json({ msg: "Product not found" });
       }
 
-      const review = {
+      // stores review object in products collection
+      const reviewProduct = {
         user_id: user._id,
         user_name: user.firstname,
         review: req.body.review,
         rating: req.body.rating,
       };
 
-      product.reviews.unshift(review);
+      product.reviews.unshift(reviewProduct);
 
       await product.save();
+
+      // stores review object in users collection
+      const reviewUser = {
+        review: req.body.review,
+        rating: req.body.rating,
+        image_url: product.image_url,
+      };
+
+      user.reviews.unshift(reviewUser);
+
+      await user.save();
 
       res.json(product);
     } catch (err) {

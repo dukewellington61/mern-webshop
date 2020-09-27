@@ -25,6 +25,11 @@ body {
   margin: 0;
 }
 
+/* @components/auth/Login.js */
+#log_in {
+  margin-top: 8rem;
+}
+
 /* @components/layout/Alert.js */
 .alert {
   /* padding: 10rem; */
@@ -48,12 +53,7 @@ body {
   color: #fff;
 }
 
-/* @components/auth/Login.js */
-#log_in {
-  margin-top: 8rem;
-}
-
-/* @components/layout/Navbar.js */
+/* @components/navbar/Navbar.js */
 #shopping_cart_link {
   color: white;
 }
@@ -79,6 +79,32 @@ body {
   font-size: 12px;
   line-height: 12px;
   transform: translate(6px, -16px);
+}
+
+#account_link {
+  color: white;
+}
+
+#account_icon {
+  color: white;
+  /* position: absolute; */
+  /* left: 45%; */
+}
+
+/* @components/navbar/AccountIcon.js */
+#menu {
+  display: none;
+  right: 1rem;
+}
+
+#menu:hover {
+  position: absolute;
+  display: block;
+}
+
+#account_icon:hover ~ #menu {
+  position: absolute;
+  display: block;
 }
 
 /* @components/cart/Cart.js */
@@ -255,18 +281,18 @@ body {
   margin-top: 1.5rem;
 }
 
-/* @components/product/Ratings.js */
+/* @components/rating/Ratings.js */
 #review_card {
   width: 100%;
   margin-top: 1rem;
 }
 
-/* @components/product/RatingForm.js */
+/* @components/rating/RatingForm.js */
 input[type="radio"] {
   display: none;
 }
 
-/* @components/product/RatingStatistics.js */
+/* @components/rating/RatingStatistics.js */
 .star {
   cursor: pointer;
   transition: color 200ms;
@@ -347,4 +373,9 @@ input[type="radio"] {
   .right {
     display: none;
   }
+}
+
+/* @components/rating/RatingSummary.js */
+#rating_summary_container {
+  margin-top: 8rem;
 }

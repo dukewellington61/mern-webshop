@@ -27,6 +27,24 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  reviews: [
+    {
+      review: {
+        type: String,
+      },
+      rating: {
+        type: Number,
+      },
+      image_url: {
+        type: String,
+        required: true,
+      },
+      created_at: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 module.exports = User = mongoose.model("user", UserSchema);

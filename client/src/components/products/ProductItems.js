@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductImages from "./ProductImages";
-import StarRating from "../product/StarRating";
+import StarRating from "../rating/StarRating";
 import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
 

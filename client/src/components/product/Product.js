@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
@@ -6,17 +7,16 @@ import ProductImage from "./ProductImage";
 import ProductFeatures from "./ProductFeatures";
 import RevDescLinks from "./RevDescLinks";
 import Description from "./Description";
-import RateProductButton from "./RateProductButton";
+import RateProductButton from "../rating/RateProductButton";
 import { getProduct } from "../../actions/product";
-import RatingForm from "./RatingForm";
-import RatingStatistics from "./RatingStatistics";
+import RatingForm from "../rating/RatingForm";
+import RatingStatistics from "../rating/RatingStatistics";
 import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
-import StarRating from "./StarRating";
-import UserRatings from "./UserRatings";
+import StarRating from "../rating/StarRating";
+import UserRatings from "../rating/UserRatings";
 import AddToShoppingCartBtn from "./AddToShoppingCartBtn";
-import ReturnButton from "./ReturnButton";
-import { Link } from "react-router-dom";
+import ReturnButton from "../rating/ReturnButton";
 
 const Product = ({
   getProduct,

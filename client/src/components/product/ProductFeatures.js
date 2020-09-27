@@ -1,5 +1,5 @@
 import React from "react";
-import StarRating from "./StarRating";
+import StarRating from "../rating/StarRating";
 
 import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
