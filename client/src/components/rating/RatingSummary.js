@@ -15,8 +15,8 @@ const RatingSummary = ({ user }) => {
   ) : (
     <div id="rating_summary_container" className="container">
       {user.reviews.map((review) => {
-        // reusing @components/cart/LineItemImage.js the props given to this component have to be set in a way the component can work with them
-        // hence the following three lines of spaghetti code
+        // reusing @components/cart/LineItemImage.js the props passed to this component have to be set in a way the component can work with them
+        // hence the following three lines of spaghetti code...
         const line_item = {};
         line_item.image_url = review.product_image_url;
         review.user_name = user.firstname;

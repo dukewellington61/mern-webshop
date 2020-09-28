@@ -7,6 +7,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
+  CREATE_REVIEW,
+  REVIEW_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -49,7 +51,16 @@ export default function (state = initialState, action) {
         loading: false,
         user: null,
       };
-
+    case CREATE_REVIEW:
+      return {
+        ...state,
+        user: payload,
+      };
+    case REVIEW_ERROR:
+      return {
+        ...state,
+        error: payload,
+      };
     default:
       return state;
   }
