@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import React from "react";
 import Menu from "./Menu";
 
-const AccountIcon = (props) => {
+const AccountIcon = () => {
   return (
     <div>
       <div id="account_icon">
@@ -15,7 +13,5 @@ const AccountIcon = (props) => {
     </div>
   );
 };
-
-AccountIcon.propTypes = {};
 
 export default AccountIcon;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LineItemImages from "./LineItemImages";
+import LineItemImage from "./LineItemImage";
 import QuantityField from "./QuantityField";
 import RemoveLineItem from "./RemoveLineItem";
 import SubTotal from "./SubTotal";
@@ -10,7 +10,7 @@ const LineItem = ({ line_item, cart }) => {
     <div id="line_item_row" className="row">
       <div className="col-xl">
         <Link to={`/products/${line_item.product_id}`}>
-          <LineItemImages line_item={line_item} />
+          <LineItemImage line_item={line_item} />
         </Link>
       </div>
       <div className="col-xl">

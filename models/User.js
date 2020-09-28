@@ -29,15 +29,23 @@ const UserSchema = new Schema({
   },
   reviews: [
     {
+      product_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product",
+      },
+      product_name: {
+        type: String,
+        requires: true,
+      },
+      product_image_url: {
+        type: String,
+        required: true,
+      },
       review: {
         type: String,
       },
       rating: {
         type: Number,
-      },
-      image_url: {
-        type: String,
-        required: true,
       },
       created_at: {
         type: Date,

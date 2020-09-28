@@ -1,5 +1,5 @@
 import React from "react";
-import LineItemImages from "../cart/LineItemImages";
+import LineItemImage from "../cart/LineItemImage";
 import InvoiceSubtotal from "./InvoiceSubtotal";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const InvoiceItem = ({ invoice_item }) => {
     <div id="line_item_row" className="row">
       <div className="col-xl">
         <Link to={`/products/${invoice_item.product_id}`}>
-          <LineItemImages line_item={invoice_item} />
+          <LineItemImage line_item={invoice_item} />
         </Link>
       </div>
       <div className="col-xl">

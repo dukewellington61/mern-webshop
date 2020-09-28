@@ -111,6 +111,7 @@ router.post(
         return res.status(401).json({ msg: "Product not found" });
       }
 
+      // Denormalization
       // stores review object in products collection
       const reviewProduct = {
         user_id: user._id,
@@ -125,9 +126,11 @@ router.post(
 
       // stores review object in users collection
       const reviewUser = {
+        product_id: product._id,
+        product_name: product.name,
+        product_image_url: product.image_url,
         review: req.body.review,
         rating: req.body.rating,
-        image_url: product.image_url,
       };
 
       user.reviews.unshift(reviewUser);

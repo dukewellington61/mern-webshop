@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductImages from "./ProductImages";
+import ProductImage from "./ProductImage";
 import StarRating from "../rating/StarRating";
 import { totalNumberOfRatings } from "../../utils/ratingStatistics";
 import { averageStars } from "../../utils/ratingStatistics";
 
-const ProductItems = ({ product }) => (
+const ProductItem = ({ product }) => (
   <div id="products" className="col-sm-12 col-md-6 col-lg-4 col-xl-4">
     <Link to={`/products/${product._id}`}>
-      <ProductImages product={product} />
+      <ProductImage product={product} />
     </Link>
     <div>
       {" "}
@@ -23,4 +23,4 @@ const ProductItems = ({ product }) => (
   </div>
 );
 
-export default ProductItems;
+export default ProductItem;

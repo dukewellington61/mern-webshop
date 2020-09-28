@@ -15,7 +15,7 @@ const Menu = ({ isAuthenticated, logout }) =>
       <Link to="/orders">Orders</Link>
       <Link to="/reviews">Reviews</Link>
       <Link onClick={logout} to="/">
-        <i class="fas fa-sign-out-alt"></i> Logout
+        <i className="fas fa-sign-out-alt"></i> Logout
       </Link>
     </div>
   );
