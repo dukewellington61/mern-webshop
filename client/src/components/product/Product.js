@@ -30,13 +30,17 @@ const Product = ({
 
   const [renderRatings, setRenderRatings] = useState(false);
 
+  const switchRatingToDescription = (val) =>
+    val === "rating" ? setRenderRatings(true) : setRenderRatings(false);
+
   const [renderRatingForm, setRenderRatingForm] = useState(false);
 
   const toggleRatingForm = (render) =>
     render ? setRenderRatingForm(true) : setRenderRatingForm(false);
 
-  const switchRatingToDescription = (val) =>
-    val === "rating" ? setRenderRatings(true) : setRenderRatings(false);
+  const [renderRateProductButton, setRenderRateProductButton] = useState(true);
+
+  const toggleRateProductButton = () => setRenderRateProductButton(false);
 
   const checkIfStillToRate = () =>
     product.reviews.filter((review) => review.user_id === user._id).length ===
@@ -113,12 +117,13 @@ const Product = ({
 
               <div
                 id="rate_product_button"
-                style={{ display: renderRatingForm ? "none" : "block" }}
+                style={{ display: renderRateProductButton ? "block" : "none" }}
               >
                 {isAuthenticated && checkIfStillToRate() && (
                   <RateProductButton
                     key="rate_product_button"
                     toggleRatingForm={toggleRatingForm}
+                    toggleRateProductButton={toggleRateProductButton}
                   />
                 )}
               </div>
