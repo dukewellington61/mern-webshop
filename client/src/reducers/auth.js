@@ -7,7 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
-  CREATE_REVIEW,
+  CREATE_REVIEW_USER,
   REVIEW_ERROR,
 } from "../actions/types";
 
@@ -51,7 +51,7 @@ export default function (state = initialState, action) {
         loading: false,
         user: null,
       };
-    case CREATE_REVIEW:
+    case CREATE_REVIEW_USER:
       return {
         ...state,
         user: payload,

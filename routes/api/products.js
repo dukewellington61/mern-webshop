@@ -137,7 +137,12 @@ router.post(
 
       await user.save();
 
-      res.json(product);
+      // creates an object which has user object and product object as attributes so they can be sent to the front end
+      const obj = {};
+      obj.product = product;
+      obj.user = user;
+
+      res.json(obj);
     } catch (err) {
       if (err.kind === "ObjectId") {
         return res.status(404).json({ msg: "Product not found" });

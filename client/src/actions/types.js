@@ -13,7 +13,9 @@ export const ACCOUNT_DELETED = "ACCOUNT_DELETED";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const PRODUCT_ERROR = "PRODUCT_ERROR";
+// both user and product model have array reviews (denormalization) --> redux state has user and product which have to be updated with the correct arrays
 export const CREATE_REVIEW = "CREATE_REVIEW";
+export const CREATE_REVIEW_USER = "CREATE_REVIEW_USER";
 export const REVIEW_ERROR = "REVIEW_ERROR";
 
 export const GET_CART = "GET_CART";

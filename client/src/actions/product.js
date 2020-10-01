@@ -5,6 +5,7 @@ import {
   GET_PRODUCT,
   PRODUCT_ERROR,
   CREATE_REVIEW,
+  CREATE_REVIEW_USER,
   REVIEW_ERROR,
 } from "./types";
 
@@ -63,9 +64,15 @@ export const createReview = (formData, id) => async (dispatch) => {
       config
     );
 
+    // updates state.product.product.reviews
     dispatch({
       type: CREATE_REVIEW,
-      payload: res.data,
+      payload: res.data.product,
+    });
+    // updates state.auth.user.reviews
+    dispatch({
+      type: CREATE_REVIEW_USER,
+      payload: res.data.user,
     });
   } catch (err) {
     console.log(err);
