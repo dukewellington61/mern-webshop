@@ -22,7 +22,7 @@ import RatingSummary from "./components/rating/RatingSummary";
 import { Provider } from "react-redux";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
-import { loadUser } from "./actions/auth";
+import { loadUser } from "./actions/user";
 import { loadCart } from "./actions/cart";
 
 import "./App.css";

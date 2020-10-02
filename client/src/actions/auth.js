@@ -3,38 +3,15 @@ import { setAlert } from "./alert";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
 } from "./types";
-import setAuthToken from "../utils/setAuthToken";
+import { loadUser } from "./user";
 import { loadCart } from "./cart";
 import store from "../store";
 
-export const loadUser = () => async (dispatch) => {
-  // if there is a token in local storage it is beeing set to the header of the axios - request
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-
-  try {
-    const res = await axios.get("/api/auth");
-
-    dispatch({
-      type: USER_LOADED,
-      payload: res.data,
-    });
-  } catch (err) {
-    /* if there is no token in localStorage AUTH_ERROR will run and everything gets cleared out */
-    dispatch({
-      type: AUTH_ERROR,
-    });
-  }
-};
-
-// Register User
+// Register user
 export const register = ({ firstname, lastname, email, password }) => async (
   dispatch
 ) => {
@@ -47,7 +24,7 @@ export const register = ({ firstname, lastname, email, password }) => async (
   const body = JSON.stringify({ firstname, lastname, email, password });
 
   try {
-    const res = await axios.post("/api/users", body, config);
+    const res = await axios.post("/api/auth/signup", body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -77,7 +54,7 @@ export const register = ({ firstname, lastname, email, password }) => async (
   }
 };
 
-// Login User
+// Login user
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -88,7 +65,9 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post("/api/auth", body, config);
+    const res = await axios.post("/api/auth/login", body, config);
+
+    console.log(res);
 
     dispatch({
       type: LOGIN_SUCCESS,

@@ -41,11 +41,11 @@ const Navbar = () => {
               Orders
             </Link>
           </li> */}
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link" href="./contact.html">
               Contact
             </a>
-          </li>
+          </li> */}
         </ul>
         {/* <form className="form-inline my-2 my-lg-0">
           <input

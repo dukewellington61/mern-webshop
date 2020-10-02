@@ -5,7 +5,7 @@ const AccountIcon = () => {
   return (
     <div>
       <div id="account_icon">
-        <i className="far fa-user-circle"></i>
+        <i className="fa fa-user"></i>
       </div>
       <div id="menu">
         <Menu />

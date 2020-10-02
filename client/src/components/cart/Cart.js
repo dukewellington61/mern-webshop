@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import LineItems from "./LineItem";
+import LineItem from "./LineItem";
 import GrantTotal from "./GrantTotal";
 import { getProducts } from "../../actions/product";
 import Spinner from "../layout/Spinner";
@@ -14,7 +14,7 @@ const Cart = ({ cart, user }) => {
       <div id="cart_container" className="container">
         <div>
           {cart.line_items.map((line_item) => (
-            <LineItems key={line_item._id} line_item={line_item} cart={cart} />
+            <LineItem key={line_item._id} line_item={line_item} cart={cart} />
           ))}
         </div>
         <div id="#grand_total">

@@ -5,7 +5,7 @@ import StarRating from "./StarRating";
 const RatingsItem = ({ review: { user_name, review, rating, created_at } }) => {
   console.log(review);
   return (
-    <div className="col-xl-6 col-lg-12">
+    <div id="rating_item" className="col-xl-6 col-lg-12">
       <div id="review_card" className="card">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">

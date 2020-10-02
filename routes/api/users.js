@@ -1,26 +1,35 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const config = require("config");
 const { check, validationResult } = require("express-validator");
+const auth = require("../../middleware/auth");
 
 const User = require("../../models/User");
-const Cart = require("../../models/Cart");
 
-// @route   POST api/users
-// @desc    Register user and update current shopping cart with user_id
+// @route   GET api/auth
+// @desc    Get logged in user
+// @access  Private
+router.get("/", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUT api/user
+// @desc    UPDATE USER's FIRSTNAME, LASTNAME, EMAIL
 // @access  Public
-router.post(
+router.put(
   "/",
   [
-    check("firstname", "first name is required").not().isEmpty(),
-    check("lastname", "last name is required").not().isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
-    check(
-      "password",
-      "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 }),
+    auth,
+    [
+      check("firstname", "first name is required").not().isEmpty(),
+      check("lastname", "last name is required").not().isEmpty(),
+      check("email", "Please include a valid email").isEmail(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -28,58 +37,24 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { firstname, lastname, email, password, cart_id } = req.body;
+    const { firstname, lastname, email } = req.body;
 
     try {
-      // See if the user exists
-      let user = await User.findOne({
-        email,
-      });
+      console.log(req.user.id);
+      const user = await User.findById(req.user.id);
 
-      if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User already exists " }] });
+      if (!user) {
+        return res.status(401).json({ msg: "User not found" });
       }
 
-      // Create new user
-      user = new User({
-        firstname,
-        lastname,
-        email,
-        password,
-      });
-
-      // Encrypt password
-      const salt = await bcrypt.genSalt(10);
-
-      user.password = await bcrypt.hash(password, salt);
+      // Update User Data
+      user.firstname = firstname;
+      user.lastname = lastname;
+      user.email = email;
 
       await user.save();
 
-      // Update current shopping cart with user id
-      cart = await Cart.findOneAndUpdate(
-        { _id: cart_id },
-        { user: user.id },
-        { new: true }
-      );
-
-      // Return json web token
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(
-        payload,
-        config.get("jwtSecret"),
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");

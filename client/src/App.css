@@ -121,6 +121,7 @@ body {
 /* @components/cart/LineItem.js */
 #line_item_row {
   position: relative;
+  margin-top: 2rem;
 }
 
 #delete_line_icon {
@@ -378,4 +379,13 @@ input[type="radio"] {
 /* @components/rating/RatingSummary.js */
 #rating_summary_container {
   margin-top: 8rem;
+}
+
+#summary_item_row {
+  margin-top: 2rem;
+}
+
+/* @components/rating/RatingsItem.js */
+#rating_item {
+  max-width: 100%;
 }
