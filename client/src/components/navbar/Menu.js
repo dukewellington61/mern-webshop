@@ -14,6 +14,7 @@ const Menu = ({ isAuthenticated, logout }) =>
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Link to="/orders">Orders</Link>
       <Link to="/reviews">Reviews</Link>
+      <Link to="/update">Account</Link>
       <Link onClick={logout} to="/">
         <i className="fas fa-sign-out-alt"></i> Logout
       </Link>

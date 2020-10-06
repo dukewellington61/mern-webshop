@@ -1,5 +1,10 @@
 import axios from "axios";
-import { USER_LOADED, AUTH_ERROR } from "./types";
+import {
+  USER_LOADED,
+  AUTH_ERROR,
+  UPDATE_USER,
+  UPDATE_USER_ERROR,
+} from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
 // Load user
@@ -26,6 +31,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Update user
 export const updateUser = (formData) => async (dispatch) => {
+  console.log("updateUser");
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -35,16 +41,13 @@ export const updateUser = (formData) => async (dispatch) => {
   try {
     const res = await axios.put("/api/users", formData, config);
 
-    // Hello!! continue here!
-
     dispatch({
-      type: USER_LOADED,
+      type: UPDATE_USER,
       payload: res.data,
     });
   } catch (err) {
-    /* if there is no token in localStorage AUTH_ERROR will run and everything gets cleared out */
     dispatch({
-      type: AUTH_ERROR,
+      type: UPDATE_USER_ERROR,
     });
   }
 };
