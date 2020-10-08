@@ -1,5 +1,10 @@
 import axios from "axios";
-import { CREATE_ORDER, GET_ORDERS, ORDER_ERROR } from "./types";
+import {
+  CREATE_ORDER,
+  GET_ORDERS,
+  ORDER_ERROR,
+  GET_LATEST_ORDER,
+} from "./types";
 
 // Create order
 export const createOrder = (formData) => async (dispatch) => {
@@ -30,12 +35,15 @@ export const createOrder = (formData) => async (dispatch) => {
   }
 };
 
-// Get latest order
-export const getLatestOrder = () => (dispatch) => {
+// Get all orders by user
+export const getAllOrdersByUser = () => async (dispatch) => {
   try {
-    const serializedResponse = sessionStorage.getItem("order");
+    const res = await axios.get("/api/orders");
 
-    return JSON.parse(serializedResponse);
+    dispatch({
+      type: GET_ORDERS,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,
@@ -47,13 +55,13 @@ export const getLatestOrder = () => (dispatch) => {
   }
 };
 
-// Get all orders by user
-export const getAllOrdersByUser = () => async (dispatch) => {
+// Get latest order
+export const getLatestOrder = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/orders");
+    const res = await axios.get("/api/orders/latest_order");
 
     dispatch({
-      type: GET_ORDERS,
+      type: GET_LATEST_ORDER,
       payload: res.data,
     });
   } catch (err) {

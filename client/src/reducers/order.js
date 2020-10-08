@@ -2,6 +2,7 @@ import {
   CREATE_ORDER,
   GET_ORDER,
   GET_ORDERS,
+  GET_LATEST_ORDER,
   ORDER_ERROR,
 } from "../actions/types";
 
@@ -32,6 +33,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         orders: payload,
+        loading: false,
+      };
+    case GET_LATEST_ORDER:
+      return {
+        ...state,
+        order: payload,
         loading: false,
       };
     case ORDER_ERROR:

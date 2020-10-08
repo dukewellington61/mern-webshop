@@ -27,20 +27,19 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// @route   Get api/latest-order/
+// @route   Get api/latest-order
 // @desc    Get latest order
 // @access  Private
-// router.get("/latest", auth, async (req, res) => {
-//   console.log("backend");
-//   try {
-//     const latestOrder = await Order.find().sort({ date: -1 }).limit(1);
+router.get("/latest_order", auth, async (req, res) => {
+  try {
+    const latestOrder = await Order.find().sort({ date: -1 }).limit(1);
 
-//     res.json(latestOrder[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server error");
-//   }
-// });
+    res.json(latestOrder[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // @route   Get api/orders/
 // @desc    Get orders by user_id

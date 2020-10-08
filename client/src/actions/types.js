@@ -32,6 +32,7 @@ export const LINEITEM_ERROR = "LINEITEM_ERROR";
 export const CREATE_ORDER = "CREATE_ORDER";
 export const GET_ORDER = "GET_ORDER";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_LATEST_ORDER = "GET_LATEST_ORDER";
 export const ORDER_ERROR = "ORDER_ERROR";
 
 export const DUMMY_DISPATCH = "DUMMY_DISPATCH";

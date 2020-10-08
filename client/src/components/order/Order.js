@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
@@ -6,16 +6,20 @@ import InvoiceItem from "./InvoiceItem";
 import InvoiceGrandTotal from "./InvoiceGrandTotal";
 import { getLatestOrder } from "../../actions/order";
 
-const Order = ({ order, getLatestOrder }) => {
+const Order = ({ order, latestOrder, loading, getLatestOrder }) => {
   // if Order component is rendered in @components/order/Orders.js --> props.order has value in state
-  // else if Order component is rendered immediately after order is created fn getLatestOrder() pulls
-  // order object from sessionStorage because props.order === {} --> hence: Object.keys(order).length === 0
-  let orderObject = {};
-  order === undefined
-    ? (orderObject = getLatestOrder())
-    : (orderObject = order);
+  // else if Order component is rendered immediately after order is created getLatestOrder() pulls latest order in redux state
+  // which the can be maped to props
 
-  return orderObject.loading ? (
+  let orderObject = {};
+
+  useEffect(() => {
+    if (!order) getLatestOrder();
+  }, []);
+
+  order ? (orderObject = order) : (orderObject = latestOrder);
+
+  return loading ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -41,4 +45,9 @@ Order.propTypes = {
   order: PropTypes.object.isRequired,
 };
 
-export default connect(null, { getLatestOrder })(Order);
+const mapStateToProps = (state) => ({
+  loading: state.order.loading,
+  latestOrder: state.order.order,
+});
+
+export default connect(mapStateToProps, { getLatestOrder })(Order);
