@@ -6,6 +6,7 @@ import {
   UPDATE_USER_ERROR,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
+import { setAlert } from "./alert";
 
 // Load user
 export const loadUser = () => async (dispatch) => {
@@ -29,9 +30,8 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-// Update user
+// Update user data
 export const updateUser = (formData) => async (dispatch) => {
-  console.log("updateUser");
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -49,5 +49,26 @@ export const updateUser = (formData) => async (dispatch) => {
     dispatch({
       type: UPDATE_USER_ERROR,
     });
+  }
+};
+
+// Change user password
+export const changeUserPassword = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.put("/api/auth/change-password", formData, config);
+
+    dispatch(setAlert(`Password successfully changed`, "success"));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };

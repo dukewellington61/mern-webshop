@@ -25,6 +25,11 @@ body {
   margin: 0;
 }
 
+/* @components/account/UserDataForm.js */
+.form_container {
+  margin-top: 8rem;
+}
+
 /* @components/auth/Login.js */
 #log_in {
   margin-top: 8rem;

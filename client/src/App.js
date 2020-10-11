@@ -18,7 +18,7 @@ import Orders from "./components/order/Orders";
 
 import RatingSummary from "./components/rating/RatingSummary";
 
-import UserDataForm from "./components/account/UserDataForm";
+import Account from "./components/account/Account";
 
 // Redux
 import { Provider } from "react-redux";
@@ -60,7 +60,7 @@ const App = () => {
             <Route exact path="/order" component={Order} />
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/reviews" component={RatingSummary} />
-            <Route exact path="/update" component={UserDataForm} />
+            <Route exact path="/update" component={Account} />
           </Switch>
         </Fragment>
       </Router>

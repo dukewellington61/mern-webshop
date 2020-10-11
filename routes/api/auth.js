@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
+const auth = require("../../middleware/auth");
 
 const User = require("../../models/User");
 const Cart = require("../../models/Cart");
@@ -139,6 +140,55 @@ router.post(
           res.json({ token });
         }
       );
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  }
+);
+
+// @route   POST api/auth/change-password
+// @desc    Check if old password is correct and enter new password to DB
+// @access  Private
+router.put(
+  "/change-password",
+  auth,
+  [
+    check("old_password", "Please enter your old password").exists(),
+    check("new_password", "Please enter your new password").exists(),
+    check("confirm_password", "Please confirm your new password").exists(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { old_password, new_password, confirm_password } = req.body;
+
+    try {
+      let user = await User.findById(req.user.id);
+
+      const isMatch = await bcrypt.compare(old_password, user.password);
+
+      if (!isMatch) {
+        return res.status(400).json({ errors: [{ msg: "Wrong password" }] });
+      }
+
+      if (new_password != confirm_password) {
+        return res.status(400).json({
+          errors: [{ msg: "Passwords don't match" }],
+        });
+      }
+
+      // Encrypt password
+      const salt = await bcrypt.genSalt(10);
+
+      user.password = await bcrypt.hash(new_password, salt);
+
+      await user.save();
+
+      res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");

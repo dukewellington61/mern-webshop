@@ -53,8 +53,6 @@ router.put(
       user.email = email;
 
       await user.save();
-
-      res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");

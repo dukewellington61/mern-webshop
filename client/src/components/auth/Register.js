@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
@@ -58,7 +58,7 @@ const Register = ({
   }
 
   return (
-    <Fragment>
+    <div className="form_container">
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account
@@ -66,6 +66,7 @@ const Register = ({
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
+            className="form-control"
             type="text"
             placeholder="Firstname"
             name="firstname"
@@ -73,7 +74,10 @@ const Register = ({
             onChange={(e) => onChange(e)}
             required
           />
+        </div>
+        <div className="form-group">
           <input
+            className="form-control"
             type="text"
             placeholder="Lastname"
             name="lastname"
@@ -84,6 +88,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
+            className="form-control"
             type="email"
             placeholder="Email Address"
             name="email"
@@ -94,6 +99,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
+            className="form-control"
             type="password"
             placeholder="Password"
             name="password"
@@ -104,6 +110,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
+            className="form-control"
             type="password"
             placeholder="Confirm Password"
             name="password2"
@@ -117,7 +124,7 @@ const Register = ({
       <p className="my-1">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
-    </Fragment>
+    </div>
   );
 };
 
