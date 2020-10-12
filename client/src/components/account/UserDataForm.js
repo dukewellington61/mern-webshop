@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { updateUser } from "../../actions/user";
-import { loadUser } from "../../actions/user";
-
-import Spinner from "../layout/Spinner";
-
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const UserDataForm = ({ user, updateUser, loadUser }) => {
-  useEffect(() => loadUser(), []);
-
+const UserDataForm = ({ user, updateUser }) => {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -33,14 +27,12 @@ const UserDataForm = ({ user, updateUser, loadUser }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    updateUser(formData);
+    await updateUser(formData);
   };
 
-  return user === null ? (
-    <Spinner />
-  ) : (
+  return (
     <form className="form" onSubmit={(e) => onSubmit(e)}>
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="text"
@@ -51,7 +43,7 @@ const UserDataForm = ({ user, updateUser, loadUser }) => {
           required
         />
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="text"
@@ -62,7 +54,7 @@ const UserDataForm = ({ user, updateUser, loadUser }) => {
           required
         />
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="email"
@@ -83,8 +75,4 @@ UserDataForm.propTypes = {
   updateUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-});
-
-export default connect(mapStateToProps, { updateUser, loadUser })(UserDataForm);
+export default connect(null, { updateUser })(UserDataForm);

@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  customer_id: {
+    type: Number,
+    required: true,
+  },
   reviews: [
     {
       product_id: {

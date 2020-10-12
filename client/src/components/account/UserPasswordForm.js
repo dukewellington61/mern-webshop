@@ -24,7 +24,7 @@ const UserDataForm = ({ changeUserPassword }) => {
 
   return (
     <form className="form" onSubmit={(e) => onSubmit(e)}>
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="password"
@@ -35,7 +35,7 @@ const UserDataForm = ({ changeUserPassword }) => {
           required
         />
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="password"
@@ -47,7 +47,7 @@ const UserDataForm = ({ changeUserPassword }) => {
         />
       </div>
 
-      <div class="form-group">
+      <div className="form-group">
         <input
           className="form-control"
           type="password"
@@ -65,7 +65,7 @@ const UserDataForm = ({ changeUserPassword }) => {
 };
 
 UserDataForm.propTypes = {
-  updateUser: PropTypes.func.isRequired,
+  changeUserPassword: PropTypes.func.isRequired,
 };
 
 export default connect(null, { changeUserPassword })(UserDataForm);

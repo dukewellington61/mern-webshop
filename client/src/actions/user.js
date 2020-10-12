@@ -61,7 +61,7 @@ export const changeUserPassword = (formData) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.put("/api/auth/change-password", formData, config);
+    await axios.put("/api/auth/change-password", formData, config);
 
     dispatch(setAlert(`Password successfully changed`, "success"));
   } catch (err) {
