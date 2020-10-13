@@ -40,7 +40,6 @@ router.put(
     const { firstname, lastname, email } = req.body;
 
     try {
-      console.log(req.user.id);
       const user = await User.findById(req.user.id);
 
       if (!user) {
@@ -53,6 +52,7 @@ router.put(
       user.email = email;
 
       await user.save();
+      res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");

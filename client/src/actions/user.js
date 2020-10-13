@@ -45,6 +45,7 @@ export const updateUser = (formData) => async (dispatch) => {
       type: UPDATE_USER,
       payload: res.data,
     });
+    dispatch(setAlert(`User data successfully updated`, "success"));
   } catch (err) {
     dispatch({
       type: UPDATE_USER_ERROR,

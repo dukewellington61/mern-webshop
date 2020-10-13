@@ -13,7 +13,8 @@ const Account = ({ user }) => {
       <h2 className="large text-primary">
         <i className="fas fa-user"></i>&nbsp;Account Details
       </h2>
-      <h3>Hi {user.firstname}</h3>
+      <h3>Hello {user.firstname}</h3>
+      <div>Customer Number: {user.customer_id}</div>
       <div className className="row">
         <div className="col">
           <div className="lead">

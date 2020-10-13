@@ -49,13 +49,12 @@ router.post(
         lastname,
         email,
         password,
-        customer_id,
       });
 
       // create customer id
       const randomInt = Math.floor(100000 + Math.random() * 900000).toString();
       const id = randomInt.padStart(9, "0");
-      customer_id = id;
+      user.customer_id = id;
 
       // Encrypt password
       const salt = await bcrypt.genSalt(10);
