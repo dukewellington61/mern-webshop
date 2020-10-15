@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const UserDataForm = ({ user, updateUser }) => {
+  const [editForm, setEditForm] = useState(false);
+
+  const toggleEditForm = () =>
+    editForm ? setEditForm(false) : setEditForm(true);
+
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -25,48 +30,83 @@ const UserDataForm = ({ user, updateUser }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const checkForChanges = (data) =>
+    data.firstname !== user.firstname ||
+    data.lastname !== user.lastname ||
+    data.email !== user.email
+      ? true
+      : false;
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    await updateUser(formData);
+    if (checkForChanges(formData)) await updateUser(formData);
+    toggleEditForm();
   };
 
   return (
-    <form className="form" onSubmit={(e) => onSubmit(e)}>
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="text"
-          placeholder={user.firstname}
-          name="firstname"
-          value={firstname}
-          onChange={(e) => onChange(e)}
-          required
-        />
+    <div className="row">
+      <div className="col-10">
+        <form className="form" onSubmit={(e) => onSubmit(e)}>
+          <div className="form-group">
+            <label className="label">first name</label>
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="text"
+              name="firstname"
+              value={firstname}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="label">last name</label>
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="text"
+              name="lastname"
+              value={lastname}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="label">email address</label>
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <input
+            type="submit"
+            className="btn btn-primary"
+            value="Update"
+            style={{
+              display: editForm ? "block" : "none",
+            }}
+          />
+        </form>
       </div>
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="text"
-          placeholder={user.lastname}
-          name="lastname"
-          value={lastname}
-          onChange={(e) => onChange(e)}
-          required
-        />
+      <div className="col-2">
+        {" "}
+        <i
+          className="fas fa-user-edit"
+          style={{
+            display: editForm ? "none" : "block",
+            position: "absolute",
+            bottom: "0",
+            paddingBottom: "1rem",
+          }}
+          onClick={() => toggleEditForm()}
+        ></i>
       </div>
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="email"
-          placeholder={user.email}
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-          required
-        />
-      </div>
-      <input type="submit" className="btn btn-primary" value="Update" />
-    </form>
+    </div>
   );
 };
 

@@ -25,6 +25,11 @@ body {
   margin: 0;
 }
 
+/* @components/account UserDataForm.js & UserPasswordForm.js*/
+.label {
+  font-size: 1rem;
+}
+
 /* @components/account/UserDataForm.js */
 .form_container {
   margin-top: 8rem;

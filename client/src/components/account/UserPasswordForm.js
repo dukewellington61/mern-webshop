@@ -5,6 +5,11 @@ import { changeUserPassword } from "../../actions/user";
 import PropTypes from "prop-types";
 
 const UserDataForm = ({ changeUserPassword }) => {
+  const [editForm, setEditForm] = useState(false);
+
+  const toggleEditForm = () =>
+    editForm ? setEditForm(false) : setEditForm(true);
+
   const [formData, setFormData] = useState({
     old_password: "",
     new_password: "",
@@ -19,48 +24,75 @@ const UserDataForm = ({ changeUserPassword }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    changeUserPassword(formData);
+    await changeUserPassword(formData);
+    toggleEditForm();
+    setFormData({ old_password: "", new_password: "", confirm_password: "" });
   };
 
   return (
-    <form className="form" onSubmit={(e) => onSubmit(e)}>
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="password"
-          placeholder="old password"
-          name="old_password"
-          value={old_password}
-          onChange={(e) => onChange(e)}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="password"
-          placeholder="enter new password"
-          name="new_password"
-          value={new_password}
-          onChange={(e) => onChange(e)}
-          required
-        />
+    <div className="row">
+      <div className="col-10">
+        <form className="form" onSubmit={(e) => onSubmit(e)}>
+          <div className="form-group">
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="password"
+              placeholder={editForm && "enter old password"}
+              name="old_password"
+              value={old_password}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="password"
+              placeholder={editForm && "enter new password"}
+              name="new_password"
+              value={new_password}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              className="form-control"
+              disabled={editForm ? "" : "disabled"}
+              type="password"
+              placeholder={editForm && "confirm new password"}
+              name="confirm_password"
+              value={confirm_password}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+
+          <input
+            type="submit"
+            className="btn btn-primary"
+            value="Update"
+            style={{
+              display: editForm ? "block" : "none",
+            }}
+          />
+        </form>
       </div>
 
-      <div className="form-group">
-        <input
-          className="form-control"
-          type="password"
-          placeholder="confirm new password"
-          name="confirm_password"
-          value={confirm_password}
-          onChange={(e) => onChange(e)}
-          required
-        />
+      <div className="col-2">
+        {" "}
+        <i
+          className="fas fa-user-edit"
+          style={{
+            display: editForm ? "none" : "block",
+            position: "absolute",
+            bottom: "0",
+            paddingBottom: "1rem",
+          }}
+          onClick={() => toggleEditForm()}
+        ></i>
       </div>
-
-      <input type="submit" className="btn btn-primary" value="Update" />
-    </form>
+    </div>
   );
 };
 

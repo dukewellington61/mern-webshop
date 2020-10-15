@@ -3,7 +3,6 @@ import Moment from "react-moment";
 import StarRating from "./StarRating";
 
 const RatingsItem = ({ review: { user_name, review, rating, created_at } }) => {
-  console.log(review);
   return (
     <div id="rating_item" className="col-xl-6 col-lg-12">
       <div id="review_card" className="card">

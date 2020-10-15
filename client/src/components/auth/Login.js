@@ -31,21 +31,25 @@ const Login = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
-    const user_cart = await getCartByUserId();
+    await login(email, password);
 
-    const arr = await updateLineItems({
-      user_cart,
-      browser_cart,
-    });
+    if (isAuthenticated) {
+      const user_cart = await getCartByUserId();
 
-    // after log in redirect to cart if cart has line items
-    // otherwhise redirect to landing page
-    arr && arr.data.length > 0 ? history.push("/cart") : history.push("/");
+      const arr = await updateLineItems({
+        user_cart,
+        browser_cart,
+      });
+
+      // after log in redirect to cart if cart has line items
+      // otherwhise redirect to landing page
+      arr && arr.data.length > 0 ? history.push("/cart") : history.push("/");
+    }
+
+    // if some nasty user enters .../login in url --> redirect to landing page
+    // otherwhise the login form could be displayed to a logged in user
   };
 
-  // if some nasty user enters .../login in url --> redirect to landing page
-  // otherwhise the login form could be displayed to a logged in user
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
@@ -65,7 +69,6 @@ const Login = ({
             name="email"
             value={email}
             onChange={onChange}
-            required
           />
         </div>
         <div className="form-group">
@@ -77,7 +80,6 @@ const Login = ({
             value={password}
             onChange={(e) => onChange(e)}
             minLength="6"
-            autocomplete="on"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Login" />
