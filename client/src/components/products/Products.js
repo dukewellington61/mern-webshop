@@ -17,7 +17,7 @@ const Products = ({ getProducts, products }) => {
     <Fragment>
       <div id="products_container" className="container">
         <div className="row">
-          {products.map((product) => (
+          {[].concat(...new Array(5).fill(products)).map((product) => (
             <ProductItem key={product._id} product={product} />
           ))}
         </div>

@@ -18,6 +18,10 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  order_number: {
+    type: String,
+    required: true,
+  },
   invoice_items: [
     {
       name: {

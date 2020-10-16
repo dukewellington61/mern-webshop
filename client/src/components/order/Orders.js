@@ -10,8 +10,6 @@ const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
     getAllOrdersByUser();
   }, []);
 
-  console.log(orders.length);
-
   return order.loading ? (
     <Spinner />
   ) : (
@@ -22,9 +20,9 @@ const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
         </div>
       ) : (
         <div id="orders_header_container" className="container">
-          <div>customer number: {user && user._id}</div>
+          <div>customer number: {user && user.customer_id}</div>
           <div className="row">
-            <b className="col">order id</b>
+            <b className="col">order number</b>
             <b className="col">date</b>
             <b className="col">total</b>
             <b className="col">status</b>

@@ -66,7 +66,6 @@ const Login = ({
         <div className="form-group">
           <input
             className="form-control"
-            type="email"
             placeholder="Email Address"
             name="email"
             value={email}
@@ -81,7 +80,6 @@ const Login = ({
             name="password"
             value={password}
             onChange={(e) => onChange(e)}
-            minLength="6"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Login" />

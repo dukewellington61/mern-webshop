@@ -58,7 +58,7 @@ const OrderHeaders = ({ order }) => {
         className="row"
         onClick={() => handleClick(order._id)}
       >
-        <div className="col">{order._id}</div>
+        <div className="col">{order.order_number}</div>
         <div className="col">{order.date.split("T").slice(0, 1).join("")}</div>
         <div className="col">{calculateGrandTotal(order).toFixed(2)}</div>
         <div className="col" style={{ color: "green" }}>

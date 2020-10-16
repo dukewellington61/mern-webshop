@@ -30,6 +30,7 @@ const StripeComponent = ({
         firstname: user.firstname,
         lastname: user.lastname,
         invoice_items: cart.line_items,
+        customer_id: user.customer_id,
       });
 
       history.push("/order");

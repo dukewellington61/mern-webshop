@@ -8,15 +8,22 @@ const Order = require("../../models/Order");
 // @desc    Create order
 // @access  Private
 router.post("/", auth, async (req, res) => {
-  const { firstname, lastname, invoice_items } = req.body;
+  const { firstname, lastname, invoice_items, customer_id } = req.body;
+
+  const order_number = "";
 
   try {
     const order = new Order({
       user_id: req.user.id,
       firstname,
       lastname,
+      order_number,
       invoice_items,
     });
+
+    // add order number
+    const orders = await Order.find({ user_id: req.user.id });
+    order.order_number = customer_id + "-" + orders.length;
 
     await order.save();
 
