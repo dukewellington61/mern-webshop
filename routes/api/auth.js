@@ -159,9 +159,11 @@ router.put(
   "/change-password",
   auth,
   [
-    check("old_password", "Please enter your old password").exists(),
-    check("new_password", "Please enter your new password").exists(),
-    check("confirm_password", "Please confirm your new password").exists(),
+    check("old_password", "Please enter your old password").not().isEmpty(),
+    check("new_password", "Please enter your new password").not().isEmpty(),
+    check("confirm_password", "Please confirm your new password")
+      .not()
+      .isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);

@@ -41,6 +41,11 @@ const UserDataForm = ({ user, updateUser }) => {
     e.preventDefault();
     if (checkForChanges(formData)) await updateUser(formData);
     toggleEditForm();
+    setFormData({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+    });
   };
 
   return (
@@ -56,7 +61,6 @@ const UserDataForm = ({ user, updateUser }) => {
               name="firstname"
               value={firstname}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className="form-group">
@@ -68,7 +72,6 @@ const UserDataForm = ({ user, updateUser }) => {
               name="lastname"
               value={lastname}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className="form-group">
@@ -76,11 +79,9 @@ const UserDataForm = ({ user, updateUser }) => {
             <input
               className="form-control"
               disabled={editForm ? "" : "disabled"}
-              type="email"
               name="email"
               value={email}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <input
@@ -99,9 +100,6 @@ const UserDataForm = ({ user, updateUser }) => {
           className="fas fa-user-edit"
           style={{
             display: editForm ? "none" : "block",
-            position: "absolute",
-            bottom: "0",
-            paddingBottom: "1rem",
           }}
           onClick={() => toggleEditForm()}
         ></i>

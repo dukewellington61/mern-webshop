@@ -47,9 +47,11 @@ export const updateUser = (formData) => async (dispatch) => {
     });
     dispatch(setAlert(`User data successfully updated`, "success"));
   } catch (err) {
-    dispatch({
-      type: UPDATE_USER_ERROR,
-    });
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 

@@ -4,7 +4,6 @@ import {
   CREATE_LINEITEM,
   ADD_LINEITEM,
   REMOVE_LINEITEM,
-  LOGOUT,
   LINEITEM_ERROR,
 } from "../actions/types";
 
@@ -58,12 +57,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: payload,
-        loading: false,
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        line_items: [],
         loading: false,
       };
     default:

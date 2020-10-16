@@ -34,17 +34,23 @@ const UserDataForm = ({ changeUserPassword }) => {
       <div className="col-10">
         <form className="form" onSubmit={(e) => onSubmit(e)}>
           <div className="form-group">
+            <label className="label">
+              {editForm ? "current password" : <div>&nbsp;</div>}
+            </label>
             <input
               className="form-control"
               disabled={editForm ? "" : "disabled"}
               type="password"
-              placeholder={editForm && "enter old password"}
+              placeholder={editForm && "enter current passwort"}
               name="old_password"
               value={old_password}
               onChange={(e) => onChange(e)}
             />
           </div>
           <div className="form-group">
+            <label className="label">
+              {editForm ? "new password" : <div>&nbsp;</div>}
+            </label>
             <input
               className="form-control"
               disabled={editForm ? "" : "disabled"}
@@ -57,6 +63,9 @@ const UserDataForm = ({ changeUserPassword }) => {
           </div>
 
           <div className="form-group">
+            <label className="label">
+              {editForm ? "confirm new password" : <div>&nbsp;</div>}
+            </label>
             <input
               className="form-control"
               disabled={editForm ? "" : "disabled"}
@@ -85,9 +94,6 @@ const UserDataForm = ({ changeUserPassword }) => {
           className="fas fa-user-edit"
           style={{
             display: editForm ? "none" : "block",
-            position: "absolute",
-            bottom: "0",
-            paddingBottom: "1rem",
           }}
           onClick={() => toggleEditForm()}
         ></i>

@@ -81,6 +81,7 @@ export const login = (email, password) => async (dispatch) => {
         "success"
       )
     );
+    return res;
   } catch (err) {
     const errors = err.response.data.errors;
 

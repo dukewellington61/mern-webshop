@@ -25,14 +25,33 @@ body {
   margin: 0;
 }
 
+/* @app.js */
+#alert_container {
+  position: absolute;
+  z-index: 99;
+  top: 5rem;
+  width: 80%;
+}
+
 /* @components/account UserDataForm.js & UserPasswordForm.js*/
 .label {
   font-size: 1rem;
 }
 
-/* @components/account/UserDataForm.js */
+.fa-user-edit {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 1rem;
+}
+
+/* @components/account/Account.js */
 .form_container {
   margin-top: 8rem;
+}
+
+/* @components/account/UserDataForm.js & UserPasswordForm.js */
+.fa-user-edit {
+  cursor: pointer;
 }
 
 /* @components/auth/Login.js */
@@ -42,12 +61,9 @@ body {
 
 /* @components/layout/Alert.js */
 .alert {
-  /* padding: 10rem; */
-  /* margin: 1rem 0; */
-  z-index: 99;
-  position: absolute;
+  /* z-index: 99;
   width: 80%;
-  top: 5rem;
+  top: 5rem; */
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
@@ -55,6 +71,7 @@ body {
 
 .alert-success {
   background: var(--success-color);
+  opacity: 0.9;
   color: #fff;
 }
 

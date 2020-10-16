@@ -49,7 +49,9 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <Alert />
+          <div id="alert_container">
+            <Alert />
+          </div>
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />

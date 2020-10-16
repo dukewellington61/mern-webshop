@@ -19,7 +19,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 // @route   PUT api/user
-// @desc    UPDATE USER's FIRSTNAME, LASTNAME, EMAIL
+// @desc    UPDATE user's firstname, lastname, email
 // @access  Public
 router.put(
   "/",
@@ -28,7 +28,7 @@ router.put(
     [
       check("firstname", "first name is required").not().isEmpty(),
       check("lastname", "last name is required").not().isEmpty(),
-      check("email", "Please include a valid email").isEmail(),
+      check("email", "Please include a valid email address").isEmail(),
     ],
   ],
   async (req, res) => {

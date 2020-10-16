@@ -98,6 +98,8 @@ export const getCartByCartId = (id) => async (dispatch) => {
       type: GET_CART,
       payload: res.data,
     });
+
+    return res.data;
   } catch (err) {
     dispatch({
       type: CART_ERROR,

@@ -10,26 +10,34 @@ const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
     getAllOrdersByUser();
   }, []);
 
+  console.log(orders.length);
+
   return order.loading ? (
     <Spinner />
   ) : (
     <Fragment>
-      <div id="orders_header_container" className="container">
-        <div>customer number: {user && user._id}</div>
-        <div className="row">
-          <b className="col">order id</b>
-          <b className="col">date</b>
-          <b className="col">total</b>
-          <b className="col">status</b>
+      {orders.length === 0 ? (
+        <div id="orders_header_container" className="container">
+          <h3 style={{ textAlign: "center" }}>no orders yet</h3>
         </div>
-        <div>
-          {orders.map((order) => (
-            <div id="orders_container">
-              <OrderHeaders key={order._id} order={order} />
-            </div>
-          ))}
+      ) : (
+        <div id="orders_header_container" className="container">
+          <div>customer number: {user && user._id}</div>
+          <div className="row">
+            <b className="col">order id</b>
+            <b className="col">date</b>
+            <b className="col">total</b>
+            <b className="col">status</b>
+          </div>
+          <div>
+            {orders.map((order) => (
+              <div id="orders_container">
+                <OrderHeaders key={order._id} order={order} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </Fragment>
   );
 };

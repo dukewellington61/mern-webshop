@@ -12,6 +12,10 @@ import LineItemImage from "../cart/LineItemImage";
 const RatingSummary = ({ user }) => {
   return user === null ? (
     <Spinner />
+  ) : user.reviews.length === 0 ? (
+    <div id="rating_summary_container" className="container">
+      <h3 style={{ textAlign: "center" }}>no reviews yet</h3>
+    </div>
   ) : (
     <div id="rating_summary_container" className="container">
       {user.reviews.map((review) => {
