@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Spinner from "../layout/Spinner";
 import ProductImage from "./ProductImage";
 import ProductFeatures from "./ProductFeatures";
 import RevDescLinks from "./RevDescLinks";
@@ -26,8 +25,15 @@ const Product = ({
   loading,
   isAuthenticated,
 }) => {
-  useEffect(async () => {
-    await getProduct(match.params.id);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     await getProduct(match.params.id);
+  //   }
+  //   fetchData();
+  // }, [getProduct, match.params.id]);
+
+  useEffect(() => {
+    getProduct(match.params.id);
   }, []);
 
   const [renderRatings, setRenderRatings] = useState(false);
@@ -160,8 +166,9 @@ const Product = ({
 Product.propTypes = {
   getProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
-  user: PropTypes.bool.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  user: PropTypes.object,
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

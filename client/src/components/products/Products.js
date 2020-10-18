@@ -37,6 +37,7 @@ const Products = ({ getProducts, products, loading }) => {
 Products.propTypes = {
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -31,7 +31,7 @@ const Cart = ({ cart, user }) => {
 
 Cart.propTypes = {
   cart: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
