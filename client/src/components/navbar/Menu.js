@@ -6,16 +6,26 @@ import { connect } from "react-redux";
 
 const Menu = ({ isAuthenticated, logout }) =>
   !isAuthenticated ? (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Link to="/register">Sign Up</Link>
-      <Link to="/login">Login</Link>
+    <div className="navbar_menu">
+      <Link className="navbar_menu_text" to="/register">
+        Sign Up
+      </Link>
+      <Link className="navbar_menu_text" to="/login">
+        Login
+      </Link>
     </div>
   ) : (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Link to="/orders">Orders</Link>
-      <Link to="/reviews">Reviews</Link>
-      <Link to="/update">Account</Link>
-      <Link onClick={logout} to="/">
+    <div className="navbar_menu">
+      <Link className="navbar_menu_text" to="/orders">
+        Orders
+      </Link>
+      <Link className="navbar_menu_text" to="/reviews">
+        Reviews
+      </Link>
+      <Link className="navbar_menu_text" to="/update">
+        Account
+      </Link>
+      <Link className="navbar_menu_text" to="/" onClick={logout}>
         <i className="fas fa-sign-out-alt"></i> Logout
       </Link>
     </div>

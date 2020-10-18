@@ -134,6 +134,18 @@ body {
   display: block;
 }
 
+/* @components/navbar/Menus.js */
+.navbar_menu {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 1rem;
+}
+
+.navbar_menu_text {
+  color: white;
+}
+
 /* @components/cart/Cart.js */
 #cart_container {
   position: relative;

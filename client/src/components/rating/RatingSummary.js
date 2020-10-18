@@ -9,8 +9,8 @@ import LineItemImage from "../cart/LineItemImage";
 // denormalization had been implemented to avoid costly db queries and intense looping through arrays
 // so the user collection in mongo db has an embedded reviews array (so does the product collection --> redundancies!!)
 
-const RatingSummary = ({ user }) => {
-  return user === null ? (
+const RatingSummary = ({ user, loading }) => {
+  return loading ? (
     <Spinner />
   ) : user.reviews.length === 0 ? (
     <div id="rating_summary_container" className="container">
@@ -44,10 +44,12 @@ const RatingSummary = ({ user }) => {
 
 RatingSummary.propTypes = {
   user: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  loading: state.auth.loading,
 });
 
 export default connect(mapStateToProps, null)(RatingSummary);
