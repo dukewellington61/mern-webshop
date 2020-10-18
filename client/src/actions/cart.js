@@ -79,13 +79,14 @@ export const getCartByUserId = () => async (dispatch) => {
 
     return res.data;
   } catch (err) {
-    dispatch({
-      type: CART_ERROR,
-      payload: {
-        msg: err.response.statusTest,
-        status: err.response.status,
-      },
-    });
+    // dispatch({
+    //   type: CART_ERROR,
+    //   payload: {
+    //     msg: err.response.statusTest,
+    //     status: err.response.status,
+    //   },
+    // });
+    console.log(err);
   }
 };
 

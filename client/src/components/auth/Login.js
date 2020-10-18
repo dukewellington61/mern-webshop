@@ -70,6 +70,7 @@ const Login = ({
             name="email"
             value={email}
             onChange={onChange}
+            autoComplete
           />
         </div>
         <div className="form-group">

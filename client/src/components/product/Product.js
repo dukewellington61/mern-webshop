@@ -20,13 +20,15 @@ import ReturnButton from "../rating/ReturnButton";
 
 const Product = ({
   getProduct,
-  product: { product },
-  user: { user, isAuthenticated },
+  product,
+  user,
   match,
+  loading,
+  isAuthenticated,
 }) => {
-  useEffect(() => {
-    getProduct(match.params.id);
-  }, [getProduct, match.params.id]);
+  useEffect(async () => {
+    await getProduct(match.params.id);
+  }, []);
 
   const [renderRatings, setRenderRatings] = useState(false);
 
@@ -59,8 +61,8 @@ const Product = ({
     );
   };
 
-  return !product ? (
-    <Spinner />
+  return loading ? (
+    <div id="loader_skeleton_product" className="container-fluid loading"></div>
   ) : (
     <Fragment>
       <div id="product_page_container" className="container-fluid">
@@ -158,11 +160,15 @@ const Product = ({
 Product.propTypes = {
   getProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
+  user: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  product: state.product,
-  user: state.auth,
+  product: state.product.product,
+  loading: state.product.loading,
+  user: state.auth.user,
+  isAuthenticated: state.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { getProduct })(Product);

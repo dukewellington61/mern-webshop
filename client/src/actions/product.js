@@ -38,6 +38,7 @@ export const getProduct = (id) => async (dispatch) => {
       type: GET_PRODUCT,
       payload: res.data,
     });
+    return res.data;
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,

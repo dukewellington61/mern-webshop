@@ -27,7 +27,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/user";
 import { loadCart } from "./actions/cart";
 
-import "./App.css";
+import "./App.scss";
 
 // if there is a token in local storage it is beeing set to the header of the axios - request
 if (localStorage.token) {
