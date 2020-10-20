@@ -20,6 +20,9 @@ import RatingSummary from "./components/rating/RatingSummary";
 
 import Account from "./components/account/Account";
 
+import Search from "./components/search/Search";
+import Result from "./components/search/Result";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -49,6 +52,9 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
+          <div id="search">
+            <Search />
+          </div>
           <div id="alert_container">
             <Alert />
           </div>
@@ -57,6 +63,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={Products} />
+            <Route exact path="/products/search-result" component={Result} />
             <Route exact path="/products/:id" component={Product} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/order" component={Order} />

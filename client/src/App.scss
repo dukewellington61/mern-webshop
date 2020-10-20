@@ -33,6 +33,13 @@ body {
   width: 80%;
 }
 
+#search {
+  position: absolute;
+  z-index: 100;
+  top: 5rem;
+  right: 0;
+}
+
 /* @components/account UserDataForm.js & UserPasswordForm.js*/
 .label {
   font-size: 1rem;
@@ -88,7 +95,7 @@ body {
 #shopping_cart_icon {
   color: white;
   position: absolute;
-  left: 50%;
+  top: 30%;
 }
 
 #cart_navigation_quantity {
@@ -112,16 +119,17 @@ body {
   color: white;
 }
 
-#account_icon {
+#account_icon_container {
   color: white;
-  /* position: absolute; */
-  /* left: 45%; */
+  top: 30%;
+  position: absolute;
 }
 
 /* @components/navbar/AccountIcon.js */
 #menu {
   display: none;
-  right: 1rem;
+  width: 6.5rem;
+  right: 0;
 }
 
 #menu:hover {
@@ -143,6 +151,12 @@ body {
 }
 
 .navbar_menu_text {
+  color: white;
+}
+
+/* @components/navbar/Search.js */
+#search_form {
+  background: rgba(0, 0, 0, 0.5);
   color: white;
 }
 

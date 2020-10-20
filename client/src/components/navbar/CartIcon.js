@@ -19,9 +19,8 @@ const calculateItemQuantity = (line_items) => {
 const CartIcon = ({ cart }) => {
   return (
     <div id="shopping_cart_icon">
-      <Link id="shopping_cart_link" to="/cart">
-        <i className="fas fa-shopping-cart"></i>
-      </Link>
+      <i className="fas fa-shopping-cart"></i>
+
       <span
         id="cart_navigation_quantity"
         style={{

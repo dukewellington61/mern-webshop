@@ -97,11 +97,18 @@ router.get("/:id", async (req, res) => {
 router.post("/search", async (req, res) => {
   console.log(req.body.searchArray);
   try {
-    const products = req.body.searchArray.map(
-      async (str) => await Product.find({ name: { $regex: `.*${str}.* ` } })
-    );
+    let regex = req.body.searchArray.map((str) => new RegExp(str, "i"));
+
+    const products = await Product.find({
+      $or: [
+        { tag_line: { $in: regex } },
+        { description: { $in: regex } },
+        { name: { $in: regex } },
+      ],
+    });
 
     console.log(products);
+    res.json(products);
   } catch (err) {}
 });
 

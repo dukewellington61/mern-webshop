@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import AccountIcon from "./AccountIcon";
-import Search from "./Search";
 
 const Navbar = () => {
   return (
@@ -16,56 +15,32 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <CartIcon />
-
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+      <div
+        className="test"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          position: "absolute",
+          right: "0",
+          width: "33%",
+          justifyContent: "space-around",
+        }}
       >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link active" to="/products">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Search />
-          </li>
-          {/* <li className="nav-item">
-            <Link className="nav-link active" to="/orders">
-              Orders
-            </Link>
-          </li> */}
-          {/* <li className="nav-item">
-            <a className="nav-link" href="./contact.html">
-              Contact
-            </a>
-          </li> */}
-        </ul>
-        {/* <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-secondary my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form> */}
-        <AccountIcon />
+        <div>
+          <Link id="shopping_cart_link" to="/cart">
+            <CartIcon />
+          </Link>
+        </div>
+        <div>
+          <Link className="nav-link active" to="/products">
+            <i class="fas fa-bicycle" style={{ fontSize: "2rem" }}></i>
+          </Link>
+        </div>
+        <div>
+          <div id="account_icon_container">
+            <AccountIcon />
+          </div>
+        </div>
       </div>
     </nav>
   );
