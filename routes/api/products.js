@@ -91,6 +91,20 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// @route   POST api/products/search
+// @desc    find product by search term
+// @access  Public
+router.post("/search", async (req, res) => {
+  console.log(req.body.searchArray);
+  try {
+    const products = req.body.searchArray.map(
+      async (str) => await Product.find({ name: { $regex: `.*${str}.* ` } })
+    );
+
+    console.log(products);
+  } catch (err) {}
+});
+
 // @route   POST api/products/:id/review
 // @desc    Create a review
 // @access  Private

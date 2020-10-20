@@ -50,6 +50,21 @@ export const getProduct = (id) => async (dispatch) => {
   }
 };
 
+// Find product
+export const findProducts = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.post("/api/products/search", formData, config);
+
+    return res;
+  } catch (err) {}
+};
+
 // Create review
 export const createReview = (formData, id) => async (dispatch) => {
   const config = {

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import AccountIcon from "./AccountIcon";
+import Search from "./Search";
 
 const Navbar = () => {
   return (
@@ -35,6 +36,9 @@ const Navbar = () => {
             <Link className="nav-link active" to="/products">
               Products
             </Link>
+          </li>
+          <li>
+            <Search />
           </li>
           {/* <li className="nav-item">
             <Link className="nav-link active" to="/orders">
