@@ -13,7 +13,7 @@ const Products = ({ getProducts, products, loading }) => {
 
   return loading ? (
     <Fragment>
-      <div id="products_container" className="container">
+      <div className="products_container">
         <div className="row">
           {[...Array(30)].map((el, i, arr) => (
             <LoaderSkeletonProducts key={i} />
@@ -23,7 +23,7 @@ const Products = ({ getProducts, products, loading }) => {
     </Fragment>
   ) : (
     <Fragment>
-      <div id="products_container" className="container">
+      <div className="products_container">
         <div className="row">
           {[].concat(...new Array(5).fill(products)).map((product, i, arr) => (
             <ProductItem key={i} product={product} />
