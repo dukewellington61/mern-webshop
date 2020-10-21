@@ -17,14 +17,14 @@ const Search = ({ findProducts }) => {
     e.preventDefault();
     // checks if search input string has characters
     if (formData !== "" && /\S/.test(formData)) {
-      const searchArray = formData.split(" ");
+      const searchArray = formData.split(" ").filter((str) => str !== "");
       const searchObj = {
         searchArray,
       };
 
-      const searchResult = await findProducts(searchObj);
+      console.log(searchArray);
 
-      console.log(searchResult.data);
+      const searchResult = await findProducts(searchObj);
 
       history.push({
         pathname: "/products/search-result",
