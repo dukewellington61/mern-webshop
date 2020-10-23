@@ -22,8 +22,6 @@ const Search = ({ findProducts }) => {
         searchArray,
       };
 
-      console.log(searchArray);
-
       const searchResult = await findProducts(searchObj);
 
       history.push({
@@ -36,23 +34,25 @@ const Search = ({ findProducts }) => {
   };
 
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
-      <div className="form-inline">
-        <input
-          id="search_form"
-          className="form-control"
-          name="search_term"
-          value={formData}
-          onChange={(e) => onChange(e)}
-          onSubmit="return false;"
-          autoComplete="off"
-        ></input>
+    <div id="search_form_container">
+      <form onSubmit={(e) => onSubmit(e)}>
+        <div className="form-inline">
+          <input
+            id="search_form"
+            className="form-control"
+            name="search_term"
+            value={formData}
+            onChange={(e) => onChange(e)}
+            onSubmit="return false;"
+            autoComplete="off"
+          ></input>
 
-        <button type="submit" className="btn btn-primary">
-          <i className="fas fa-search"></i>
-        </button>
-      </div>
-    </form>
+          <button type="submit" className="btn btn-primary">
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

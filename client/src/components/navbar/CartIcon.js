@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -18,19 +18,19 @@ const calculateItemQuantity = (line_items) => {
 
 const CartIcon = ({ cart }) => {
   return (
-    <div id="shopping_cart_icon">
-      <i className="fas fa-shopping-cart"></i>
-
-      <span
+    <Link className="nav_items" to="/cart">
+      <div
         id="cart_navigation_quantity"
         style={{
-          display:
-            !cart.loading && cart.line_items.length > 0 ? "flex" : "none",
+          visibility:
+            !cart.loading && cart.line_items.length > 0 ? "visible" : "hidden",
         }}
       >
         {!cart.loading && calculateItemQuantity(cart.line_items)}
-      </span>
-    </div>
+      </div>
+
+      <i className="fas fa-shopping-cart"></i>
+    </Link>
   );
 };
 

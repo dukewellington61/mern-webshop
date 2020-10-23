@@ -5,7 +5,7 @@ const AccountIcon = () => {
   return (
     <div>
       <div id="account_icon">
-        <i className="fa fa-user"></i>
+        <i className="fa fa-user" style={{ bottom: "0.5rem" }}></i>
       </div>
       <div id="menu">
         <Menu />

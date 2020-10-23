@@ -5,42 +5,30 @@ import AccountIcon from "./AccountIcon";
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-      id="navbar-example"
-    >
-      <div className="navbar-brand">
-        <Link className="nav-link active" to="/" style={{ color: "white" }}>
-          &nbsp;&nbsp;MERN STACK BICYCLE EXAMPLE WEBSHOP
+    <nav id="navbar">
+      <div id="brand_container">
+        <Link
+          id="brand"
+          className="nav-link active"
+          to="/"
+          style={{ fontWeight: "bold" }}
+        >
+          MERN STACK BICYCLE EXAMPLE WEBSHOP
         </Link>
       </div>
 
-      <div
-        className="test"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          position: "absolute",
-          right: "0",
-          width: "33%",
-          justifyContent: "space-around",
-        }}
-      >
+      <div id="nav_item_container">
         <div>
-          <Link id="shopping_cart_link" to="/cart">
-            <CartIcon />
-          </Link>
+          <CartIcon />
         </div>
-        <div>
-          <Link className="nav-link active" to="/products">
-            <i class="fas fa-bicycle" style={{ fontSize: "2rem" }}></i>
-          </Link>
-        </div>
-        <div>
-          <div id="account_icon_container">
-            <AccountIcon />
-          </div>
-        </div>
+
+        <Link className="nav_items" to="/products">
+          <i className="fas fa-bicycle" style={{ fontSize: "2rem" }}></i>
+        </Link>
+
+        <Link className="nav_items" to="#">
+          <AccountIcon />
+        </Link>
       </div>
     </nav>
   );

@@ -17,27 +17,157 @@ html {
 }
 
 body {
-  width: 80%;
+  // width: 80%;
   margin: 0 auto 0 auto !important;
+  font-family: Roboto !important;
+  background-color: rgba(110, 110, 110, 0.25);
 }
 
 .row {
   margin: 0;
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url(fonts/roboto/Roboto-Regular.ttf) format("truetype");
+}
+
+// @font-face {
+//   font-family: JosefinSans;
+//   src: url(fonts/josefin-sans/JosefinSans-Regular.ttf) format("truetype");
+// }
+
 /* @app.js */
 #alert_container {
   position: absolute;
   z-index: 99;
-  top: 5rem;
-  width: 80%;
+  top: 13rem;
+  width: 100%;
 }
 
-#search {
-  position: absolute;
-  z-index: 100;
-  top: 5rem;
-  right: 0;
+/* @component/layout/Landing.js */
+#landing_container {
+  margin-top: 5rem;
+}
+
+.d-block {
+  margin: 0 auto;
+  max-width: 1200px !important;
+  max-height: 700px;
+  width: auto;
+  height: auto;
+}
+
+/* @component/layout/Footer.js */
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 3rem;
+  width: 100%;
+  background-color: grey;
+  bottom: 0;
+}
+
+/* @components/layout/LoaderSkeletonProduct.js */
+$border-color: #dae1e7;
+$background-color: #f4f4f4;
+$text-color: #333;
+
+.skeleton_container {
+  margin: 2rem auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+
+.skeleton_card {
+  overflow: hidden;
+  background: white;
+  border-radius: 0.25rem;
+  max-width: 380px;
+  width: 380px;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.05),
+    0 5px 15px 0 rgba(0, 0, 0, 0.05);
+  transition: ease box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 15px 60px 0 rgba(0, 0, 0, 0.08),
+      0 5px 25px 0 rgba(0, 0, 0, 0.08);
+  }
+}
+
+.skeleton_card-detail {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: none;
+    line-height: 0.09;
+  }
+
+  p {
+    line-height: 1.3rem;
+  }
+}
+
+.skeleton_card-image {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 17.5rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* @components/layout/LoaderSkeletonProduct.js */
+#loader_skeleton_product {
+  margin-top: 8rem;
+  height: 31rem;
+}
+
+/* animation for LoaderSkeletonProducts & LoaderSkeletonProducts */
+.loading {
+  position: relative;
+  background-color: #dcdcdc;
+
+  &.card-image {
+    border-radius: 0;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, white, transparent);
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton_card-title.loading {
+  height: 1.8rem;
+}
+
+.skeleton_card-image.image {
+  max-width: 100%;
+  height: auto;
+}
+
+.skeleton_card-description.loading {
+  height: 3rem;
 }
 
 /* @components/account UserDataForm.js & UserPasswordForm.js*/
@@ -66,16 +196,6 @@ body {
   margin-top: 8rem;
 }
 
-/* @components/layout/Alert.js */
-.alert {
-  /* z-index: 99;
-  width: 80%;
-  top: 5rem; */
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
-}
-
 .alert-success {
   background: var(--success-color);
   opacity: 0.9;
@@ -88,23 +208,42 @@ body {
 }
 
 /* @components/navbar/Navbar.js */
-#shopping_cart_link {
+#navbar {
+  width: 100%;
+  background-color: grey;
+}
+
+#brand-container {
+  margin: 0;
+}
+
+#brand {
+  font-size: 1rem;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
   color: white;
 }
 
-#shopping_cart_icon {
+#nav_item_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.nav_items,
+.nav_items:visited {
   color: white;
-  position: absolute;
-  top: 30%;
 }
 
 #cart_navigation_quantity {
-  position: absolute;
+  // position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 50%;
-  left: 50%;
+  // top: 50%;
+  // left: 50%;
   background-color: rgb(218, 221, 217);
   color: black;
   width: 17px;
@@ -112,17 +251,7 @@ body {
   border-radius: 100%;
   font-size: 12px;
   line-height: 12px;
-  transform: translate(6px, -16px);
-}
-
-#account_link {
-  color: white;
-}
-
-#account_icon_container {
-  color: white;
-  top: 30%;
-  position: absolute;
+  transform: translate(16px);
 }
 
 /* @components/navbar/AccountIcon.js */
@@ -142,20 +271,41 @@ body {
   display: block;
 }
 
+/* @components/navbar/CartIcon.js */
+.fa-shopping-cart {
+  font-size: 1.25rem;
+  transform: translate(0, -6px);
+}
+
 /* @components/navbar/Menus.js */
-.navbar_menu {
+#navbar_menu {
+  position: absolute;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.75);
   padding: 1rem;
+  z-index: 100;
 }
 
 .navbar_menu_text {
   color: white;
 }
 
-/* @components/navbar/Search.js */
+/* @components/search/Search.js */
+#search_form_container {
+  position: absolute;
+  z-index: 0;
+  top: 7rem;
+  width: 100%;
+}
+
+.form-inline {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 #search_form {
+  width: 14rem;
   background: rgba(0, 0, 0, 0.5);
   color: white;
 }
@@ -301,10 +451,6 @@ body {
   margin: 1rem 0;
 }
 
-/* #description {
-  display: flex;
-} */
-
 #ratings {
   flex-direction: column;
   /* display: none; */
@@ -441,113 +587,4 @@ input[type="radio"] {
 /* @components/rating/RatingsItem.js */
 #rating_item {
   max-width: 100%;
-}
-
-/* @components/layout/LoaderSkeletonProduct.js */
-$border-color: #dae1e7;
-$background-color: #f4f4f4;
-$text-color: #333;
-
-// body {
-//   background: $background-color;
-//   margin: 0;
-//   padding: 0;
-//   font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-//     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
-//   color: $text-color;
-// }
-
-.skeleton_container {
-  margin: 2rem auto;
-  max-width: 800px;
-  display: flex;
-  justify-content: center;
-}
-
-.skeleton_card {
-  overflow: hidden;
-  background: white;
-  border-radius: 0.25rem;
-  max-width: 380px;
-  width: 380px;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.05),
-    0 5px 15px 0 rgba(0, 0, 0, 0.05);
-  transition: ease box-shadow 0.3s;
-  &:hover {
-    box-shadow: 0 15px 60px 0 rgba(0, 0, 0, 0.08),
-      0 5px 25px 0 rgba(0, 0, 0, 0.08);
-  }
-}
-
-.skeleton_card-detail {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: none;
-    line-height: 0.09;
-  }
-
-  p {
-    line-height: 1.3rem;
-  }
-}
-
-.skeleton_card-image {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 17.5rem;
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* @components/layout/LoaderSkeletonProduct.js */
-#loader_skeleton_product {
-  margin-top: 8rem;
-  height: 31rem;
-}
-
-/* animation for LoaderSkeletonProducts & LoaderSkeletonProducts */
-.loading {
-  position: relative;
-  background-color: #dcdcdc;
-
-  &.card-image {
-    border-radius: 0;
-  }
-
-  &::after {
-    display: block;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, white, transparent);
-    animation: loading 1.5s infinite;
-  }
-}
-
-@keyframes loading {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.skeleton_card-title.loading {
-  height: 1.8rem;
-}
-
-.skeleton_card-image.image {
-  max-width: 100%;
-  height: auto;
-}
-
-.skeleton_card-description.loading {
-  height: 3rem;
 }

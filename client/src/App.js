@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 
 import Register from "./components/auth/Register";
@@ -52,9 +53,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <div id="search">
-            <Search />
-          </div>
+          <Search />
           <div id="alert_container">
             <Alert />
           </div>
@@ -71,6 +70,7 @@ const App = () => {
             <Route exact path="/reviews" component={RatingSummary} />
             <Route exact path="/update" component={Account} />
           </Switch>
+          <Footer />
         </Fragment>
       </Router>
     </Provider>

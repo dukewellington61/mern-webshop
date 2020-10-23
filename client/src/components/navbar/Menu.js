@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 const Menu = ({ isAuthenticated, logout }) =>
   !isAuthenticated ? (
-    <div className="navbar_menu">
+    <div id="navbar_menu">
       <Link className="navbar_menu_text" to="/register">
         Sign Up
       </Link>
@@ -15,7 +15,7 @@ const Menu = ({ isAuthenticated, logout }) =>
       </Link>
     </div>
   ) : (
-    <div className="navbar_menu">
+    <div id="navbar_menu">
       <Link className="navbar_menu_text" to="/orders">
         Orders
       </Link>
