@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div id="footer">
       <a href="https://github.com/dukewellington61/mern-webshop">
-        see the code in github <i class="fab fa-github"></i>
+        see the code on github <i class="fab fa-github"></i>
       </a>
     </div>
   );

@@ -6,19 +6,27 @@ const GrantTotal = ({ cart, user }) => {
   return (
     <Fragment>
       <div className="row">
-        <div className="col-xl-6">Subtotal:</div>
-        <div className="col-xl-6">
-          &nbsp;{calculateGrandTotal(cart).toFixed(2)}&nbsp;&euro;
+        <div className="col-sm"></div>
+        <div className="col-sm"></div>
+        <div className="col-sm">Subtotal:</div>
+        <div className="col-sm">
+          {calculateGrandTotal(cart).toFixed(2)}&nbsp;&euro;
         </div>
       </div>
       <div className="row">
-        <div className="col-xl-6">shipping:</div>
-        <div className="col-xl-6">2.95&nbsp;&euro;</div>
+        <div className="col-sm"> </div>
+        <div className="col-sm"></div>
+        <div className="col-sm">shipping:</div>
+        <div id="shipping" className="col-sm">
+          2.95&nbsp;&euro;
+        </div>
       </div>
       <div className="row">
-        <div className="col-xl-6">Total:</div>
-        <div className="col-xl-6">
-          &nbsp;{Number(calculateGrandTotal(cart) + 2.95).toFixed(2)}
+        <div className="col-sm"> </div>
+        <div className="col-sm"></div>
+        <div className="col-sm">Total:</div>
+        <div className="col-sm">
+          {Number(calculateGrandTotal(cart) + 2.95).toFixed(2)}
           &nbsp;&euro;
         </div>
       </div>

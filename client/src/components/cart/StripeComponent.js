@@ -56,15 +56,21 @@ const StripeComponent = ({
         name={"Your shopping cart"}
         panelLabel={"pay"}
       >
-        <button className="btn btn-outline-primary">PAY WITH CARD</button>
+        <button className="btn btn-primary btn-lg">PAY WITH CARD</button>
       </StripeCheckOut>
     </div>
   ) : (
-    <Link to={"/login"}>
-      <button className="btn btn-outline-primary" onClick={displayAlert}>
-        PAY WITH CARD
-      </button>
-    </Link>
+    <div id="stripe_button_container">
+      <Link to={"/login"}>
+        <button
+          id="stripe_button"
+          className="btn btn-primary btn-lg"
+          onClick={displayAlert}
+        >
+          PAY WITH CARD
+        </button>
+      </Link>
+    </div>
   );
 };
 

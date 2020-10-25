@@ -89,7 +89,7 @@ const Product = ({
                 </Link>
               </div>
             </div>
-            <div id="add_to_shopping_cart_button">
+            <div id="add_to_shopping_cart_button_container">
               <AddToShoppingCartBtn />
             </div>
           </div>

@@ -40,6 +40,7 @@ const Search = ({ findProducts }) => {
           <input
             id="search_form"
             className="form-control"
+            placeholder="search here for products"
             name="search_term"
             value={formData}
             onChange={(e) => onChange(e)}

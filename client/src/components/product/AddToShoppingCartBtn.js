@@ -19,7 +19,7 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
 
   return (
     <button
-      id="add_to_shopping_cart"
+      id="add_to_shopping_cart_button"
       type="button"
       className="btn btn-success btn-lg"
       onClick={(e) => handleClick(e)}

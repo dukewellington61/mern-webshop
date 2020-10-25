@@ -30,13 +30,13 @@ const Cart = ({ cart, user }) => {
           </Link>
         </div>
       ) : (
-        <div id="cart_container" className="container">
+        <div id="cart_container">
           <div>
             {cart.line_items.map((line_item) => (
               <LineItem key={line_item._id} line_item={line_item} cart={cart} />
             ))}
           </div>
-          <div id="#grand_total">
+          <div id="grand_total">
             <div>
               {cart.line_items.length > 0 && (
                 <GrantTotal cart={cart} user={user} />
