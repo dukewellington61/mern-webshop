@@ -7,7 +7,7 @@ const RateProductButton = ({ toggleRatingForm, toggleRateProductButton }) => (
     className="btn btn-warning btn-lg"
     onClick={() => {
       toggleRatingForm(true);
-      toggleRateProductButton();
+      toggleRateProductButton(false);
     }}
   >
     rate product <i className="fas fa-angle-right"></i>

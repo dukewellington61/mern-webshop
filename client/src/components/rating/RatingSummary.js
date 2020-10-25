@@ -13,11 +13,11 @@ const RatingSummary = ({ user, loading }) => {
   return loading ? (
     <Spinner />
   ) : user.reviews.length === 0 ? (
-    <div id="rating_summary_container" className="container">
+    <div id="rating_summary_container">
       <h3 style={{ textAlign: "center" }}>no reviews yet</h3>
     </div>
   ) : (
-    <div id="rating_summary_container" className="container">
+    <div id="rating_summary_container">
       {user.reviews.map((review) => {
         // reusing @components/cart/LineItemImage.js the props passed to this component have to be set in a way the component can work with them
         // hence the following three lines of spaghetti code...
@@ -25,14 +25,22 @@ const RatingSummary = ({ user, loading }) => {
         line_item.image_url = review.product_image_url;
         review.user_name = user.firstname;
         return (
-          <div id="summary_item_row" className="row">
-            <div className="col-xl-4">
+          <div
+            id="summary_item_row"
+            className="row"
+            style={{
+              borderColor: "white",
+              borderWidth: "1px",
+              borderStyle: "solid",
+            }}
+          >
+            <div className="col-sm-4">
               <Link to={`/products/${review.product_id}`}>
                 <LineItemImage key={review.product_id} line_item={line_item} />
               </Link>
             </div>
-            <div className="col-xl-2">{review.product_name}</div>
-            <div className="col-xl-6">
+            <div className="col-sm-2">{review.product_name}</div>
+            <div className="col-sm-6">
               <RatingsItem key={review._id} review={review} />
             </div>
           </div>

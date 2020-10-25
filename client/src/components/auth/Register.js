@@ -59,14 +59,14 @@ const Register = ({
 
   return (
     <div className="form_container">
-      <h1 className="large text-primary">Sign Up</h1>
+      <h3 className="large text-primary">Sign Up</h3>
       <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fa fa-user auth_fa-user"></i> Create your account
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="text"
             placeholder="Firstname"
             name="firstname"
@@ -77,7 +77,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="text"
             placeholder="Lastname"
             name="lastname"
@@ -88,7 +88,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="email"
             placeholder="Email Address"
             name="email"
@@ -99,7 +99,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="password"
             placeholder="Password"
             name="password"
@@ -110,7 +110,7 @@ const Register = ({
         </div>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="password"
             placeholder="Confirm Password"
             name="password2"

@@ -5,7 +5,12 @@ import { createReview } from "../../actions/product";
 import StarRatingForm from "./StarRatingForm";
 import ReturnButton from "./ReturnButton";
 
-const RatingForm = ({ product, createReview, toggleRatingForm }) => {
+const RatingForm = ({
+  product,
+  createReview,
+  toggleRatingForm,
+  toggleRateProductButton,
+}) => {
   const [reviewText, setReviewText] = useState({ review: "" });
   const [starRatingValue, setStarRatingValue] = useState({ rating: null });
 
@@ -60,6 +65,7 @@ const RatingForm = ({ product, createReview, toggleRatingForm }) => {
             <ReturnButton
               ratingForm={true}
               toggleRatingForm={toggleRatingForm}
+              toggleRateProductButton={toggleRateProductButton}
             />
           </li>
         </ul>

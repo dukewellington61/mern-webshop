@@ -58,14 +58,14 @@ const Login = ({
 
   return (
     <div className="form_container">
-      <h1 className="large text-primary">Sign In</h1>
+      <h3 className="large text-primary">Sign In</h3>
       <p className="lead">
-        <i className="fa fa-user"></i>Sign Into Your Account
+        <i className="fa fa-user auth_fa-user"></i>&nbsp;Log into your account
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             placeholder="Email Address"
             name="email"
             value={email}
@@ -75,7 +75,7 @@ const Login = ({
         </div>
         <div className="form-group">
           <input
-            className="form-control"
+            className="form-control auth_input"
             type="password"
             placeholder="Password"
             name="password"

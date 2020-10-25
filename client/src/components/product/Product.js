@@ -25,13 +25,6 @@ const Product = ({
   loading,
   isAuthenticated,
 }) => {
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await getProduct(match.params.id);
-  //   }
-  //   fetchData();
-  // }, [getProduct, match.params.id]);
-
   useEffect(() => {
     getProduct(match.params.id);
   }, []);
@@ -48,7 +41,7 @@ const Product = ({
 
   const [renderRateProductButton, setRenderRateProductButton] = useState(true);
 
-  const toggleRateProductButton = () => setRenderRateProductButton(false);
+  const toggleRateProductButton = (val) => setRenderRateProductButton(val);
 
   const checkIfStillToRate = () =>
     product.reviews.filter((review) => review.user_id === user._id).length ===
@@ -144,6 +137,7 @@ const Product = ({
                   <RatingForm
                     key="rating_form"
                     toggleRatingForm={toggleRatingForm}
+                    toggleRateProductButton={toggleRateProductButton}
                   />
                 )}
               </div>
@@ -175,7 +169,7 @@ const mapStateToProps = (state) => ({
   product: state.product.product,
   loading: state.product.loading,
   user: state.auth.user,
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { getProduct })(Product);

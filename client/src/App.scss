@@ -200,7 +200,7 @@ $text-color: #333;
 
 /* @components/account/Account.js */
 .form_container {
-  margin-top: 8rem;
+  margin-top: 5rem;
 }
 
 /* @components/account/UserDataForm.js & UserPasswordForm.js */
@@ -222,6 +222,31 @@ $text-color: #333;
 .alert-danger {
   background: var(--danger-color);
   color: #fff;
+}
+
+@media only screen and (min-width: 350px) {
+  .auth_input {
+    width: 75%;
+  }
+  .form_container {
+    padding-left: 1rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .auth_input {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .auth_input {
+    width: 25%;
+  }
+}
+
+.auth_fa-user {
+  position: relative !important;
 }
 
 /* @components/navbar/Navbar.js */
@@ -447,6 +472,7 @@ $text-color: #333;
 /* @components/cart/LineItemImages.js */
 #line_item_images {
   width: 16rem;
+  height: 13rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -682,6 +708,10 @@ $text-color: #333;
   margin-top: 1rem;
 }
 
+#review_card > * textarea {
+  max-width: 100%;
+}
+
 /* @components/rating/RatingForm.js */
 input[type="radio"] {
   display: none;
@@ -772,7 +802,8 @@ input[type="radio"] {
 
 /* @components/rating/RatingSummary.js */
 #rating_summary_container {
-  margin-top: 8rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 #summary_item_row {
