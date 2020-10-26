@@ -74,9 +74,12 @@ const OrderHeaders = ({ order }) => {
               <i className="fas fa-check"></i>
             </div>
           </div>
-          <div className="col-sm-2 order_header">
-            <i ref={angleElement} className="fas fa-angle-up"></i>
-          </div>{" "}
+
+          <i
+            ref={angleElement}
+            id="angle_element"
+            className="fas fa-angle-up order_header"
+          ></i>
         </div>
 
         <div id={order._id} className="orders">

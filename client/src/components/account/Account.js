@@ -16,14 +16,14 @@ const Account = ({ user }) => {
       <h3>Hello {user.firstname}</h3>
       <div>Customer Number: {user.customer_id}</div>
       <div className className="row">
-        <div className="col">
+        <div className="col-sm">
           <div className="lead">
             {" "}
             User Data
             <UserDataForm key="user_data_form" user={user} />
           </div>
         </div>
-        <div className="col">
+        <div className="col-sm">
           <div className="lead">
             Change Password
             <UserPasswordForm key="user_password_form" />

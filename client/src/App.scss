@@ -201,6 +201,11 @@ $text-color: #333;
 /* @components/account/Account.js */
 .form_container {
   margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.form_container > * .col-sm {
+  margin-top: 1.5rem;
 }
 
 /* @components/account/UserDataForm.js & UserPasswordForm.js */
@@ -431,6 +436,16 @@ $text-color: #333;
   margin-bottom: 5rem;
 }
 
+#cart_container > h4 {
+  position: relative;
+  text-align: center;
+}
+
+#cart_container > a {
+  position: absolute;
+  width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
   #cart_container {
     position: relative;
@@ -530,8 +545,8 @@ $text-color: #333;
 /* @components/cart/StripeComponent.js */
 #stripe_button_container {
   margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 0.5rem;
+  padding-bottom: 1rem;
+  margin-left: 0.75rem;
 }
 
 /* @components/cart/GrandTotal.js */
@@ -545,6 +560,7 @@ $text-color: #333;
 #order_headers {
   cursor: pointer;
   margin-top: 1rem;
+  position: relative;
 }
 
 #order_headers:hover {
@@ -557,6 +573,16 @@ $text-color: #333;
 
 .order_header > div:first-child {
   font-weight: bold;
+}
+
+#angle_element {
+  position: absolute;
+  left: 90%;
+  top: 5px;
+}
+
+#orders_header_container {
+  margin-bottom: 5rem;
 }
 
 /* @components/order/Orders.js */

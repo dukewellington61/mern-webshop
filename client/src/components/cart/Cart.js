@@ -13,10 +13,8 @@ const Cart = ({ cart, user }) => {
   ) : (
     <Fragment>
       {cart.line_items.length === 0 ? (
-        <div>
-          <h4 style={{ marginTop: "8rem", textAlign: "center" }}>
-            Your shopping cart is empty.
-          </h4>
+        <div id="cart_container">
+          <h4>Your shopping cart is empty.</h4>
           <Link to="/products">
             <button
               type="button"

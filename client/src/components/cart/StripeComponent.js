@@ -56,7 +56,10 @@ const StripeComponent = ({
         name={"Your shopping cart"}
         panelLabel={"pay"}
       >
-        <button className="btn btn-primary btn-lg">PAY WITH CARD</button>
+        {" "}
+        <div id="stripe_button_container">
+          <button className="btn btn-primary btn-lg">PAY WITH CARD</button>
+        </div>
       </StripeCheckOut>
     </div>
   ) : (
