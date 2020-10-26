@@ -11,7 +11,7 @@ const Account = ({ user }) => {
   ) : (
     <div className="form_container">
       <h2 className="large text-primary">
-        <i className="fas fa-user"></i>&nbsp;Account Details
+        <i className="fas fa-user auth_fa-user"></i>&nbsp;Account Details
       </h2>
       <h3>Hello {user.firstname}</h3>
       <div>Customer Number: {user.customer_id}</div>

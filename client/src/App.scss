@@ -429,6 +429,12 @@ $text-color: #333;
   color: white;
 }
 
+/* @components/search/Result.js */
+
+#search_result_container {
+  margin-bottom: 5rem;
+}
+
 /* @components/cart/Cart.js */
 #cart_container {
   position: relative;

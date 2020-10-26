@@ -10,19 +10,10 @@ const UserDataForm = ({ user, updateUser }) => {
     editForm ? setEditForm(false) : setEditForm(true);
 
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
+    firstname: user.firstname,
+    lastname: user.lastname,
+    email: user.email,
   });
-
-  useEffect(() => {
-    if (user)
-      setFormData({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-      });
-  }, [user]);
 
   const { firstname, lastname, email } = formData;
 
@@ -42,10 +33,14 @@ const UserDataForm = ({ user, updateUser }) => {
     if (checkForChanges(formData)) await updateUser(formData);
     toggleEditForm();
     setFormData({
-      firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email,
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
     });
+  };
+
+  const handleClick = () => {
+    toggleEditForm();
   };
 
   return (
@@ -101,7 +96,7 @@ const UserDataForm = ({ user, updateUser }) => {
           style={{
             display: editForm ? "none" : "block",
           }}
-          onClick={() => toggleEditForm()}
+          onClick={handleClick}
         ></i>
       </div>
     </div>
