@@ -23,7 +23,7 @@ const Order = ({ order, latestOrder, loading, getLatestOrder }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div id="cart_container" className="container">
+      <div id="orders_container">
         <div>
           {orderObject.invoice_items.map((invoice_item) => (
             <InvoiceItem invoice_item={invoice_item} />

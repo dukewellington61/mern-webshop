@@ -21,12 +21,7 @@ const Orders = ({ order, orders, user, getAllOrdersByUser }) => {
       ) : (
         <div id="orders_header_container" className="container">
           <div>customer number: {user && user.customer_id}</div>
-          <div className="row">
-            <b className="col">order number</b>
-            <b className="col">date</b>
-            <b className="col">total</b>
-            <b className="col">status</b>
-          </div>
+
           <div>
             {orders.map((order) => (
               <div id="orders_container">

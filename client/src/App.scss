@@ -555,9 +555,13 @@ $text-color: #333;
   display: none !important;
 }
 
+.order_header > div:first-child {
+  font-weight: bold;
+}
+
 /* @components/order/Orders.js */
 #orders_header_container {
-  margin-top: 8rem;
+  margin-top: 5rem;
 }
 
 #orders_container {

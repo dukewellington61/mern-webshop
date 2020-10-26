@@ -53,24 +53,35 @@ const OrderHeaders = ({ order }) => {
 
   return (
     <Fragment>
-      <div
-        id="order_headers"
-        className="row"
-        onClick={() => handleClick(order._id)}
-      >
-        <div className="col">{order.order_number}</div>
-        <div className="col">{order.date.split("T").slice(0, 1).join("")}</div>
-        <div className="col">{calculateGrandTotal(order).toFixed(2)}</div>
-        <div className="col" style={{ color: "green" }}>
-          {" "}
-          <i className="fas fa-check"></i>
+      <div id="order_headers" onClick={() => handleClick(order._id)}>
+        <div className="row">
+          <div className="col-sm-3 order_header">
+            <div>order number</div>
+            <div>{order.order_number}</div>
+          </div>
+          <div className="col-sm-3 order_header">
+            <div>date</div>
+            <div>{order.date.split("T").slice(0, 1).join("")}</div>
+          </div>
+          <div className="col-sm-2 order_header">
+            <div>total</div>
+            <div> {(calculateGrandTotal(order) + 2.95).toFixed(2)}</div>
+          </div>
+          <div className="col-sm-2 order_header">
+            <div>status</div>
+            <div className="col" style={{ color: "green" }}>
+              {" "}
+              <i className="fas fa-check"></i>
+            </div>
+          </div>
+          <div className="col-sm-2 order_header">
+            <i ref={angleElement} className="fas fa-angle-up"></i>
+          </div>{" "}
         </div>
-        <div>
-          <i ref={angleElement} className="fas fa-angle-up"></i>
+
+        <div id={order._id} className="orders">
+          <Order order={order} />
         </div>
-      </div>
-      <div id={order._id} className="orders">
-        <Order order={order} />
       </div>
     </Fragment>
   );
