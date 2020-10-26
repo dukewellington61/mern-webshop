@@ -14,6 +14,7 @@ router.use(cors());
 // @desc    Process stripe payment in the backend
 // @access  Private
 router.post("/", auth, async (req, res) => {
+  console.log(keys.stripeSecretKey);
   try {
     const { token, total, user } = req.body;
 
