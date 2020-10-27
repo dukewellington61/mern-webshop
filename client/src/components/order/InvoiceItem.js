@@ -18,10 +18,10 @@ const InvoiceItem = ({ invoice_item }) => {
         <div>colour:&nbsp;&nbsp;{invoice_item.colour}</div>
         <div>price:&nbsp;&nbsp;{invoice_item.price.toFixed(2)}&nbsp;&euro;</div>
       </div>
-      <div className="col-xl"></div>
       <div className="col-xl">
         <InvoiceSubtotal invoice_item={invoice_item} />
       </div>
+      <div className="col-xl"></div>
     </div>
   );
 };
