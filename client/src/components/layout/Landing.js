@@ -7,7 +7,7 @@ import img_3 from "../../img/carousel/img_3.jpg";
 
 const Landing = (props) => {
   return (
-    <div id="landing_container" className="container fluid">
+    <div id="landing_container">
       <Carousel>
         <Carousel.Item>
           <img className="carousel_image" src={img_1} alt="First slide" />

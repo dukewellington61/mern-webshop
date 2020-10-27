@@ -12,7 +12,9 @@ const InvoiceGrandTotal = ({ order }) => {
       </div>
       <div className="row">
         <div className="col-xl-6">shipping:</div>
-        <div className="col-xl-6">2.95&nbsp;&euro;</div>
+        <div id="shipping" className="col-xl-6">
+          2.95&nbsp;&euro;
+        </div>
       </div>
       <div className="row">
         <div className="col-xl-6">Total:</div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const InvoiceItem = ({ invoice_item }) => {
   return (
-    <div id="line_item_row" className="row">
+    <div id="invoice_item_row" className="row">
       <div className="col-xl">
         <Link to={`/products/${invoice_item.product_id}`}>
           <LineItemImage line_item={invoice_item} />

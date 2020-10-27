@@ -58,7 +58,9 @@ const StripeComponent = ({
       >
         {" "}
         <div id="stripe_button_container">
-          <button className="btn btn-primary btn-lg">PAY WITH CARD</button>
+          <button className="btn btn-primary btn-lg">
+            <i class="far fa-credit-card"></i> PAY WITH CARD
+          </button>
         </div>
       </StripeCheckOut>
     </div>
@@ -70,7 +72,7 @@ const StripeComponent = ({
           className="btn btn-primary btn-lg"
           onClick={displayAlert}
         >
-          PAY WITH CARD
+          <i class="far fa-credit-card"></i> PAY WITH CARD
         </button>
       </Link>
     </div>

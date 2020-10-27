@@ -23,7 +23,7 @@ const Order = ({ order, latestOrder, loading, getLatestOrder }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div id="order_container">
+      <div id={order ? "order_container" : "latest_order_container"}>
         {!order && (
           <div style={{ marginLeft: "1rem" }}>
             <b>Your order:</b>
@@ -35,7 +35,7 @@ const Order = ({ order, latestOrder, loading, getLatestOrder }) => {
             <InvoiceItem invoice_item={invoice_item} />
           ))}
         </div>
-        <div id="#grand_total">
+        <div id="grand_total">
           <div>
             {orderObject.invoice_items.length > 0 && (
               <InvoiceGrandTotal order={orderObject} />

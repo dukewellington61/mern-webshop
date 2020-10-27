@@ -95,7 +95,6 @@ router.get("/:id", async (req, res) => {
 // @desc    find product by search term
 // @access  Public
 router.post("/search", async (req, res) => {
-  console.log(req.body.searchArray);
   try {
     let regex = req.body.searchArray.map((str) => new RegExp(str, "i"));
 
@@ -107,7 +106,6 @@ router.post("/search", async (req, res) => {
       ],
     });
 
-    console.log(products);
     res.json(products);
   } catch (err) {}
 });

@@ -59,6 +59,7 @@ body {
 /* @component/layout/Landing.js */
 #landing_container {
   margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -85,6 +86,7 @@ body {
   width: 100vw;
   margin-left: -50vw;
   left: 50%;
+  z-index: 99;
 }
 
 /* @components/layout/LoaderSkeletonProduct.js */
@@ -452,6 +454,12 @@ $text-color: #333;
   width: 100%;
 }
 
+#grand_total {
+  border-top-width: 3px;
+  border-top-color: black;
+  border-top-style: double;
+}
+
 @media only screen and (min-width: 768px) {
   #cart_container {
     position: relative;
@@ -467,6 +475,10 @@ $text-color: #333;
 #line_item_row {
   position: relative;
   margin-top: 2rem;
+  padding-top: 1rem;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: black;
 }
 
 #delete_line_icon {
@@ -493,7 +505,7 @@ $text-color: #333;
 /* @components/cart/LineItemImages.js */
 #line_item_images {
   width: 16rem;
-  height: 13rem;
+  // height: 13rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -562,7 +574,6 @@ $text-color: #333;
 #stripe_button_container {
   margin-top: 1rem;
   padding-bottom: 1rem;
-  margin-left: 0.75rem;
 }
 
 /* @components/cart/GrandTotal.js */
@@ -578,6 +589,9 @@ $text-color: #333;
   margin-top: 1rem;
   position: relative;
   background-color: #b3b3b3;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.1px;
 }
 
 #order_headers:hover {
@@ -612,9 +626,18 @@ $text-color: #333;
 }
 
 /* @components/order/Order.js */
-#order_container {
+#latest_order_container {
   margin-top: 5rem;
   margin-bottom: 5rem;
+}
+
+/* @components/order/InvoiceItem.js */
+#invoice_item_row {
+  position: relative;
+  padding-top: 1rem;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: black;
 }
 
 /* @components/products/Products.js */
@@ -861,6 +884,14 @@ input[type="radio"] {
 
 #summary_item_row {
   margin-top: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
 
 /* @components/rating/RatingsItem.js */

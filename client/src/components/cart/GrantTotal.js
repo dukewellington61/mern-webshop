@@ -30,11 +30,19 @@ const GrantTotal = ({ cart, user }) => {
           &nbsp;&euro;
         </div>
       </div>
-      <StripeComponent
-        total={Number(calculateGrandTotal(cart) + 2.95)}
-        user={user}
-        cart={cart}
-      />
+      <div className="row">
+        <div className="col-sm"> </div>
+        <div className="col-sm"></div>
+        <div className="col-sm">
+          {" "}
+          <StripeComponent
+            total={Number(calculateGrandTotal(cart) + 2.95)}
+            user={user}
+            cart={cart}
+          />
+        </div>
+        <div className="col-sm"> </div>
+      </div>
     </Fragment>
   );
 };
