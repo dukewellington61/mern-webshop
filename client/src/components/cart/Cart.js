@@ -29,6 +29,9 @@ const Cart = ({ cart, user }) => {
         </div>
       ) : (
         <div id="cart_container">
+          <h4 style={{ textAlign: "left", marginLeft: "1rem" }}>
+            YOUR SHOPPING CART
+          </h4>
           <div>
             {cart.line_items.map((line_item) => (
               <LineItem key={line_item._id} line_item={line_item} cart={cart} />

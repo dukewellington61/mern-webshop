@@ -24,7 +24,8 @@ const QuantityField = ({
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form id="quantity_form" className="form" onSubmit={handleSubmit}>
+      <label for="quantity">quantity:&nbsp;</label>
       <input
         id="quantity_input"
         type="number"

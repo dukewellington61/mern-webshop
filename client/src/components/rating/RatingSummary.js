@@ -34,13 +34,14 @@ const RatingSummary = ({ user, loading }) => {
               borderStyle: "solid",
             }}
           >
-            <div className="col-sm-4">
+            <div className="col-xl-4">
               <Link to={`/products/${review.product_id}`}>
                 <LineItemImage key={review.product_id} line_item={line_item} />
+                <div>{review.product_name}</div>
               </Link>
             </div>
-            <div className="col-sm-2">{review.product_name}</div>
-            <div className="col-sm-6">
+
+            <div className="col-xl-8">
               <RatingsItem key={review._id} review={review} />
             </div>
           </div>

@@ -503,8 +503,18 @@ $text-color: #333;
 }
 
 /* @components/cart/QuantityField.js */
-#quantity_input {
-  max-width: 75%;
+#quantity_form > label {
+  display: none;
+}
+
+@media only screen and (min-width: 350px) {
+  #quantity_form > label {
+    display: block;
+  }
+}
+
+#quantity_form > input {
+  max-width: 50%;
   text-align: center;
 }
 
