@@ -635,13 +635,13 @@ $text-color: #333;
 /* @components/products/ProductImages.js */
 #product_images {
   width: 100%;
-  height: 14rem;
+  // height: 14rem;
 }
 
 @media only screen and (min-width: 992px) {
   #product_images {
     width: 100%;
-    height: 18rem;
+    // height: 18rem;
   }
 }
 
