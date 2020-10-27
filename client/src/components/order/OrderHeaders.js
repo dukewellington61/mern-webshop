@@ -65,7 +65,10 @@ const OrderHeaders = ({ order }) => {
           </div>
           <div className="col-sm-2 order_header">
             <div>total</div>
-            <div> {(calculateGrandTotal(order) + 2.95).toFixed(2)}</div>
+            <div>
+              {" "}
+              {(calculateGrandTotal(order) + 2.95).toFixed(2)}&nbsp;&euro;
+            </div>
           </div>
           <div className="col-sm-2 order_header">
             <div>status</div>

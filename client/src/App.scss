@@ -567,10 +567,11 @@ $text-color: #333;
   cursor: pointer;
   margin-top: 1rem;
   position: relative;
+  background-color: #b3b3b3;
 }
 
 #order_headers:hover {
-  background-color: #b3b3b3;
+  background-color: rgb(237, 228, 228);
 }
 
 .not_render_orders {
@@ -597,7 +598,13 @@ $text-color: #333;
 }
 
 #orders_container {
-  background-color: grey;
+  background-color: rgb(237, 228, 228);
+}
+
+/* @components/order/Order.js */
+#order_container {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 /* @components/products/Products.js */

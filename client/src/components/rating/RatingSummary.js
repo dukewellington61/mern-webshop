@@ -6,7 +6,7 @@ import RatingsItem from "./RatingsItem";
 import Spinner from "../layout/Spinner";
 import LineItemImage from "../cart/LineItemImage";
 
-// denormalization had been implemented to avoid costly db queries and intense looping through arrays
+// denormalization had been implemented to avoid costly db queries and expensive looping through arrays
 // so the user collection in mongo db has an embedded reviews array (so does the product collection --> redundancies!!)
 
 const RatingSummary = ({ user, loading }) => {

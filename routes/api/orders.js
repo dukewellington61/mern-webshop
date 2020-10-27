@@ -53,7 +53,9 @@ router.get("/latest_order", auth, async (req, res) => {
 // @access  Private
 router.get("/", auth, async (req, res) => {
   try {
-    const orders = await Order.find({ user_id: req.user.id });
+    const orders = await Order.find({ user_id: req.user.id }).sort({
+      date: "desc",
+    });
 
     res.json(orders);
   } catch (err) {

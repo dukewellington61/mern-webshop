@@ -23,7 +23,11 @@ const Order = ({ order, latestOrder, loading, getLatestOrder }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div id="orders_container">
+      <div id="order_container">
+        <div style={{ marginLeft: "1rem" }}>
+          <b>Your order:</b>
+          <p>order number: {orderObject.order_number}</p>
+        </div>
         <div>
           {orderObject.invoice_items.map((invoice_item) => (
             <InvoiceItem invoice_item={invoice_item} />
