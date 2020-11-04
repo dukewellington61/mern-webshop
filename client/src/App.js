@@ -32,6 +32,7 @@ import { loadUser } from "./actions/user";
 import { loadCart } from "./actions/cart";
 
 import "./App.scss";
+import "./aux.js";
 
 // if there is a token in local storage it is beeing set to the header of the axios - request
 if (localStorage.token) {
