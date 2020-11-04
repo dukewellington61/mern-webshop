@@ -1,5 +1,5 @@
 window.addEventListener("message", (message) => {
-  if (message === "iframe") {
+  if (message.data === "iframe") {
     console.log("iframe");
     document.querySelector("html").style.overflow = "hidden";
   }
