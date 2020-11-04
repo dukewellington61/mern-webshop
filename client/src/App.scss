@@ -16,6 +16,20 @@ html {
   scroll-behavior: smooth;
 }
 
+.hideScrollBar {
+  overflow: scroll;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+    background: #ff0000;
+  }
+}
+
 body {
   margin: 0 auto 0 auto !important;
   font-family: Roboto !important;
