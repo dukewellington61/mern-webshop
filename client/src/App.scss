@@ -60,13 +60,21 @@ body {
 #alert_container {
   position: absolute;
   z-index: 99;
-  top: 13rem;
+  top: 4.5rem;
   width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
   #alert_container {
     top: 5.5rem;
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #alert_container {
+    top: 5.5rem;
+    width: 80%;
   }
 }
 
@@ -731,7 +739,7 @@ $text-color: #333;
 }
 
 #add_to_shopping_cart_button {
-  margin: 0 auto;
+  margin-left: 1rem;
   display: block;
 }
 
@@ -743,7 +751,7 @@ $text-color: #333;
 
 @media only screen and (min-width: 768px) {
   #add_to_shopping_cart_button_container {
-    position: absolute;
+    // position: absolute;
     bottom: 0;
   }
 }

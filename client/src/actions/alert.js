@@ -7,7 +7,7 @@ export const setAlert = (
   alertType,
   line_item_id,
   cart_id,
-  timeout = 7000
+  timeout = 5000
 ) => (dispatch) => {
   const id = uuid.v4();
   dispatch({

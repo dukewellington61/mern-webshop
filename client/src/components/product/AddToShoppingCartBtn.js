@@ -15,6 +15,7 @@ const AddToShoppingCartBtn = ({ product, cart, addLineItem }) => {
       price: product.price,
       addToShoppingCartBtn: true,
     });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
