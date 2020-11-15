@@ -2,14 +2,14 @@ import React from "react";
 
 const PrivacyPolicyEnglish = () => {
   return (
-    <div className="info_container_class">
+    
       <div className="info_wrapper_class">
         <div className="info_row_class">
           <div className="column">
             <div className="text_wrapper">
-              <h1>Privacy policy</h1>
+              <h3>Privacy policy</h3>
               <br />
-              <h2>Privacy</h2>
+              <h4>Privacy</h4>
               <br />
               <p>
                 We have drawn up this data protection declaration (version
@@ -22,7 +22,7 @@ const PrivacyPolicyEnglish = () => {
                 the most important things as simply and clearly as possible.
               </p>
               <br />
-              <h3>Automatic data storage </h3>
+              <h5>Automatic data storage </h5>
               <br />
               <p>
                 When you visit websites today, certain information is
@@ -40,7 +40,7 @@ const PrivacyPolicyEnglish = () => {
                 viewed in the event of illegal behavior.
               </p>
               <br />
-              <h3>Cookies</h3>
+              <h5>Cookies</h5>
               <br />
               <p>
                 Our website uses HTTP cookies to store user-specific data. In
@@ -48,7 +48,7 @@ const PrivacyPolicyEnglish = () => {
                 so that you can better understand the following privacy policy.
               </p>
               <br />
-              <h3>What exactly are cookies?</h3>
+              <h5>What exactly are cookies?</h5>
               <br />
               <p>
                 Whenever you surf the Internet, you are using a browser.
@@ -98,7 +98,7 @@ const PrivacyPolicyEnglish = () => {
                 </p>
               </p>
               <br />
-              <h3>What types of cookies are there? </h3>
+              <h5>What types of cookies are there? </h5>
               <br />
               <p>
                 The question which cookies we use in particular depends on the
@@ -108,7 +108,7 @@ const PrivacyPolicyEnglish = () => {
                 4 types of cookies:
               </p>
               <br />
-              <h4>Absolutely necessary cookies </h4>
+              <h5>Absolutely necessary cookies </h5>
               <br />
               <p>
                 These cookies are necessary to ensure basic functions of the
@@ -119,7 +119,7 @@ const PrivacyPolicyEnglish = () => {
                 window.
               </p>
               <br />
-              <h4>Functional Cookies</h4>
+              <h5>Functional Cookies</h5>
               <br />
               <p>
                 These cookies collect information about user behavior and
@@ -128,14 +128,14 @@ const PrivacyPolicyEnglish = () => {
                 website in different browsers.
               </p>
               <br />
-              <h4>Target-oriented cookies</h4>
+              <h5>Target-oriented cookies</h5>
               <br />
               <p>
                 These cookies ensure a better user experience. For example,
                 entered locations, font sizes or form data are stored.
               </p>
               <br />
-              <h4>Advertising cookies</h4>
+              <h5>Advertising cookies</h5>
               <br />
               <p>
                 These cookies are also called targeting cookies. They are used
@@ -146,7 +146,7 @@ const PrivacyPolicyEnglish = () => {
                 stored in a cookie.
               </p>
               <br />
-              <h3>How can I delete cookies?</h3>
+              <h5>How can I delete cookies?</h5>
               <br />
               <p>
                 How and whether you want to use cookies is up to you. Regardless
@@ -183,7 +183,7 @@ const PrivacyPolicyEnglish = () => {
                 with the name of your browser, e.g. Edge, Firefox, Safari.
               </p>
               <br />
-              <h3> What about my privacy?</h3>
+              <h5> What about my privacy?</h5>
               <br />
               <p>
                 Since 2009 there are the so-called "cookie guidelines". This
@@ -199,7 +199,7 @@ const PrivacyPolicyEnglish = () => {
                 (IETF) called "HTTP State Management Mechanism".
               </p>
               <br />
-              <h3>Storage of Personal Data</h3>
+              <h5>Storage of Personal Data</h5>
               <br />
               <p>
                 Personal information that you submit to us electronically on
@@ -223,9 +223,9 @@ const PrivacyPolicyEnglish = () => {
                 sufficient, you will find our contact details in the imprint.
               </p>
               <br />
-              <h3>
+              <h5>
                 Rights in accordance with the basic data protection ordinance
-              </h3>
+              </h5>
               <br />
               <p>
                 In accordance with the provisions of the DSGVO, you are
@@ -245,7 +245,7 @@ const PrivacyPolicyEnglish = () => {
                 (BfDI).
               </p>
               <br />
-              <h3>TLS encryption with https </h3>
+              <h5>TLS encryption with https </h5>
               <br />
               <p>
                 We use https to transmit data tap-proof on the Internet (data
@@ -259,7 +259,7 @@ const PrivacyPolicyEnglish = () => {
                 address.
               </p>
               <br />
-              <h3>Google Fonts Privacy Policy</h3>
+              <h5>Google Fonts Privacy Policy</h5>
               <br />
               <p>
                 On our website we use Google Fonts. These are the "Google fonts"
@@ -279,7 +279,7 @@ const PrivacyPolicyEnglish = () => {
                 data storage looks exactly.
               </p>
               <br />
-              <h3>What are Google Fonts?</h3>
+              <h5>What are Google Fonts?</h5>
               <br />
               <p>
                 In former times Google Fonts were also called Google Web Fonts.
@@ -296,7 +296,7 @@ const PrivacyPolicyEnglish = () => {
                 https://developers.google.com/fonts/faq?tid=311230666.
               </p>
               <br />
-              <h3> Why do we use Google Fonts on our website?</h3>
+              <h5> Why do we use Google Fonts on our website?</h5>
               <br />
               <p>
                 With Google Fonts we can use fonts on our own website, but we do
@@ -318,7 +318,7 @@ const PrivacyPolicyEnglish = () => {
                 online service as beautiful and consistent as possible.
               </p>
               <br />
-              <h3>What data does Google store?</h3>
+              <h5>What data does Google store?</h5>
               <br />
               <p>
                 When you visit our website, the fonts are reloaded via a Google
@@ -345,7 +345,7 @@ const PrivacyPolicyEnglish = () => {
                 clearly determined or is not clearly communicated by Google.
               </p>
               <br />
-              <h3>How long and where is the data stored?</h3>
+              <h5>How long and where is the data stored?</h5>
               <br />
               <p>
                 Google stores requests for CSS assets for one day on its
@@ -361,7 +361,7 @@ const PrivacyPolicyEnglish = () => {
                 increase language coverage and improve design.
               </p>
               <br />
-              <h3>How can I delete my data or prevent data storage?</h3>
+              <h5>How can I delete my data or prevent data storage?</h5>
               <br />
               <p>
                 The data that Google stores for a day or a year cannot be
@@ -385,8 +385,8 @@ const PrivacyPolicyEnglish = () => {
             </div>
           </div>
           <div className="column">
-            <div className="column">
-              <h3>Google Fonts Local Privacy Policy</h3>
+            <div className="text_wrapper">
+              <h5>Google Fonts Local Privacy Policy</h5>
               <br />
               <p>
                 On our website we use Google Fonts from Google Inc. The company
@@ -398,7 +398,7 @@ const PrivacyPolicyEnglish = () => {
                 storage.
               </p>
               <br />
-              <h3>Embedded Social Media Elements Privacy Policy</h3>
+              <h5>Embedded Social Media Elements Privacy Policy</h5>
               <br />
               <p>
                 We integrate elements of social media services on our website to
@@ -415,7 +415,7 @@ const PrivacyPolicyEnglish = () => {
                 Policy: https://twitter.com/de/privacy
               </p>
               <br />
-              <h3>LinkedIn Privacy Policy</h3>
+              <h5>LinkedIn Privacy Policy</h5>
               <br />
               <p>
                 On our website we use social plug-ins from the social media
@@ -433,7 +433,7 @@ const PrivacyPolicyEnglish = () => {
                 uses this data and how you can manage or stop the data storage.
               </p>
               <br />
-              <h3> What is LinkedIn?</h3>
+              <h5> What is LinkedIn?</h5>
               <br />
               <p>
                 LinkedIn is the largest social network for business contacts.
@@ -446,7 +446,7 @@ const PrivacyPolicyEnglish = () => {
                 million.
               </p>
               <br />
-              <h3>Why do we use LinkedIn on our website?</h3>
+              <h5>Why do we use LinkedIn on our website?</h5>
               <br />
               <p>
                 We know how busy you are. You can't follow all social media
@@ -461,7 +461,7 @@ const PrivacyPolicyEnglish = () => {
                 services.
               </p>
               <br />
-              <h3>What data is stored by LinkedIn?</h3>
+              <h5>What data is stored by LinkedIn?</h5>
               <br />
               <p>
                 LinkedIn does not store any personal data simply by integrating
@@ -555,7 +555,7 @@ const PrivacyPolicyEnglish = () => {
                 and _gat during our test.
               </p>
               <br />
-              <h3>How long and where is the data stored?</h3>
+              <h5>How long and where is the data stored?</h5>
               <br />
               <p>
                 As a general rule, LinkedIn keeps your personal information as
@@ -573,7 +573,7 @@ const PrivacyPolicyEnglish = () => {
                 also in Europe.
               </p>
               <br />
-              <h3>How can I delete my data or prevent data storage?</h3>
+              <h5>How can I delete my data or prevent data storage?</h5>
               <br />
               <p>
                 You have the right to access and delete your personal data at
@@ -614,7 +614,7 @@ const PrivacyPolicyEnglish = () => {
                 about the data processing of the social media network LinkedIn.
               </p>
               <br />
-              <h3>Stripe Privacy Policy</h3>
+              <h5>Stripe Privacy Policy</h5>
               <br />
               <p>
                 We use on our website a payment tool of the American technology
@@ -629,7 +629,7 @@ const PrivacyPolicyEnglish = () => {
                 Stripe on our website.
               </p>
               <br />
-              <h3>What is Stripe?</h3>
+              <h5>What is Stripe?</h5>
               <br />
               <p>
                 The technology company Stripe offers payment solutions for
@@ -640,7 +640,7 @@ const PrivacyPolicyEnglish = () => {
                 process and that the payment processing is very fast.
               </p>
               <br />
-              <h3>Why do we use Stripe for our website?</h3>
+              <h5>Why do we use Stripe for our website?</h5>
               <br />
               <p>
                 Of course we want to offer the best possible service with our
@@ -652,7 +652,7 @@ const PrivacyPolicyEnglish = () => {
                 secure and fast payment processing.
               </p>
               <br />
-              <h3>Which data is stored by Stripe?</h3>
+              <h5>Which data is stored by Stripe?</h5>
               <br />
               <p>
                 If you choose Stripe as your payment method, your personal data
@@ -705,7 +705,7 @@ const PrivacyPolicyEnglish = () => {
               </p>
               <p>Expiration date: after the end of the session</p>
               <br />
-              <h3>How long and where is the data stored?</h3>
+              <h5>How long and where is the data stored?</h5>
               <br />
               <p>
                 Personal data is generally stored for the duration of the
@@ -718,7 +718,7 @@ const PrivacyPolicyEnglish = () => {
                 your country, for example in the USA.
               </p>
               <br />
-              <h3> How can I delete my data or prevent data storage?</h3>
+              <h5> How can I delete my data or prevent data storage?</h5>
               <br />
               <p>
                 Stripe continues to be a participant in the EU-U.S. Privacy
@@ -755,7 +755,7 @@ const PrivacyPolicyEnglish = () => {
                 https://stripe.com/at/privacy is a good source.
               </p>
               <br />
-              <h3> BootstrapCDN Privacy Policy</h3>
+              <h5> BootstrapCDN Privacy Policy</h5>
               <br />
               <p>
                 In order to deliver all our individual web pages (sub-pages of
@@ -797,7 +797,7 @@ const PrivacyPolicyEnglish = () => {
           </div>
         </div>
       </div>
-    </div>
+  
   );
 };
 
