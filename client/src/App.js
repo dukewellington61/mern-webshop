@@ -24,6 +24,9 @@ import Account from "./components/account/Account";
 import Search from "./components/search/Search";
 import Result from "./components/search/Result";
 
+import LegalNotice from "./components/legal/LegalNotice";
+import PrivacyPolicy from "./components/legal/PrivacyPolicy";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -70,6 +73,8 @@ const App = () => {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/reviews" component={RatingSummary} />
             <Route exact path="/update" component={Account} />
+            <Route exact path="/privacy_policy" component={PrivacyPolicy} />
+            <Route exact path="/legal_notice" component={LegalNotice} />
           </Switch>
           <Footer />
         </Fragment>
