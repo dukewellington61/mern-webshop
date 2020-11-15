@@ -17,6 +17,7 @@ const QuantityField = ({
   const handleChange = (e) => setNewQuantity(parseInt(e.target.value));
 
   const handleSubmit = (e) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     newQuantity === 0
       ? removeLineItem({ lineItem_id, cart_id: cart._id })
       : addLineItem({ product_id, quantity: newQuantity, cart_id: cart._id });
