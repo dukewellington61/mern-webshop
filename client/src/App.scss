@@ -126,6 +126,21 @@ body {
   color: white;
 }
 
+#github_link_container {
+  display: flex;
+  justify-content: center;
+}
+
+#github_link {
+  font-weight: bold;
+  color: #037bfc;
+}
+
+#legal_container {
+  display: flex;
+  justify-content: space-around;
+}
+
 /* @components/layout/LoaderSkeletonProduct.js */
 $border-color: #dae1e7;
 $background-color: #f4f4f4;

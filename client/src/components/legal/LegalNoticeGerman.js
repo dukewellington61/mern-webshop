@@ -8,7 +8,7 @@ const LegalNoticeGerman = () => {
           <div className="text_wrapper">
             <h3>Impressum</h3>
             <br />
-            <h4>Informationspflicht laut § 5 TMG.</h4>
+            <h4>Informationspflicht laut § 5 TMG</h4>
             <br />
             <p>MusterFirma Musterstrasse 1</p>
             <p>Stiege 1 Tür 1, 12345 Musterhausen, </p>

@@ -7,10 +7,10 @@ const Footer = () => {
       <div id="footer_content_container">
         <div id="github_link_container">
           <a
+            id="github_link"
             className="footer_links"
             href="https://github.com/dukewellington61/mern-webshop"
             target="_blank"
-            style={{ fontWeight: "bold" }}
           >
             see the code on github <i class="fab fa-github"></i>
           </a>
