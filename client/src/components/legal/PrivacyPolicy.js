@@ -18,8 +18,8 @@ function PrivacyPolicy() {
         <div>
           &nbsp;
           {!english
-            ? "switch to English version"
-            : "zur deutschen Version wechseln"}
+            ? "zur englischen Version wechseln"
+            : "see the German version"}
         </div>
       </div>
       {english ? <PrivacyPolicyEnglish /> : <PrivacyPolicyGerman />}

@@ -578,8 +578,26 @@ $text-color: #333;
 }
 
 #quantity_form > input {
-  max-width: 50%;
+  max-width: 75%;
   text-align: center;
+}
+
+@media only screen and (max-width: 350px) {
+  #quantity_form > input {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #quantity_form > input {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #quantity_form > input {
+    max-width: 25%;
+  }
 }
 
 /* @components/cart/RemoveLineItem.js */
