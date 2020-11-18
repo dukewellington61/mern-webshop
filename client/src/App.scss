@@ -376,8 +376,12 @@ $text-color: #333;
 @media only screen and (min-width: 768px) {
   .fa-user {
     position: absolute;
-    bottom: ".5rem";
+    bottom: 0.5rem;
   }
+}
+
+.fa-user:hover ~ #menu {
+  display: block;
 }
 
 #menu {
@@ -386,6 +390,7 @@ $text-color: #333;
   width: 6.5rem;
   right: 0;
   z-index: 100;
+  transform: translate(0, -5px);
 }
 
 @media only screen and (min-width: 768px) {
@@ -393,10 +398,6 @@ $text-color: #333;
     width: 8rem;
     transform: translate(0, 26px);
   }
-}
-
-.fa-user:hover ~ #menu {
-  display: block;
 }
 
 #menu:hover {

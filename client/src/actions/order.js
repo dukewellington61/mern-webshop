@@ -22,8 +22,8 @@ export const createOrder = (formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    const serializedResponse = JSON.stringify(res.data);
-    sessionStorage.setItem("order", serializedResponse);
+    // const serializedResponse = JSON.stringify(res.data);
+    // sessionStorage.setItem("order", serializedResponse);
   } catch (err) {
     dispatch({
       type: ORDER_ERROR,
