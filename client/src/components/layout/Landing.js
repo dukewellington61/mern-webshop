@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 
 import img_1 from "../../img/carousel/img_1.jpg";
 import img_2 from "../../img/carousel/img_2.jpg";
@@ -10,29 +11,51 @@ const Landing = (props) => {
     <div id="landing_container">
       <Carousel>
         <Carousel.Item>
-          <img className="carousel_image" src={img_1} alt="First slide" />
-          <Carousel.Caption>
-            {/* <h3>This is just a likkle test</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
-          </Carousel.Caption>
+          <Link to="/products">
+            {" "}
+            <img className="carousel_image" src={img_1} alt="First slide" />
+            <Carousel.Caption>
+              Free photo 109899589 © creativecommonsstockphotos - Dreamstime.com
+            </Carousel.Caption>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="carousel_image" src={img_2} alt="Second slide" />
-          <Carousel.Caption>
-            {/* <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
-          </Carousel.Caption>
+          <Link to="/products">
+            {" "}
+            <img className="carousel_image" src={img_2} alt="Second slide" />
+            <Carousel.Caption>
+              <span>
+                Photo by{" "}
+                <a href="https://unsplash.com/@bechbox?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                  Mikkel Bech
+                </a>{" "}
+                on{" "}
+                <a href="https://unsplash.com/license?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                  Unsplash
+                </a>
+              </span>
+            </Carousel.Caption>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="carousel_image" src={img_3} alt="Third slide" />
-          <Carousel.Caption>
-            {/* <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p> */}
-          </Carousel.Caption>
+          <Link to="/products">
+            {" "}
+            <img className="carousel_image" src={img_3} alt="Third slide" />
+            <Carousel.Caption>
+              <span>
+                Photo by{" "}
+                <a href="https://unsplash.com/@robertbye?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                  Robert Bye
+                </a>{" "}
+                on{" "}
+                <a href="https://unsplash.com/s/photos/bicycle?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                  Unsplash
+                </a>
+              </span>
+            </Carousel.Caption>
+          </Link>
         </Carousel.Item>
       </Carousel>
     </div>
