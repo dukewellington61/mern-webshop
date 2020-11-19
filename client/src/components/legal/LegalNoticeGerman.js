@@ -10,33 +10,22 @@ const LegalNoticeGerman = () => {
             <br />
             <h4>Informationspflicht laut § 5 TMG</h4>
             <br />
-            <p>MusterFirma Musterstrasse 1</p>
-            <p>Stiege 1 Tür 1, 12345 Musterhausen, </p>
+            <p>Andreas Köth Ecksteinstraße 29</p>
+            <p>04277 Leipzig</p>
             <p>Deutschland</p>
             <br />
-            <p>
-              <b>UID-Nummer:</b> DE12345678
-            </p>
-            <p>
-              <b>Wirtschafts-ID:</b> DE123456789
-            </p>
+            <p>{/* <b>UID-Nummer:</b> DE12345678 */}</p>
+            <p>{/* <b>Wirtschafts-ID:</b> DE123456789 */}</p>
             <br />
-            <p>Tel.: 01234/56789</p>
-            <p>Fax: 01234/56789-0</p>
-            <p> E-Mail: office@musterfirma.de</p>
+            <p>Tel.: 01520/1326544</p>
+            <p> E-Mail: andreas_koeth@gmx.de</p>
             <br />
-            <p>
-              <b>Aufsichtsbehörde</b>
-            </p>
-            <p>Bezirkshauptmannschaft Musterhausen</p>
-            <p>
-              <b>Webseite der Aufsichtsbehörde</b>
-            </p>
-            <p>https://www.aufsichtsbeoerde-musterhausen.de/</p>
-            <p>
-              <b>Anschrift der Aufsichtsbehörde</b>
-            </p>
-            <p>Musterweg 1, 12345 Musterhausen</p>
+            <p>{/* <b>Aufsichtsbehörde</b> */}</p>
+            {/* <p>Bezirkshauptmannschaft Musterhausen</p> */}
+            <p>{/* <b>Webseite der Aufsichtsbehörde</b> */}</p>
+            {/* <p>https://www.aufsichtsbeoerde-musterhausen.de/</p> */}
+            <p>{/* <b>Anschrift der Aufsichtsbehörde</b> */}</p>
+            {/* <p>Musterweg 1, 12345 Musterhausen</p> */}
             <br />
             <p>
               <b>Berufsbezeichnung:</b>
