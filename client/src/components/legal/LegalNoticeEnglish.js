@@ -56,16 +56,16 @@ const LegalNoticeEnglish = () => {
 
         <div className="column">
           <div className="text_wrapper">
-            <h5>Liability for contents of this website</h5>
+            <h5>Liability for contents of this application</h5>
             <br />
             <p>
-              We are constantly developing the contents of this website and make
-              every effort to provide correct and up-to-date information.
+              We are constantly developing the contents of this application and
+              make every effort to provide correct and up-to-date information.
               According to Telemedia Act (TMG) §7 (1) we as service providers
               are responsible for our own information, which we make available
               for use, according to the general laws. Unfortunately, we cannot
               assume any liability for the correctness of all contents on this
-              website, especially for those provided by third parties. As a
+              application, especially for those provided by third parties. As a
               service provider in the sense of §§ 8 to 10, we are not obliged to
               monitor the information transmitted or stored by you or to
               investigate circumstances that indicate illegal activity. Our
@@ -78,40 +78,25 @@ const LegalNoticeEnglish = () => {
               notice.
             </p>
             <br />
-            <h5>Liability for links on this website</h5>
+            <h5>Liability for links on this application</h5>
             <br />
             <p>
-              Our website contains links to other websites for whose content we
-              are not responsible. We are not liable for linked websites, as we
-              had and have no knowledge of illegal activities, we have not
+              Our application contains links to other websites for whose content
+              we are not responsible. We are not liable for linked websites, as
+              we had and have no knowledge of illegal activities, we have not
               noticed any such illegality and we would remove links immediately
               if we became aware of any illegality. If you notice illegal links
-              on our website, please contact us. You can find the contact
+              on our application, please contact us. You can find the contact
               details in the legal notice.
             </p>
-            <br />
-            <h5>Copyright notice</h5>
-            <br />
-            <p>
-              All contents of this website (pictures, photos, texts, videos) are
-              subject to the copyright of the Federal Republic of Germany.
-              Please ask us before you distribute, reproduce or use the contents
-              of this website such as republishing on other websites. If
-              necessary, we will legally pursue the unauthorized use of parts of
-              the contents of our site. If you find content on this website that
-              violates copyright law, please contact us.
-            </p>
-
             <br />
             <h5>Picture credits</h5>
             <br />
             <p>
-              The pictures, photos and graphics on this website are protected by
-              copyright. The image rights are owned by the following
-              photographers and companies:
+              The fotos in this application are taken from https://unsplash.com/
+              and https://www.dreamstime.com/. They are freely available under a
+              creative commons license.
             </p>
-            <br />
-            <p>• Photographer Mustermann </p>
             <br />
             <p>
               Source: Created with the AdSimple privacy generator in cooperation

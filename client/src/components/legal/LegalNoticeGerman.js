@@ -54,12 +54,12 @@ const LegalNoticeGerman = () => {
             <h5>Haftung für Inhalte dieser Website</h5>
             <br />
             <p>
-              Wir entwickeln die Inhalte dieser Webseite ständig weiter und
+              Wir entwickeln die Inhalte dieser Application ständig weiter und
               bemühen uns korrekte und aktuelle Informationen bereitzustellen.
               Laut Telemediengesetz (TMG) §7 (1) sind wir als Diensteanbieter
               für eigene Informationen, die wir zur Nutzung bereitstellen, nach
               den allgemeinen Gesetzen verantwortlich. Leider können wir keine
-              Haftung für die Korrektheit aller Inhalte auf dieser Webseite
+              Haftung für die Korrektheit aller Inhalte auf dieser Application
               übernehmen, speziell für jene die seitens Dritter bereitgestellt
               wurden. Als Diensteanbieter im Sinne der §§ 8 bis 10 sind wir
               nicht verpflichtet, die von ihnen übermittelten oder gespeicherten
@@ -78,7 +78,7 @@ const LegalNoticeGerman = () => {
             <h5>Haftung für Links auf dieser Website</h5>
             <br />
             <p>
-              Unsere Webseite enthält Links zu anderen Webseiten für deren
+              Unsere Application enthält Links zu anderen Webseiten für deren
               Inhalt wir nicht verantwortlich sind. Haftung für verlinkte
               Websites besteht für uns nicht, da wir keine Kenntnis
               rechtswidriger Tätigkeiten hatten und haben, uns solche
@@ -89,29 +89,13 @@ const LegalNoticeGerman = () => {
               Kontaktdaten im Impressum.
             </p>
             <br />
-            <h5>Urheberrechtshinweis</h5>
-            <br />
-            <p>
-              Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos)
-              unterliegen dem Urheberrecht der Bundesrepublik Deutschland. Bitte
-              fragen Sie uns bevor Sie die Inhalte dieser Website verbreiten,
-              vervielfältigen oder verwerten wie zum Beispiel auf anderen
-              Websites erneut veröffentlichen. Falls notwendig, werden wir die
-              unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich
-              verfolgen. Sollten Sie auf dieser Webseite Inhalte finden, die das
-              Urheberrecht verletzen, bitten wir Sie uns zu kontaktieren.
-            </p>
-
-            <br />
             <h5>Bildernachweis</h5>
             <br />
             <p>
-              Die Bilder, Fotos und Grafiken auf dieser Webseite sind
-              urheberrechtlich geschützt. Die Bilderrechte liegen bei den
-              folgenden Fotografen und Unternehmen:
+              Die Fotos in dieser Application stammen von https://unsplash.com/
+              sowie https://www.dreamstime.com/. Sie sind unter einer creative
+              commons license frei nutzbar.
             </p>
-            <br />
-            <p>• Fotograf Mustermann </p>
             <br />
             <p>
               Quelle: Erstellt mit dem Datenschutz Generator von AdSimple in
