@@ -56,26 +56,6 @@ const StripeComponent = ({
         panelLabel={"pay"}
       >
         <div id="stripe_button_container">
-          <div>
-            <b>Note:</b>
-            <p
-              style={{
-                textAlign: "justify",
-                fontSize: "0.75em",
-                marginBottom: "0",
-              }}
-            >
-              The button below prompts a test version of Stripe Checkout to pop
-              up which can be used to complete the acquisition of this shopping
-              cart. Obviously this is just a simulation. No real transaction is
-              taking place. Don't use a genuine credit card number. Instead, in
-              the field 'card number' of the Stripe Checkout box, enter the
-              following number:
-            </p>
-            <p style={{ fontSize: "0.75rem", fontWeight: "bold" }}>
-              <b> 4242 4242 4242 4242</b>
-            </p>
-          </div>
           <button className="btn btn-primary btn-lg">
             <i class="far fa-credit-card"></i> PAY WITH CARD
           </button>
