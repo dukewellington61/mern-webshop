@@ -1033,6 +1033,7 @@ input[type="radio"] {
 
 /* @components/legal/CookieBanner.js */
 #cookie_banner_container {
+  display: flex;
   position: absolute;
   background-color: rgba(10, 10, 10, 0.5);
   height: 100%;
@@ -1051,6 +1052,7 @@ input[type="radio"] {
   background-color: rgba(10, 10, 10, 0.75);
   margin: 0 auto;
   top: 100%;
+  margin-top: auto;
 
   @media only screen and (min-width: 992px) {
     width: 60%;
