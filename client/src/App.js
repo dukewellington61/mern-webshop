@@ -67,10 +67,10 @@ const App = () => {
 
   const [renderCookieBanner, setRenderCookieBanner] = useState(true);
 
-  const body = document.querySelector("body");
-  renderCookieBanner
-    ? body.classList.add("no-sroll")
-    : body.classList.remove("no-sroll");
+  // const body = document.querySelector("body");
+  // renderCookieBanner
+  //   ? body.classList.add("no-sroll")
+  //   : body.classList.remove("no-sroll");
 
   const handleCookieAccept = () => {
     setRenderStripeComponent(true);
@@ -113,14 +113,6 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          {renderCookieBanner && (
-            <div id="cookie_banner_container">
-              <CookieBanner
-                handleCookieAccept={handleCookieAccept}
-                handleCookieDecline={handleCookieDecline}
-              />
-            </div>
-          )}
           <Navbar />
           <Search />
           <div id="alert_container">
@@ -147,6 +139,14 @@ const App = () => {
             <Route exact path="/privacy_policy" component={PrivacyPolicy} />
             <Route exact path="/legal_notice" component={LegalNotice} />
           </Switch>
+          {renderCookieBanner && (
+            <div id="cookie_banner_container">
+              <CookieBanner
+                handleCookieAccept={handleCookieAccept}
+                handleCookieDecline={handleCookieDecline}
+              />
+            </div>
+          )}
           <Footer />
         </Fragment>
       </Router>

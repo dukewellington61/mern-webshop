@@ -7,6 +7,10 @@
   --success-color: #28a745;
 }
 
+#root {
+  position: relative;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -1029,21 +1033,28 @@ input[type="radio"] {
 
 /* @components/legal/CookieBanner.js */
 #cookie_banner_container {
-  display: flex;
-  align-items: center;
   position: absolute;
   background-color: rgba(10, 10, 10, 0.5);
   height: 100%;
   width: 100%;
   z-index: 999;
-
-  @media only screen and (min-width: 768px) {
-    position: absolute;
-  }
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
 }
 
 #cookie_banner_content {
+  position: sticky;
+  width: 100%;
   background-color: rgba(10, 10, 10, 0.75);
+  margin: 0 auto;
+  top: 100%;
+
+  @media only screen and (min-width: 992px) {
+    width: 60%;
+  }
 }
 
 #cookie_banner_text_wrapper {
