@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import StripeComponent from "./StripeComponent";
 import { calculateGrandTotal } from "../../utils/calcGrandTotal";
 
-const GrantTotal = ({ cart, user }) => {
+const GrantTotal = ({ cart, user, renderStripeComponent }) => {
   return (
     <Fragment>
       <div className="row">
@@ -34,12 +34,13 @@ const GrantTotal = ({ cart, user }) => {
         <div className="col-sm"> </div>
         <div className="col-sm"></div>
         <div className="col-sm">
-          {" "}
-          <StripeComponent
-            total={Number(calculateGrandTotal(cart) + 2.95)}
-            user={user}
-            cart={cart}
-          />
+          {renderStripeComponent && (
+            <StripeComponent
+              total={Number(calculateGrandTotal(cart) + 2.95)}
+              user={user}
+              cart={cart}
+            />
+          )}
         </div>
         <div className="col-sm"> </div>
       </div>

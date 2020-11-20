@@ -42,6 +42,10 @@ body {
   }
 }
 
+.no-sroll {
+  overflow: hidden;
+}
+
 .row {
   margin: 0;
 }
@@ -1021,4 +1025,33 @@ input[type="radio"] {
 
 .column {
   padding: 0 1rem;
+}
+
+/* @components/legal/CookieBanner.js */
+#cookie_banner_container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(10, 10, 10, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+  }
+}
+
+#cookie_banner_content {
+  background-color: rgba(10, 10, 10, 0.75);
+}
+
+#cookie_banner_text_wrapper {
+  color: white;
+  margin: 1rem;
+  text-align: justify;
+}
+
+.cookie_banner_buttons {
+  margin: 0 1rem 1rem;
 }

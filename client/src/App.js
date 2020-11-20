@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/layout/Footer";
@@ -27,6 +27,8 @@ import Result from "./components/search/Result";
 import LegalNotice from "./components/legal/LegalNotice";
 import PrivacyPolicy from "./components/legal/PrivacyPolicy";
 
+import CookieBanner from "./components/legal/CookieBanner";
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -52,10 +54,73 @@ const App = () => {
     getData();
   }, []);
 
+  // the following lines of code render a cookie banner on first load
+  // on click "I accept" button cookie banner disappears and stripe checkout component is being rendered
+  // on click "I decline" button cookie banner disappears and stripe checkout component is not being rendered
+  // on refresh browser app checks in sessionStorage, if cookie banner had been displayed in this tab already
+  // if so conditionals in useEffekt hook make sure that
+  // a) cookie banner is not being rendered again
+  // and
+  // b) user settings with regard to cookies or not (i.e. stripe checkout component rendered or not) are being remembered
+
+  const [renderStripeComponent, setRenderStripeComponent] = useState(false);
+
+  const [renderCookieBanner, setRenderCookieBanner] = useState(true);
+
+  const body = document.querySelector("body");
+  renderCookieBanner
+    ? body.classList.add("no-sroll")
+    : body.classList.remove("no-sroll");
+
+  const handleCookieAccept = () => {
+    setRenderStripeComponent(true);
+    setRenderCookieBanner(false);
+    sessionStorage.setItem(
+      "mern_stack_example_web_shop_render_stripe_component",
+      "true"
+    );
+  };
+
+  const handleCookieDecline = () => {
+    setRenderCookieBanner(false);
+    sessionStorage.setItem(
+      "mern_stack_example_web_shop_render_stripe_component",
+      "false"
+    );
+  };
+
+  useEffect(() => {
+    if (
+      sessionStorage.getItem(
+        "mern_stack_example_web_shop_render_stripe_component"
+      ) === "true"
+    ) {
+      setRenderCookieBanner(false);
+      setRenderStripeComponent(true);
+    }
+
+    if (
+      sessionStorage.getItem(
+        "mern_stack_example_web_shop_render_stripe_component"
+      ) === "false"
+    ) {
+      setRenderCookieBanner(false);
+      setRenderStripeComponent(false);
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
+          {renderCookieBanner && (
+            <div id="cookie_banner_container">
+              <CookieBanner
+                handleCookieAccept={handleCookieAccept}
+                handleCookieDecline={handleCookieDecline}
+              />
+            </div>
+          )}
           <Navbar />
           <Search />
           <div id="alert_container">
@@ -68,7 +133,13 @@ const App = () => {
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/search-result" component={Result} />
             <Route exact path="/products/:id" component={Product} />
-            <Route exact path="/cart" component={Cart} />
+            <Route
+              exact
+              path="/cart"
+              render={() => (
+                <Cart renderStripeComponent={renderStripeComponent} />
+              )}
+            />
             <Route exact path="/order" component={Order} />
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/reviews" component={RatingSummary} />

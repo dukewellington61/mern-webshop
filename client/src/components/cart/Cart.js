@@ -7,7 +7,7 @@ import { getProducts } from "../../actions/product";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 
-const Cart = ({ cart, user }) => {
+const Cart = ({ cart, user, renderStripeComponent }) => {
   return cart.loading ? (
     <Spinner />
   ) : (
@@ -40,7 +40,11 @@ const Cart = ({ cart, user }) => {
           <div id="grand_total">
             <div>
               {cart.line_items.length > 0 && (
-                <GrantTotal cart={cart} user={user} />
+                <GrantTotal
+                  cart={cart}
+                  user={user}
+                  renderStripeComponent={renderStripeComponent}
+                />
               )}
             </div>
           </div>
