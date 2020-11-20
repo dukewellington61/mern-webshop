@@ -15,8 +15,8 @@ const Login = ({
   cart,
 }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "meister@lampe.de",
+    password: "123456",
   });
 
   const { email, password } = formData;
@@ -71,6 +71,7 @@ const Login = ({
             value={email}
             onChange={onChange}
             autoComplete
+            defaultValue="meister@lampe.de"
           />
         </div>
         <div className="form-group">
