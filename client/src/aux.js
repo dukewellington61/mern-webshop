@@ -5,7 +5,7 @@
 // if the app is displayed elsewhere the code below won't fire
 
 window.addEventListener("message", (message) => {
-  if (message.data === "iframe") {
+  if (message.data === "web_shop") {
     console.log("iframe");
     document.querySelector("html").classList.add("hideScrollBar");
   }

@@ -9,7 +9,7 @@ const Footer = () => {
           <a
             id="github_link"
             className="footer_links"
-            href="https://github.com/dukewellington61/mern-webshop"
+            href="https://github.com/akoeth-portfolio/akoeth-portfolio-webpage"
             target="_blank"
           >
             see the code on github <i class="fab fa-github"></i>
