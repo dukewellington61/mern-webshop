@@ -10,15 +10,15 @@ const LegalNoticeEnglish = () => {
             <br />
             <h4>Duty to inform according to § 5 TMG</h4>
             <br />
-            <p>Andreas Köth Ecksteinstraße 29</p>
+            {/* <p>Andreas Köth Ecksteinstraße 29</p>
             <p>04277 Leipzig</p>
-            <p>Germany</p>
+            <p>Germany</p> */}
             <br />
             <p>{/* <b>UID-Number:</b> DE12345678 */}</p>
             <p>{/* <b>Economic ID:</b> DE123456789 */}</p>
             <br />
-            <p>Phone: 01520/1326544</p>
-            <p>e-mail: andreas_koeth@gmx.de</p>
+            {/* <p>Phone: 01520/1326544</p>
+            <p>e-mail: andreas_koeth@gmx.de</p> */}
             <br />
             <p>{/* <b>Supervisory authority</b> */}</p>
             {/* <p>District administration Musterhausen</p> */}
